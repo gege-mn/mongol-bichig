@@ -1,0 +1,62 @@
+{
+  "name": "@gege-mn/mongol-bichig",
+  "version": "0.1.0",
+  "description": "Canonical data and primitives for traditional Mongolian script (Mongol bichig) — the Hudum suffix registry, Classical romanization, and Unicode character classes. Shared by @gege-mn/gege-linter and @gege-mn/gege-convertor.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gege-mn/mongol-bichig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gege-mn/mongol-bichig/issues"
+  },
+  "homepage": "https://github.com/gege-mn/mongol-bichig#readme",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./data/suffixes.json": "./data/suffixes.json"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/emit-json.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "prepublishOnly": "pnpm build && pnpm typecheck && pnpm test"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "mongolian",
+    "mongol-bichig",
+    "hudum",
+    "unicode",
+    "romanization",
+    "suffixes",
+    "mvs",
+    "fvs"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.1",
+    "@types/node": "^26.1.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}
