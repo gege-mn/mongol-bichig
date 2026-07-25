@@ -173,6 +173,14 @@ forms), and no particle inventory in any era (NNBSP-based MLREQ included)
 lists it. `space-before-suffix` must treat a space before it as correct;
 MVS before it is the error.
 
+ᠦᠭᠡᠢ is also **invariantly feminine** — it has no masculine counterpart and
+does not harmonise to the preceding stem, so ᠠᠪᠤ ᠦᠭᠡᠢ (аавгүй) pairs a
+masculine stem with a feminine particle and that is correct (confirmed
+2026-07-26). Consequence for anything inferring harmony from letter choice:
+read the **stem only**. Tungaamal writes this particle with its feminine-g
+letter U+1889 unconditionally, so a whole-string reading tags every -гүй
+word feminine regardless of what the stem actually is.
+
 ## Possessive clitics (added 2026-07-25, corpus-verified)
 
 Standard detached clitics, MVS-joined; absent from the shaping registry only

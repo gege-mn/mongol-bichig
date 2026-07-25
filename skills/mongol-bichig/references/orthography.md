@@ -38,7 +38,11 @@ inspection cannot catch them.
 U+182C, γ/g in U+182D; gender lives in shaping, not encoding. The
 vowel-harmony rule subsumes it.
 
-## The o/ö distribution rule (upgrade path for `non-initial-o`)
+## The o/ö distribution rule
+
+> **Corrected 2026-07-26. Poppe §33 does not describe modern practice, and
+> the "upgrade" this section used to propose was wrong — do not implement
+> it.** See the ruling below before using anything in this section.
 
 Poppe §33: "The vowel o does not occur in the medial or in the final
 syllables of words of which the first syllable is formed by a or u. The
@@ -46,11 +50,34 @@ vowel o occurs only in the non-initial syllables of words of which the first
 syllable contains o or, rarely, i. The vowel ö occurs in the non-initial
 syllables of words of which the first syllable contains ö."
 
-Upgrade: flag non-initial O **only when the word's first vowel is not O**
-(i-first words like *široi* exist "rarely" → info tier), and non-initial Ö
-only when the first vowel is not Ö. This dissolves the ᠮᠣᠩᠭᠣᠯ/oroi/qorin
-"exceptions" — they are regular. Remaining false positives are loans
-(kino, radio) → galig/é downgrade.
+Read literally, that licenses non-initial o after an initial o, which would
+make ᠮᠣᠩᠭᠣᠯ / oroi / qorin regular rather than exceptional. An earlier
+version of this document proposed narrowing `non-initial-o` on that basis.
+
+**That is not the rule taught in Mongolia, and it is not what to implement.**
+The school rule is categorical, with no first-vowel condition:
+
+> Монгол бичигт үгийн нэгдүгээр (тэргүүн) үеэс хойш о, ө үсгүүд
+> бичигдэхгүй бөгөөд тэдгээрийн оронд эр үгэнд у, эм үгэнд ү үсэг
+> бичигддэг.
+
+After the first syllable, masculine words take **u** and feminine **ü**,
+full stop. So монгол is `mongγul` (ᠮᠣᠩᠭᠤᠯ), богино is `boγuni`, орой is
+`orui`, тогоо is `toγuγ-a`.
+
+Two independent confirmations, both 2026-07-26:
+
+1. A bichig reader ruled on it directly, supplying the corrected forms.
+2. **kimo/Tungaamal applies the rule throughout its own output** —
+   богино→ᠪᠣᠭᠤᠨᠢ, орой→ᠣᠷᠤᠢ, тогоо→ᠲᠣᠭᠤᠭ᠎ᠠ — while exempting ᠮᠣᠩᠭᠣᠯ
+   alone. A commercial Mongolian converter treating it as one frozen
+   lexical exception is evidence the *rule* is general, not that Poppe's
+   conditioning is live.
+
+Genuine exceptions remain, which is why the rule stays **info** severity:
+loanwords keep their o (ᠹᠣᠲᠣ, ᠻᠢᠨᠣ), and ᠭᠣᠣᠯ (γool, "river") has a
+doubled short o. Those are lexical, listed one by one — not derivable from
+a first-vowel condition.
 
 ## Vowel sequences (native inventory is closed — Poppe §89–94)
 

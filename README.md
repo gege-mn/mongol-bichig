@@ -10,12 +10,12 @@ The single source of truth for traditional Mongolian script (Mongol bichig,
 | **npm package** | `@gege-mn/mongol-bichig` — the suffix registry, Classical romanization and Unicode character classes | code |
 
 Nothing here is specific to one tool. [gege-linter][linter] validates bichig
-text and [gege-convertor][convertor] generates it; both read their shared facts
+text and [gege-converter][converter] generates it; both read their shared facts
 from here rather than keeping private copies, which is exactly why this
 repository exists — the suffix registry had already been forked once.
 
 [linter]: https://github.com/gege-mn/gege-linter
-[convertor]: https://github.com/gege-mn/gege-convertor
+[converter]: https://github.com/gege-mn/gege-converter
 
 ## Install
 

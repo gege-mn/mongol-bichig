@@ -97,7 +97,7 @@ of 2026-07.
 
 - **CoPiT** (arXiv 2607.05849, July 2026) — 14,125 Cyrillic ↔ traditional
   pairs, **CC BY 4.0** (MIT-compatible). Target replacement for
-  gege-convertor's unverified seed lexicon. Repository link was still
+  gege-converter's unverified seed lexicon. Repository link was still
   anonymised at time of research; chasing it down is an open item.
 - Wiktionary via kaikki.org — ~2,900 further pairs, CC BY-SA.
 

@@ -7,7 +7,7 @@
  * from Mongolian school grammar tables (тийн ялгалын хүснэгт), UTN #57 v4
  * (2024-08-14) and the mongfontbuilder particle shaping registry; merged into
  * this single canonical form 2026-07-26 from the two copies that had grown in
- * gege-linter and gege-convertor.
+ * gege-linter and gege-converter.
  *
  * ## Why rows are written in romanization
  *
@@ -24,7 +24,7 @@
  * ## What is deliberately NOT here
  *
  * Khalkha Cyrillic *surface-form* pairings (which of -ын/-ийн maps to which
- * allomorph under which condition) live in gege-convertor, flagged as that
+ * allomorph under which condition) live in gege-converter, flagged as that
  * package's own unreviewed work. The `cyrillic` field below is the gloss
  * printed in the reference tables — a human label, not a conversion rule.
  */

@@ -9,6 +9,6 @@ the sources; trust the references for the facts.
 |---|---|---|
 | [cyrillic-conversion-landscape.md](cyrillic-conversion-landscape.md) | 2026-07-25 | Build-vs-adopt survey of every existing Cyrillic→bichig converter, 40 sources. Verdict: build. Also the source of the 45.25% figure — the share of words on a professionally edited Inner Mongolia Daily front page that were visually correct but encoding-wrong, which is why validation has to precede conversion. |
 
-The companion architecture note (what gege-convertor is actually built as, and
+The companion architecture note (what gege-converter is actually built as, and
 why it is an algorithm rather than a model) lives with that project, in
-`gege-convertor/docs/architecture-rationale.md`.
+`gege-converter/docs/architecture-rationale.md`.
