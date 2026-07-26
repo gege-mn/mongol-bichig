@@ -62,8 +62,15 @@ characters. Always splice via `applyFixes`, or convert through
 | `wrong-block` | warning | Todo/Sibe/Manchu/Ali Gali letters in Hudum text | ᠬ/ᠭ for the U+1888/U+1889 look-alikes |
 | `zwj-zwnj` | warning | ZWJ/ZWNJ beside a Mongolian letter (emoji sequences exempt) | — |
 | `nnbsp-legacy` | warning | NNBSP suffix connector (pre-16.0 model) | MVS (U+180E) |
-| `unknown-suffix` | warning | connector-joined letter run not in the 63-entry suffix dictionary | — |
+| `unknown-suffix` | warning | connector-joined letter run not in the 63-entry suffix dictionary | the dictionary sequence, when the run is one written with a stray FVS |
 | `non-initial-o` | info | O/Ö past the first syllable (heuristic; native exceptions exist) | — |
+| `fusable-stack` | info | analytic case + reflexive stack with a registered fused equivalent (ᠳᠤ + ᠪᠠᠨ → ᠳᠠᠭᠠᠨ) | **none, deliberately** — both spellings are correct |
+
+`fusable-stack` is a hint, not a complaint: задлаг and нийлэг forms are both
+valid and choosing between them is style. It carries no `fix` so `--fix`
+cannot rewrite one into the other; the fused sequence is named in the message
+and the span covers the whole stack including its leading connector, so a UI
+that wants one-click apply builds connector + sequence over that span.
 
 The suffix dictionary is not the linter's own: it comes from
 `@gege-mn/mongol-bichig`, re-exported here as `suffixes` for convenience.
