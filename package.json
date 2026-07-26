@@ -1,6 +1,6 @@
 {
   "name": "@gege-mn/mongol-bichig",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Canonical data and primitives for traditional Mongolian script (Mongol bichig) — the Hudum suffix registry, Classical romanization, and Unicode character classes. Shared by @gege-mn/gege-linter and @gege-mn/gege-converter.",
   "type": "module",
   "license": "MIT",

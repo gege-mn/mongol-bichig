@@ -10,7 +10,11 @@
       "registry": true,
       "sequence": "ᠶᠢᠨ",
       "harmony": "neutral",
-      "codepoints": ["U+1836", "U+1822", "U+1828"]
+      "codepoints": [
+        "U+1836",
+        "U+1822",
+        "U+1828"
+      ]
     },
     {
       "translit": "un",
@@ -21,7 +25,10 @@
       "registry": true,
       "sequence": "ᠤᠨ",
       "harmony": "masculine",
-      "codepoints": ["U+1824", "U+1828"]
+      "codepoints": [
+        "U+1824",
+        "U+1828"
+      ]
     },
     {
       "translit": "ün",
@@ -32,7 +39,10 @@
       "registry": true,
       "sequence": "ᠦᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+1826", "U+1828"]
+      "codepoints": [
+        "U+1826",
+        "U+1828"
+      ]
     },
     {
       "translit": "u",
@@ -43,7 +53,9 @@
       "registry": true,
       "sequence": "ᠤ",
       "harmony": "masculine",
-      "codepoints": ["U+1824"]
+      "codepoints": [
+        "U+1824"
+      ]
     },
     {
       "translit": "ü",
@@ -54,7 +66,9 @@
       "registry": true,
       "sequence": "ᠦ",
       "harmony": "feminine",
-      "codepoints": ["U+1826"]
+      "codepoints": [
+        "U+1826"
+      ]
     },
     {
       "translit": "yi",
@@ -65,7 +79,10 @@
       "registry": true,
       "sequence": "ᠶᠢ",
       "harmony": "neutral",
-      "codepoints": ["U+1836", "U+1822"]
+      "codepoints": [
+        "U+1836",
+        "U+1822"
+      ]
     },
     {
       "translit": "i",
@@ -76,7 +93,9 @@
       "registry": true,
       "sequence": "ᠢ",
       "harmony": "neutral",
-      "codepoints": ["U+1822"]
+      "codepoints": [
+        "U+1822"
+      ]
     },
     {
       "translit": "du",
@@ -87,7 +106,10 @@
       "registry": true,
       "sequence": "ᠳᠤ",
       "harmony": "masculine",
-      "codepoints": ["U+1833", "U+1824"]
+      "codepoints": [
+        "U+1833",
+        "U+1824"
+      ]
     },
     {
       "translit": "dü",
@@ -98,7 +120,10 @@
       "registry": true,
       "sequence": "ᠳᠦ",
       "harmony": "feminine",
-      "codepoints": ["U+1833", "U+1826"]
+      "codepoints": [
+        "U+1833",
+        "U+1826"
+      ]
     },
     {
       "translit": "dur",
@@ -109,7 +134,11 @@
       "registry": true,
       "sequence": "ᠳᠤᠷ",
       "harmony": "masculine",
-      "codepoints": ["U+1833", "U+1824", "U+1837"]
+      "codepoints": [
+        "U+1833",
+        "U+1824",
+        "U+1837"
+      ]
     },
     {
       "translit": "dür",
@@ -120,7 +149,11 @@
       "registry": true,
       "sequence": "ᠳᠦᠷ",
       "harmony": "feminine",
-      "codepoints": ["U+1833", "U+1826", "U+1837"]
+      "codepoints": [
+        "U+1833",
+        "U+1826",
+        "U+1837"
+      ]
     },
     {
       "translit": "tu",
@@ -131,7 +164,10 @@
       "registry": true,
       "sequence": "ᠲᠤ",
       "harmony": "masculine",
-      "codepoints": ["U+1832", "U+1824"]
+      "codepoints": [
+        "U+1832",
+        "U+1824"
+      ]
     },
     {
       "translit": "tü",
@@ -142,7 +178,10 @@
       "registry": true,
       "sequence": "ᠲᠦ",
       "harmony": "feminine",
-      "codepoints": ["U+1832", "U+1826"]
+      "codepoints": [
+        "U+1832",
+        "U+1826"
+      ]
     },
     {
       "translit": "tur",
@@ -153,7 +192,11 @@
       "registry": false,
       "sequence": "ᠲᠤᠷ",
       "harmony": "masculine",
-      "codepoints": ["U+1832", "U+1824", "U+1837"]
+      "codepoints": [
+        "U+1832",
+        "U+1824",
+        "U+1837"
+      ]
     },
     {
       "translit": "tür",
@@ -164,7 +207,11 @@
       "registry": true,
       "sequence": "ᠲᠦᠷ",
       "harmony": "feminine",
-      "codepoints": ["U+1832", "U+1826", "U+1837"]
+      "codepoints": [
+        "U+1832",
+        "U+1826",
+        "U+1837"
+      ]
     },
     {
       "translit": "acha",
@@ -175,7 +222,11 @@
       "registry": true,
       "sequence": "ᠠᠴᠠ",
       "harmony": "masculine",
-      "codepoints": ["U+1820", "U+1834", "U+1820"]
+      "codepoints": [
+        "U+1820",
+        "U+1834",
+        "U+1820"
+      ]
     },
     {
       "translit": "eche",
@@ -186,7 +237,11 @@
       "registry": false,
       "sequence": "ᠡᠴᠡ",
       "harmony": "feminine",
-      "codepoints": ["U+1821", "U+1834", "U+1821"]
+      "codepoints": [
+        "U+1821",
+        "U+1834",
+        "U+1821"
+      ]
     },
     {
       "translit": "bar",
@@ -197,7 +252,11 @@
       "registry": false,
       "sequence": "ᠪᠠᠷ",
       "harmony": "masculine",
-      "codepoints": ["U+182A", "U+1820", "U+1837"]
+      "codepoints": [
+        "U+182A",
+        "U+1820",
+        "U+1837"
+      ]
     },
     {
       "translit": "ber",
@@ -208,7 +267,11 @@
       "registry": false,
       "sequence": "ᠪᠡᠷ",
       "harmony": "feminine",
-      "codepoints": ["U+182A", "U+1821", "U+1837"]
+      "codepoints": [
+        "U+182A",
+        "U+1821",
+        "U+1837"
+      ]
     },
     {
       "translit": "iyar",
@@ -219,7 +282,12 @@
       "registry": true,
       "sequence": "ᠢᠶᠠᠷ",
       "harmony": "masculine",
-      "codepoints": ["U+1822", "U+1836", "U+1820", "U+1837"]
+      "codepoints": [
+        "U+1822",
+        "U+1836",
+        "U+1820",
+        "U+1837"
+      ]
     },
     {
       "translit": "iyer",
@@ -230,7 +298,12 @@
       "registry": true,
       "sequence": "ᠢᠶᠡᠷ",
       "harmony": "feminine",
-      "codepoints": ["U+1822", "U+1836", "U+1821", "U+1837"]
+      "codepoints": [
+        "U+1822",
+        "U+1836",
+        "U+1821",
+        "U+1837"
+      ]
     },
     {
       "translit": "tai",
@@ -241,7 +314,11 @@
       "registry": false,
       "sequence": "ᠲᠠᠢ",
       "harmony": "masculine",
-      "codepoints": ["U+1832", "U+1820", "U+1822"]
+      "codepoints": [
+        "U+1832",
+        "U+1820",
+        "U+1822"
+      ]
     },
     {
       "translit": "tei",
@@ -252,7 +329,11 @@
       "registry": false,
       "sequence": "ᠲᠡᠢ",
       "harmony": "feminine",
-      "codepoints": ["U+1832", "U+1821", "U+1822"]
+      "codepoints": [
+        "U+1832",
+        "U+1821",
+        "U+1822"
+      ]
     },
     {
       "translit": "luγ-a",
@@ -263,7 +344,13 @@
       "registry": false,
       "sequence": "ᠯᠤᠭ᠎ᠠ",
       "harmony": "masculine",
-      "codepoints": ["U+182F", "U+1824", "U+182D", "U+180E", "U+1820"]
+      "codepoints": [
+        "U+182F",
+        "U+1824",
+        "U+182D",
+        "U+180E",
+        "U+1820"
+      ]
     },
     {
       "translit": "lüge",
@@ -274,7 +361,12 @@
       "registry": true,
       "sequence": "ᠯᠦᠭᠡ",
       "harmony": "feminine",
-      "codepoints": ["U+182F", "U+1826", "U+182D", "U+1821"]
+      "codepoints": [
+        "U+182F",
+        "U+1826",
+        "U+182D",
+        "U+1821"
+      ]
     },
     {
       "translit": "ban",
@@ -285,7 +377,11 @@
       "registry": false,
       "sequence": "ᠪᠠᠨ",
       "harmony": "masculine",
-      "codepoints": ["U+182A", "U+1820", "U+1828"]
+      "codepoints": [
+        "U+182A",
+        "U+1820",
+        "U+1828"
+      ]
     },
     {
       "translit": "ben",
@@ -296,7 +392,11 @@
       "registry": false,
       "sequence": "ᠪᠡᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+182A", "U+1821", "U+1828"]
+      "codepoints": [
+        "U+182A",
+        "U+1821",
+        "U+1828"
+      ]
     },
     {
       "translit": "iyan",
@@ -307,7 +407,12 @@
       "registry": true,
       "sequence": "ᠢᠶᠠᠨ",
       "harmony": "masculine",
-      "codepoints": ["U+1822", "U+1836", "U+1820", "U+1828"]
+      "codepoints": [
+        "U+1822",
+        "U+1836",
+        "U+1820",
+        "U+1828"
+      ]
     },
     {
       "translit": "iyen",
@@ -318,7 +423,12 @@
       "registry": true,
       "sequence": "ᠢᠶᠡᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+1822", "U+1836", "U+1821", "U+1828"]
+      "codepoints": [
+        "U+1822",
+        "U+1836",
+        "U+1821",
+        "U+1828"
+      ]
     },
     {
       "translit": "ud",
@@ -329,7 +439,10 @@
       "registry": true,
       "sequence": "ᠤᠳ",
       "harmony": "masculine",
-      "codepoints": ["U+1824", "U+1833"]
+      "codepoints": [
+        "U+1824",
+        "U+1833"
+      ]
     },
     {
       "translit": "üd",
@@ -340,7 +453,10 @@
       "registry": true,
       "sequence": "ᠦᠳ",
       "harmony": "feminine",
-      "codepoints": ["U+1826", "U+1833"]
+      "codepoints": [
+        "U+1826",
+        "U+1833"
+      ]
     },
     {
       "translit": "nuγud",
@@ -351,7 +467,13 @@
       "registry": false,
       "sequence": "ᠨᠤᠭᠤᠳ",
       "harmony": "masculine",
-      "codepoints": ["U+1828", "U+1824", "U+182D", "U+1824", "U+1833"]
+      "codepoints": [
+        "U+1828",
+        "U+1824",
+        "U+182D",
+        "U+1824",
+        "U+1833"
+      ]
     },
     {
       "translit": "nügüd",
@@ -362,7 +484,13 @@
       "registry": true,
       "sequence": "ᠨᠦᠭᠦᠳ",
       "harmony": "feminine",
-      "codepoints": ["U+1828", "U+1826", "U+182D", "U+1826", "U+1833"]
+      "codepoints": [
+        "U+1828",
+        "U+1826",
+        "U+182D",
+        "U+1826",
+        "U+1833"
+      ]
     },
     {
       "translit": "nar",
@@ -373,7 +501,11 @@
       "registry": false,
       "sequence": "ᠨᠠᠷ",
       "harmony": "masculine",
-      "codepoints": ["U+1828", "U+1820", "U+1837"]
+      "codepoints": [
+        "U+1828",
+        "U+1820",
+        "U+1837"
+      ]
     },
     {
       "translit": "ner",
@@ -384,7 +516,11 @@
       "registry": false,
       "sequence": "ᠨᠡᠷ",
       "harmony": "feminine",
-      "codepoints": ["U+1828", "U+1821", "U+1837"]
+      "codepoints": [
+        "U+1828",
+        "U+1821",
+        "U+1837"
+      ]
     },
     {
       "translit": "daγan",
@@ -395,7 +531,13 @@
       "registry": true,
       "sequence": "ᠳᠠᠭᠠᠨ",
       "harmony": "masculine",
-      "codepoints": ["U+1833", "U+1820", "U+182D", "U+1820", "U+1828"]
+      "codepoints": [
+        "U+1833",
+        "U+1820",
+        "U+182D",
+        "U+1820",
+        "U+1828"
+      ]
     },
     {
       "translit": "degen",
@@ -406,7 +548,13 @@
       "registry": true,
       "sequence": "ᠳᠡᠭᠡᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+1833", "U+1821", "U+182D", "U+1821", "U+1828"]
+      "codepoints": [
+        "U+1833",
+        "U+1821",
+        "U+182D",
+        "U+1821",
+        "U+1828"
+      ]
     },
     {
       "translit": "taγan",
@@ -417,7 +565,13 @@
       "registry": false,
       "sequence": "ᠲᠠᠭᠠᠨ",
       "harmony": "masculine",
-      "codepoints": ["U+1832", "U+1820", "U+182D", "U+1820", "U+1828"]
+      "codepoints": [
+        "U+1832",
+        "U+1820",
+        "U+182D",
+        "U+1820",
+        "U+1828"
+      ]
     },
     {
       "translit": "tegen",
@@ -428,7 +582,13 @@
       "registry": false,
       "sequence": "ᠲᠡᠭᠡᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+1832", "U+1821", "U+182D", "U+1821", "U+1828"]
+      "codepoints": [
+        "U+1832",
+        "U+1821",
+        "U+182D",
+        "U+1821",
+        "U+1828"
+      ]
     },
     {
       "translit": "achaγan",
@@ -439,7 +599,14 @@
       "registry": true,
       "sequence": "ᠠᠴᠠᠭᠠᠨ",
       "harmony": "masculine",
-      "codepoints": ["U+1820", "U+1834", "U+1820", "U+182D", "U+1820", "U+1828"]
+      "codepoints": [
+        "U+1820",
+        "U+1834",
+        "U+1820",
+        "U+182D",
+        "U+1820",
+        "U+1828"
+      ]
     },
     {
       "translit": "echegen",
@@ -450,7 +617,14 @@
       "registry": false,
       "sequence": "ᠡᠴᠡᠭᠡᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+1821", "U+1834", "U+1821", "U+182D", "U+1821", "U+1828"]
+      "codepoints": [
+        "U+1821",
+        "U+1834",
+        "U+1821",
+        "U+182D",
+        "U+1821",
+        "U+1828"
+      ]
     },
     {
       "translit": "duni",
@@ -461,7 +635,12 @@
       "registry": true,
       "sequence": "ᠳᠤᠨᠢ",
       "harmony": "masculine",
-      "codepoints": ["U+1833", "U+1824", "U+1828", "U+1822"]
+      "codepoints": [
+        "U+1833",
+        "U+1824",
+        "U+1828",
+        "U+1822"
+      ]
     },
     {
       "translit": "düni",
@@ -472,7 +651,12 @@
       "registry": true,
       "sequence": "ᠳᠦᠨᠢ",
       "harmony": "feminine",
-      "codepoints": ["U+1833", "U+1826", "U+1828", "U+1822"]
+      "codepoints": [
+        "U+1833",
+        "U+1826",
+        "U+1828",
+        "U+1822"
+      ]
     },
     {
       "translit": "tuni",
@@ -483,7 +667,12 @@
       "registry": false,
       "sequence": "ᠲᠤᠨᠢ",
       "harmony": "masculine",
-      "codepoints": ["U+1832", "U+1824", "U+1828", "U+1822"]
+      "codepoints": [
+        "U+1832",
+        "U+1824",
+        "U+1828",
+        "U+1822"
+      ]
     },
     {
       "translit": "tüni",
@@ -494,7 +683,12 @@
       "registry": true,
       "sequence": "ᠲᠦᠨᠢ",
       "harmony": "feminine",
-      "codepoints": ["U+1832", "U+1826", "U+1828", "U+1822"]
+      "codepoints": [
+        "U+1832",
+        "U+1826",
+        "U+1828",
+        "U+1822"
+      ]
     },
     {
       "translit": "daqi",
@@ -505,7 +699,12 @@
       "registry": true,
       "sequence": "ᠳᠠᠬᠢ",
       "harmony": "masculine",
-      "codepoints": ["U+1833", "U+1820", "U+182C", "U+1822"]
+      "codepoints": [
+        "U+1833",
+        "U+1820",
+        "U+182C",
+        "U+1822"
+      ]
     },
     {
       "translit": "deqi",
@@ -516,7 +715,12 @@
       "registry": true,
       "sequence": "ᠳᠡᠬᠢ",
       "harmony": "feminine",
-      "codepoints": ["U+1833", "U+1821", "U+182C", "U+1822"]
+      "codepoints": [
+        "U+1833",
+        "U+1821",
+        "U+182C",
+        "U+1822"
+      ]
     },
     {
       "translit": "duγar",
@@ -527,7 +731,13 @@
       "registry": true,
       "sequence": "ᠳᠤᠭᠠᠷ",
       "harmony": "masculine",
-      "codepoints": ["U+1833", "U+1824", "U+182D", "U+1820", "U+1837"]
+      "codepoints": [
+        "U+1833",
+        "U+1824",
+        "U+182D",
+        "U+1820",
+        "U+1837"
+      ]
     },
     {
       "translit": "düger",
@@ -538,7 +748,13 @@
       "registry": true,
       "sequence": "ᠳᠦᠭᠡᠷ",
       "harmony": "feminine",
-      "codepoints": ["U+1833", "U+1826", "U+182D", "U+1821", "U+1837"]
+      "codepoints": [
+        "U+1833",
+        "U+1826",
+        "U+182D",
+        "U+1821",
+        "U+1837"
+      ]
     },
     {
       "translit": "ni",
@@ -549,7 +765,10 @@
       "registry": false,
       "sequence": "ᠨᠢ",
       "harmony": "neutral",
-      "codepoints": ["U+1828", "U+1822"]
+      "codepoints": [
+        "U+1828",
+        "U+1822"
+      ]
     },
     {
       "translit": "mini",
@@ -560,7 +779,12 @@
       "registry": false,
       "sequence": "ᠮᠢᠨᠢ",
       "harmony": "neutral",
-      "codepoints": ["U+182E", "U+1822", "U+1828", "U+1822"]
+      "codepoints": [
+        "U+182E",
+        "U+1822",
+        "U+1828",
+        "U+1822"
+      ]
     },
     {
       "translit": "chini",
@@ -571,7 +795,12 @@
       "registry": false,
       "sequence": "ᠴᠢᠨᠢ",
       "harmony": "neutral",
-      "codepoints": ["U+1834", "U+1822", "U+1828", "U+1822"]
+      "codepoints": [
+        "U+1834",
+        "U+1822",
+        "U+1828",
+        "U+1822"
+      ]
     },
     {
       "translit": "chu",
@@ -582,7 +811,10 @@
       "registry": true,
       "sequence": "ᠴᠤ",
       "harmony": "masculine",
-      "codepoints": ["U+1834", "U+1824"]
+      "codepoints": [
+        "U+1834",
+        "U+1824"
+      ]
     },
     {
       "translit": "chü",
@@ -593,7 +825,10 @@
       "registry": true,
       "sequence": "ᠴᠦ",
       "harmony": "feminine",
-      "codepoints": ["U+1834", "U+1826"]
+      "codepoints": [
+        "U+1834",
+        "U+1826"
+      ]
     },
     {
       "translit": "yüm",
@@ -604,7 +839,11 @@
       "registry": true,
       "sequence": "ᠶᠦᠮ",
       "harmony": "feminine",
-      "codepoints": ["U+1836", "U+1826", "U+182E"]
+      "codepoints": [
+        "U+1836",
+        "U+1826",
+        "U+182E"
+      ]
     },
     {
       "translit": "yümsen",
@@ -615,7 +854,14 @@
       "registry": true,
       "sequence": "ᠶᠦᠮᠰᠡᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+1836", "U+1826", "U+182E", "U+1830", "U+1821", "U+1828"]
+      "codepoints": [
+        "U+1836",
+        "U+1826",
+        "U+182E",
+        "U+1830",
+        "U+1821",
+        "U+1828"
+      ]
     },
     {
       "translit": "da",
@@ -626,7 +872,10 @@
       "registry": true,
       "sequence": "ᠳᠠ",
       "harmony": "masculine",
-      "codepoints": ["U+1833", "U+1820"]
+      "codepoints": [
+        "U+1833",
+        "U+1820"
+      ]
     },
     {
       "translit": "de",
@@ -637,7 +886,10 @@
       "registry": true,
       "sequence": "ᠳᠡ",
       "harmony": "feminine",
-      "codepoints": ["U+1833", "U+1821"]
+      "codepoints": [
+        "U+1833",
+        "U+1821"
+      ]
     },
     {
       "translit": "dag",
@@ -648,7 +900,11 @@
       "registry": true,
       "sequence": "ᠳᠠᠭ",
       "harmony": "masculine",
-      "codepoints": ["U+1833", "U+1820", "U+182D"]
+      "codepoints": [
+        "U+1833",
+        "U+1820",
+        "U+182D"
+      ]
     },
     {
       "translit": "deg",
@@ -659,7 +915,11 @@
       "registry": true,
       "sequence": "ᠳᠡᠭ",
       "harmony": "feminine",
-      "codepoints": ["U+1833", "U+1821", "U+182D"]
+      "codepoints": [
+        "U+1833",
+        "U+1821",
+        "U+182D"
+      ]
     },
     {
       "translit": "yügen",
@@ -670,7 +930,13 @@
       "registry": true,
       "sequence": "ᠶᠦᠭᠡᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+1836", "U+1826", "U+182D", "U+1821", "U+1828"]
+      "codepoints": [
+        "U+1836",
+        "U+1826",
+        "U+182D",
+        "U+1821",
+        "U+1828"
+      ]
     },
     {
       "translit": "nügen",
@@ -681,7 +947,13 @@
       "registry": true,
       "sequence": "ᠨᠦᠭᠡᠨ",
       "harmony": "feminine",
-      "codepoints": ["U+1828", "U+1826", "U+182D", "U+1821", "U+1828"]
+      "codepoints": [
+        "U+1828",
+        "U+1826",
+        "U+182D",
+        "U+1821",
+        "U+1828"
+      ]
     },
     {
       "translit": "kü",
@@ -692,7 +964,10 @@
       "registry": true,
       "sequence": "ᠬᠦ",
       "harmony": "feminine",
-      "codepoints": ["U+182C", "U+1826"]
+      "codepoints": [
+        "U+182C",
+        "U+1826"
+      ]
     },
     {
       "translit": "uu",
@@ -703,7 +978,10 @@
       "registry": true,
       "sequence": "ᠤᠤ",
       "harmony": "masculine",
-      "codepoints": ["U+1824", "U+1824"]
+      "codepoints": [
+        "U+1824",
+        "U+1824"
+      ]
     },
     {
       "translit": "üü",
@@ -714,7 +992,10 @@
       "registry": true,
       "sequence": "ᠦᠦ",
       "harmony": "feminine",
-      "codepoints": ["U+1826", "U+1826"]
+      "codepoints": [
+        "U+1826",
+        "U+1826"
+      ]
     },
     {
       "translit": "büü",
@@ -725,7 +1006,11 @@
       "registry": true,
       "sequence": "ᠪᠦᠦ",
       "harmony": "feminine",
-      "codepoints": ["U+182A", "U+1826", "U+1826"]
+      "codepoints": [
+        "U+182A",
+        "U+1826",
+        "U+1826"
+      ]
     },
     {
       "translit": "ügei",
@@ -736,7 +1021,12 @@
       "registry": false,
       "sequence": "ᠦᠭᠡᠢ",
       "harmony": "feminine",
-      "codepoints": ["U+1826", "U+182D", "U+1821", "U+1822"]
+      "codepoints": [
+        "U+1826",
+        "U+182D",
+        "U+1821",
+        "U+1822"
+      ]
     }
   ]
 }
