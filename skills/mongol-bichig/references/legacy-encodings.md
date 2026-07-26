@@ -123,7 +123,7 @@ Each maps to a rule:
 - **Kushim-Jiang/mongfontbuilder** (MIT) — the UTN #57 machine-readable data
   this project vendors.
 - Menksoft's own PUA→Unicode converters (commercial); Delehi's bundled
-  converter; Bolorsoft's KIMO (kimo.mngl.net, tied to their non-UTN model).
+  converter; Tungaamal (mngl.net, tied to a non-UTN model).
 - Cyrillic ↔ bichig: trans.mglip.com (Inner Mongolia University),
   tugstugi/bichig2cyrillic (neural). OCR: ocr.mglip.com.
 - BabelPad (Andrew West) — Windows editor with its own Mongolian rendering.

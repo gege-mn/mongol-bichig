@@ -68,8 +68,8 @@ full stop. So монгол is `mongγul` (ᠮᠣᠩᠭᠤᠯ), богино is `
 Two independent confirmations, both 2026-07-26:
 
 1. A bichig reader ruled on it directly, supplying the corrected forms.
-2. **kimo/Tungaamal applies the rule throughout its own output** —
-   богино→ᠪᠣᠭᠤᠨᠢ, орой→ᠣᠷᠤᠢ, тогоо→ᠲᠣᠭᠤᠭ᠎ᠠ — while exempting ᠮᠣᠩᠭᠣᠯ
+2. **Tungaamal applies the rule throughout its own output** —
+   богино→ᠪᠣᠭᠤᠨᠢ, орой→ᠣᠷᠤᠢ, тогоо→ᠲᠣᠭᠤᠭ[MVS]ᠠ — while exempting ᠮᠣᠩᠭᠣᠯ
    alone. A commercial Mongolian converter treating it as one frozen
    lexical exception is evidence the *rule* is general, not that Poppe's
    conditioning is live.

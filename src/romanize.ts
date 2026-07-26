@@ -11,6 +11,12 @@
  * - `-` marks a chachlag / suffix connector and becomes MVS (U+180E).
  * - `.` forces a letter boundary and is otherwise ignored, so `n.g` is
  *   NA+GA rather than the ANG ligature that bare `ng` produces.
+ * - A digit `1`–`4` selects a free variation selector for the letter before
+ *   it: `nay1ma` is NA A YA FVS1 MA A (найм). Classical romanization has no
+ *   other use for digits, so this cannot collide with a letter. Only
+ *   *registered* pairs should be written — see the FVS table in
+ *   `references/variation-sequences.md`; this module maps the syntax and does
+ *   not police which (letter, selector) pairs are valid.
  * - ASCII aliases: `gh`=γ, `ch`=č, `sh`=š, `j`=ǰ, `v`=w.
  * - q/k and γ/g are the back/front readings of the same two letters
  *   (U+182C, U+182D), exactly as in Classical romanization.
@@ -19,10 +25,19 @@
  *   wrong-block error, so an attempt to do so throws instead.
  */
 
+import { cp, FVS } from './chars.js';
 import type { Harmony } from './types.js';
 
 /** Suffix connector / chachlag. */
 const MVS_CP = 0x180e;
+
+/** `'1'`–`'4'` → FVS1–FVS4, derived from the canonical selector map. */
+const DIGIT_TO_FVS_CP: ReadonlyArray<readonly [string, number]> = [...FVS].map(
+  ([selector, digit]) => [String(digit), cp(selector)] as const,
+);
+
+/** FVS1–FVS4 as code points. Not letters: skipped when asking what a form ends in. */
+const FVS_CPS: ReadonlySet<number> = new Set(DIGIT_TO_FVS_CP.map(([, c]) => c));
 
 const ROMAN_TO_CP: ReadonlyArray<readonly [string, number]> = [
   ['ng', 0x1829],
@@ -61,6 +76,7 @@ const ROMAN_TO_CP: ReadonlyArray<readonly [string, number]> = [
   ['c', 0x183c],
   ['z', 0x183d],
   ['-', MVS_CP],
+  ...DIGIT_TO_FVS_CP,
 ];
 
 /** Longest romanization key first, so digraphs beat their leading letter. */
@@ -96,6 +112,7 @@ const CP_TO_ROMAN = new Map<number, string>([
   [0x183c, 'c'],
   [0x183d, 'z'],
   [MVS_CP, '-'],
+  ...DIGIT_TO_FVS_CP.map(([digit, c]) => [c, digit] as const),
 ]);
 
 export class RomanizationError extends Error {
@@ -143,9 +160,11 @@ export function toScript(roman: string): string {
  * Code point of the last Hudum *letter* in a romanized form, or `undefined`
  * when there is none (empty input, or input that does not romanize).
  *
- * Connectors and boundary markers are skipped, so `qar-a` ends in A (U+1820)
- * and `n.g` ends in GA. Callers use this to ask what shape a stem ends in —
- * which allomorph a suffix takes depends on it.
+ * Connectors, boundary markers and variation selectors are skipped, so
+ * `qar-a` ends in A (U+1820), `n.g` ends in GA, and `nay1ma` ends in A rather
+ * than in the selector. Callers use this to ask what shape a stem ends in —
+ * which allomorph a suffix takes depends on it, and a selector does not change
+ * the answer.
  */
 export function finalLetter(roman: string): number | undefined {
   let script: string;
@@ -156,8 +175,8 @@ export function finalLetter(roman: string): number | undefined {
   }
   const letters = [...script];
   for (let i = letters.length - 1; i >= 0; i -= 1) {
-    const cp = letters[i]?.codePointAt(0);
-    if (cp !== undefined && cp !== MVS_CP) return cp;
+    const c = letters[i]?.codePointAt(0);
+    if (c !== undefined && c !== MVS_CP && !FVS_CPS.has(c)) return c;
   }
   return undefined;
 }
@@ -183,10 +202,10 @@ export function fromScript(script: string, harmony: Harmony = 'masculine'): stri
   const front = harmony === 'feminine' || harmony === 'neutral';
   let out = '';
   for (const ch of script) {
-    const cp = ch.codePointAt(0) ?? -1;
-    if (cp === 0x182c) out += front ? 'k' : 'q';
-    else if (cp === 0x182d) out += front ? 'g' : 'γ';
-    else out += CP_TO_ROMAN.get(cp) ?? ch;
+    const c = cp(ch);
+    if (c === 0x182c) out += front ? 'k' : 'q';
+    else if (c === 0x182d) out += front ? 'g' : 'γ';
+    else out += CP_TO_ROMAN.get(c) ?? ch;
   }
   return out;
 }
