@@ -73,18 +73,18 @@ Expect NNBSP-joined suffixes in keyboard-produced text for years — that is
 | "Traditional Mongolian (Standard)" KBDMONST | Windows 10/11 | **NNBSP** (unshifted, on the hyphen-position key; Shift there = MVS) | dumb layout; also keys for FVS1–3, nirugu; unchanged for Unicode 16 |
 | Almas Mongolian Keyboard | iOS/macOS | **NNBSP** (capital S) | mongolfont.com (Almas Inc, Tokyo); FVS1 on capital D |
 | studymongolian macOS keyboard v2.0 | macOS | **NNBSP** (Shift+Space) | MVS on accent key |
-| Mongolia's dominant keyboard (vendor unnamed here) | Win/macOS/Linux/web | NNBSP (docs) | 3.7M+ downloads claimed. Ships a "refined phonetic model" — **confirmed NOT UTN #57** (Teneg 2025 fn 3); its "approved by Unicode experts" marketing was denied by three UTC members (fn 24) |
+| **Tungaamal** | Win/macOS/Linux/web | NNBSP (docs) | Mongolia's dominant keyboard; 3.7M+ downloads claimed. Ships a "refined phonetic model" — **confirmed NOT UTN #57** (Teneg 2025 fn 3); its "approved by Unicode experts" marketing was denied by three UTC members (fn 24) |
 | Menksoft IME (desktop + mobile 2022) | Win/Android/iOS | standard-Unicode claimed; connector UNVERIFIED | Inner Mongolia's classic IME, now standard-encoding |
 | Delehi 德力海 | Android/iOS/Win | standard Unicode; connector UNVERIFIED | dominant on Inner-Mongolian mobile; bundles a non-standard→standard converter |
 | Gboard / Apple built-in | — | — | no traditional-script Mongolian support found at all |
 
 **The U+1888/U+1889 story** (why `wrong-block`'s headline fix exists):
-A Mongolian keyboard vendor formally proposed separate KE/GE letters
-(L2/18-294, 2018, with a 41,808-lemma frequency analysis); Unicode did not
-adopt; that vendor ships separate He/Ge keys anyway; the only standard code
-points whose glyphs match are Ali Gali U+1888/U+1889. No public document
-closes the final link (that the keyboard emits exactly those) — it would take
-a keystroke test of it. The project's own hb-view-verified look-alike finding and
+Separate KE/GE letters were formally proposed (L2/18-294, 2018, with a
+41,808-lemma frequency analysis); Unicode did not adopt; Tungaamal ships
+separate He/Ge keys anyway; the only standard code points whose glyphs match
+are Ali Gali U+1888/U+1889. No public document closes the final link (that
+Tungaamal emits exactly those) — it would take a keystroke test of the
+keyboard. The project's own hb-view-verified look-alike finding and
 fix mapping stand on their own.
 
 ## Documented real-world corpus hazards
@@ -123,8 +123,7 @@ Each maps to a rule:
 - **Kushim-Jiang/mongfontbuilder** (MIT) — the UTN #57 machine-readable data
   this project vendors.
 - Menksoft's own PUA→Unicode converters (commercial); Delehi's bundled
-  converter; the dominant Mongolian keyboard's bundled converter, tied to a
-  non-UTN model.
+  converter; Tungaamal's bundled converter, tied to a non-UTN model.
 - Cyrillic ↔ bichig: trans.mglip.com (Inner Mongolia University),
   tugstugi/bichig2cyrillic (neural). OCR: ocr.mglip.com.
 - BabelPad (Andrew West) — Windows editor with its own Mongolian rendering.

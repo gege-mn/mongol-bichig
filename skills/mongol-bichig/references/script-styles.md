@@ -80,7 +80,7 @@ checking is the only reliable detector.
 
 | Wrong char | Looks like | Evidence |
 |---|---|---|
-| U+1888 ALI GALI I | ᠬ QA U+182C | this project's hb-view-verified finding; real keyboards emit it (externally unpublished — likely chain: the rejected KE/GE proposal L2/18-294 → a keyboard vendor's separate He/Ge keys; unconfirmed) |
+| U+1888 ALI GALI I | ᠬ QA U+182C | this project's hb-view-verified finding; real keyboards emit it (externally unpublished — likely chain: the rejected KE/GE proposal L2/18-294 → Tungaamal's separate He/Ge keys; unconfirmed) |
 | U+1889 ALI GALI KA | ᠭ GA U+182D | same |
 | U+1855 TODO YA | ᠵ JA U+1835 | the one officially registered pair (confusables.txt + intentional.txt: *intentionally* identical glyphs) |
 | U+1878 | ᠴ CHA U+1834 + SHA-style dots | per its proposal (N4781) |

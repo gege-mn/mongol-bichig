@@ -39,7 +39,7 @@ And a peer-reviewed 2025 article calls Mongolian *"one of the few living languag
 
 | Tool | Output encoding | License | Verdict |
 |---|---|---|---|
-| **The dominant Mongolian keyboard/converter** | Unresolved. State media says "satisfies Unicode halfway"[16]; its install guide requires proprietary fonts from the vendor and never mentions encoding[17] | Proprietary | NOT USABLE |
+| **Tungaamal** | Unresolved. State media says "satisfies Unicode halfway"[16]; its install guide requires proprietary fonts from the vendor and never mentions encoding[17] | Proprietary | NOT USABLE |
 | **Menksoft** (Inner Mongolia) | PUA `U+E234–U+E71D` + GB 18030[14] | Proprietary | NOT USABLE |
 | **suragch/mongol_code** | PUA — converting *to* Menksoft is its stated purpose[28] | CC0 | WRONG GOAL |
 | **trans.mglip.com** (Inner Mongolia Univ.) | Unverified — expired TLS cert[39] | Service only | BASELINE ONLY |
@@ -49,7 +49,7 @@ And a peer-reviewed 2025 article calls Mongolian *"one of the few living languag
 
 **The strongest single finding on this angle:** Menksoft — the dominant vendor — ships *"a standalone version converter which can convert almost every Mongolian script code, except Unicode."*[15] Unicode is deliberately out of scope for the market leader. Any text sourced from the Inner Mongolian ecosystem arrives as PUA.
 
-Note: that tool's actual code points remain unresolved. No primary technical spec was found. Settling it requires a byte-level test — dump its font's cmap, or run `hb-shape` over text produced by its web keyboard. Worth doing; it's a 20-minute experiment that would be genuinely novel published information.
+Note: Tungaamal's actual code points remain unresolved. No primary technical spec was found. Settling it requires a byte-level test — dump its font's cmap, or run `hb-shape` over text produced by its web keyboard. Worth doing; it's a 20-minute experiment that would be genuinely novel published information.
 
 ## Data: what you can actually get
 
@@ -142,7 +142,7 @@ Worth knowing before you commit: several senior figures consider the encoding mo
 
 ## Open items worth an hour each
 
-- **Byte-test the dominant keyboard.** Dump its font cmap or `hb-shape` its output. Resolves the report's biggest unknown and nobody has published it.
+- **Byte-test Tungaamal.** Dump its font cmap or `hb-shape` its output. Resolves the report's biggest unknown and nobody has published it.
 
 - **Find CoPiT's de-anonymized repo.** The 4open.science link is still blinded; this is your primary data dependency.
 
@@ -188,7 +188,7 @@ Worth knowing before you commit: several senior figures consider the encoding mo
 
 16. [Mongolian script keyboard and fonts developed](https://montsame.mn/en/read/180087) — Montsame, 14 Feb 2019.
 
-17. Web keyboard install guide of the dominant Mongolian keyboard vendor, © 2019–2021. (URL removed; see git history before 2026-07-26 to restore.)
+17. Tungaamal web keyboard install guide, © 2019–2021. (Vendor URL deliberately not recorded.)
 
 18. [Mongolia adopts dual-script official use](https://montsame.mn/en/read/358879) — Montsame, 6 Jan 2025.
 
