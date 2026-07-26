@@ -201,6 +201,29 @@ its author 2026-07-25: (1) the blog wrote санамсаргүй with an MVS bef
 but redundant since particle shaping after the connector is automatic, and
 therefore incorrect. The rule's stray-FVS strip fix repairs exactly this.
 
+## Verb suffixes are NOT in this registry (noted 2026-07-27)
+
+Everything above is **nominal** — case, reflexive, plural, clitics, particles.
+There is no verb morphology here at all: no participles, converbs, tense or
+negation. The one verb-adjacent row is `daγ`/`deγ` in the table below, and it is
+marked low confidence.
+
+That is a real gap, not an oversight of documentation. Anyone adding verb
+suffixes should add them **here**, with sources, so both consumers get them.
+
+Until then, `@gege-mn/gege-converter` carries its own
+`src/data/verb-suffixes.ts`, and that table is explicitly **not** canonical: its
+Classical column was *mined from attested pairs* by
+`scripts/mine-verb-suffixes.mjs` rather than sourced, and every row records how
+many times the pairing was seen. It should be replaced by a sourced table here
+the moment one exists. Two findings from that mining worth keeping:
+
+- **`-сан`/`-сон` → `γsan`** at 94–100% over 25 attestations, independently
+  confirmed by a bichig reader the same day.
+- **`-аад`/`-ээд`, the perfective converb, has zero attestations** in a lemma
+  dictionary — it is an inflection, so it never appears as a headword. It cannot
+  be established from dictionary data at all and needs a grammar source.
+
 ## Registry entries not yet in scope
 
 MVS-joined particles present in the UTN #57 registry but outside the current
