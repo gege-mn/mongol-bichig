@@ -63,7 +63,7 @@ Full narrative in `references/encoding-history.md`. The load-bearing documents:
 | L2/15-212 (West) | 2015 | Tables the NNBSP problem; names U+180F as a candidate connector |
 | **L2/17-036** (Eck, West, Badral Sanlig et al.) | 2017 | Proposes U+180F MONGOLIAN SUFFIX CONNECTOR. **UTC #150 "took no action"** — it died by inaction and was *never formally rejected*, a nuance most summaries get wrong |
 | L2/17-052 (Liang Hai) | 2017 | The objection to that proposal |
-| L2/18-293, L2/18-294 (Bolorsoft) | 2018 | NNBSP→SPACE corruption in the wild; the rejected KE/GE proposal |
+| L2/18-293, L2/18-294 | 2018 | NNBSP→SPACE corruption in the wild; the rejected KE/GE proposal |
 | L2/20-057 | 2020 | Proposes FVS4 at U+180F — the would-be connector's code point is consumed instead (Unicode 14.0) |
 | L2/24-180 (Liang Hai) | 2024 | "We need to catch up in this year's 16.0" |
 | **UTC #180 consensus 180-C31** | 2024 | Core spec will reference UTN #57 for GB/T compatibility → Unicode 16.0 |

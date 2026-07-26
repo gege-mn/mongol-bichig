@@ -177,7 +177,7 @@ MVS before it is the error.
 does not harmonise to the preceding stem, so ᠠᠪᠤ ᠦᠭᠡᠢ (аавгүй) pairs a
 masculine stem with a feminine particle and that is correct (confirmed
 2026-07-26). Consequence for anything inferring harmony from letter choice:
-read the **stem only**. Tungaamal writes this particle with its feminine-g
+read the **stem only**. The dominant Mongolian keyboard writes this particle with its feminine-g
 letter U+1889 unconditionally, so a whole-string reading tags every -гүй
 word feminine regardless of what the stem actually is.
 

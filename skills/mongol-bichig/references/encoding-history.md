@@ -80,7 +80,7 @@ documents were fetched and read; claims below are from those unless marked.
 
 - **Under-specified**: "the exact shaping behaviour of Mongolian remains
   undefined" (West, 2007); vendors filled gaps incompatibly (Menksoft,
-  Microsoft/Founder Baiti, Almas, Bolorsoft, Jade Bird Huaguang) — the same
+  Microsoft/Founder Baiti, Almas, Jade Bird Huaguang and others) — the same
   visual form needed different FVS sequences per font.
 - **Confusable by design**: five different characters can encode the same
   final written form; users literally cannot see O/U mis-encodings
