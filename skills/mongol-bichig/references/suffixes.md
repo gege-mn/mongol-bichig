@@ -178,7 +178,19 @@ the CeLCAR Mongolian grammar files **шиг** under "postpositions of comparison
 CASE (may or may not use NNBSP)", i.e. the connector is tolerated there —
 and Wiktionary's руу notes that directive-case forms take a space only
 because the case developed recently. Treating a connector before it as an
-error therefore goes further than the source does.
+error therefore goes further than the source does. Put to the reader again on
+2026-07-27 with the conflict spelled out, and the ruling stands deliberately:
+gege-linter warns and offers a fix to a plain space. This is the one place a
+gege-mn tool is knowingly stricter than a published source.
+
+**The vocative ᠠ/ᠡ carries the same dissent.** Appendix IV's VOCATIVE CASE
+entry is a *single* ᠠ / ᠡ, which matches the reader exactly, but writes it
+with the connector. Ruled 2026-07-27: "let's just use regular space with
+singular a or e." So a space is correct here and a connector is not, against
+the only source that lists the form. The related Cyrillic ambiguity — why
+corpus text is full of doubled аа where a single vocative a belongs — is in
+`orthography.md` under vowel sequences, because it explains an artifact, not a
+suffix.
 
 **ᠰᠠᠨ/ᠰᠡᠨ is only the modal.** The reader separated two morphemes that look
 identical in Cyrillic: the wish/regret particle of *тэгэх юм сан*, which is

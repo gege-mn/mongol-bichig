@@ -89,7 +89,18 @@ a first-vowel condition.
 - **Long a/e are never doubled** — written with the γ/g hiatus (aγa, ege,
   oγo, aγu, öge, egü …). Therefore adjacent `U+1820 U+1820` or
   `U+1821 U+1821` is a typo or a Cyrillic-transliteration artifact (аа/ээ
-  typed letter-for-letter) → strong candidate rule, warning.
+  typed letter-for-letter) → strong candidate rule, warning. Shipped as
+  gege-linter's `doubled-ae`.
+
+  **Where the artifact comes from, and why it can carry no mechanical fix**
+  (bichig reader, 2026-07-27). Two different things produce a Cyrillic аа:
+  the reflexive possessive, which is bichig ᠢᠶᠠᠨ/ᠢᠶᠡᠨ, and the vocative for
+  calling someone, which is a **single** ᠠ/ᠡ. Cyrillic requires a space for
+  the second — аав аа, ээж ээ — "but many people writing just smush them
+  together, so it's hard to distinguish if 'ааваа' means abu-ban or abu a."
+  The ambiguity is created in Cyrillic; transliterating letter for letter
+  carries it into bichig as a doubled vowel that is wrong under either
+  reading, but whose correct repair depends on which was meant.
 - Diphthongs: word-final V+i (ai/ei/oi/ui/üi); au, eü (taulai, keüken).
   Classical spelling wrote *medial* i-diphthongs as V+y+i (ayil, sayin), but
   **UTN #57 prefers the modern analyses ail/aimag/taulai — do not lint

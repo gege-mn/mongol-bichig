@@ -117,8 +117,8 @@ Don't hand-roll any of this. Two things in this same repository already do it:
 
 - The companion **gege-linter** skill — the `@gege-mn/gege-linter` library and
   CLI, which mechanize every hard rule above.
-- `@gege-mn/mongol-bichig` — the canonical data behind them: the 63-entry
-  Hudum suffix registry (plus the 4 space-joined words that must never take a
+- `@gege-mn/mongol-bichig` — the canonical data behind them: the 68-entry
+  Hudum suffix registry (plus the 8 space-joined words that must never take a
   connector), Classical romanization (`toScript`/`fromScript`), and the
   character classes used throughout this document.
 
@@ -133,7 +133,7 @@ Read on demand. These are canonical — this repository is where they live:
 | File | Read when you need |
 |---|---|
 | `references/encoding-model.md` | the current model: blocks, MVS roles, UCD properties, normalization, ZWJ/nirugu |
-| `references/suffixes.md` | the 63-entry Hudum suffix dictionary with code points |
+| `references/suffixes.md` | the 68-entry Hudum suffix dictionary with code points |
 | `references/variation-sequences.md` | FVS semantics, the valid-FVS quick table, registry divergence |
 | `references/script-styles.md` | Todo/Sibe/Manchu/Ali Gali ranges, look-alikes, locale metadata |
 | `references/legacy-encodings.md` | Menksoft/Saiyin PUA bands, detection heuristics, IME landscape, converters |

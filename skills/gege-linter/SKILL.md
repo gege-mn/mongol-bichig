@@ -60,17 +60,31 @@ characters. Always splice via `applyFixes`, or convert through
 | `fvs-placement` | error | FVS1–4 not immediately after a Mongolian letter (doubling included) | — |
 | `no-pua` | error | Private Use Area code points (Menksoft-era glyph text), one diagnostic per run | — |
 | `wrong-block` | warning | Todo/Sibe/Manchu/Ali Gali letters in Hudum text | ᠬ/ᠭ for the U+1888/U+1889 look-alikes |
-| `zwj-zwnj` | warning | ZWJ/ZWNJ beside a Mongolian letter (emoji sequences exempt) | — |
+| `zwj-zwnj` | warning | ZWJ/ZWNJ **between** two Mongolian letters | — |
 | `nnbsp-legacy` | warning | NNBSP suffix connector (pre-16.0 model) | MVS (U+180E) |
-| `unknown-suffix` | warning | connector-joined letter run not in the 63-entry suffix dictionary | the dictionary sequence, when the run is one written with a stray FVS |
+| `unknown-suffix` | warning | connector-joined letter run not in the suffix dictionary; a run that *is* a separate word is named as one | the dictionary sequence when only a stray FVS breaks the match; a plain space when a whole word follows an MVS |
+| `doubled-ae` | warning | adjacent ᠠᠠ / ᠡᠡ — long a/e take the γ/g hiatus, never a doubled vowel | **none** — the reflexive wants ᠢᠶᠠᠨ/ᠢᠶᠡᠨ, the vocative a single ᠠ/ᠡ and a space |
 | `non-initial-o` | info | O/Ö past the first syllable (heuristic; native exceptions exist) | — |
-| `fusable-stack` | info | analytic case + reflexive stack with a registered fused equivalent (ᠳᠤ + ᠪᠠᠨ → ᠳᠠᠭᠠᠨ) | **none, deliberately** — both spellings are correct |
 
-`fusable-stack` is a hint, not a complaint: задлаг and нийлэг forms are both
-valid and choosing between them is style. It carries no `fix` so `--fix`
-cannot rewrite one into the other; the fused sequence is named in the message
+At a **word boundary** a joiner is legitimate and `zwj-zwnj` says nothing: the
+core spec (16.0 §13.5) sanctions ZWJ/ZWNJ for selecting a positional form in
+isolation — `<1820 200D>` initial, `<200D 1820>` final — which is how bichig
+writes abbreviations (ЗХУ is each letter + ZWJ + U+1802). Emoji sequences are
+untouched for the same structural reason.
+
+### One rule is opt-in
+
+`fusableStack` (info) is **exported but not in `rules`**, because it reports
+text that is already correct: an analytic case + reflexive stack that has a
+registered fused equivalent (ᠳᠤ + ᠪᠠᠨ → ᠳᠠᠭᠠᠨ). Задлаг and нийлэг are both
+valid and choosing between them is style, so it carries no `fix` and `--fix`
+cannot rewrite one into the other. The fused sequence is named in the message
 and the span covers the whole stack including its leading connector, so a UI
 that wants one-click apply builds connector + sequence over that span.
+
+```ts
+lint(text, [...rules, fusableStack]); // an editor panel wanting the hint
+```
 
 The suffix dictionary is not the linter's own: it comes from
 `@gege-mn/mongol-bichig`, re-exported here as `suffixes` for convenience.

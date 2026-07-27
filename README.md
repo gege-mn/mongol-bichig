@@ -38,8 +38,8 @@ connectorSuffixes.find((s) => s.translit === 'iyar');
 //   join: 'mvs', registry: true }
 ```
 
-Exports: `suffixes` (all 67 entries), `connectorSuffixes` (the 63 joined by
-MVS), `spaceParticles` (the 4 that take a plain space and must never be
+Exports: `suffixes` (all 76 entries), `connectorSuffixes` (the 68 joined by
+MVS), `spaceParticles` (the 8 that take a plain space and must never be
 connector-joined), `suffixByTranslit`, `suffixesMatching`; `toScript`,
 `fromScript`, `finalLetter`, `isRomanizable`; and the character classes
 `MVS`, `NNBSP`, `NIRUGU`, `ZWJ`, `ZWNJ`, `FVS`, `isMongolLetter`,
