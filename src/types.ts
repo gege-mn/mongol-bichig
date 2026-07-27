@@ -12,6 +12,7 @@ export type SuffixCategory =
   | 'reflexive'
   | 'plural'
   | 'fused'
+  | 'possession'
   | 'particle'
   | 'question'
   | 'negation';

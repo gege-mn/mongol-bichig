@@ -551,6 +551,39 @@ export const suffixRows: readonly SuffixRow[] = [
     join: 'mvs',
     registry: true,
   },
+  // The masculine mate of yügen, from L2/17-036 Appendix IV (reflexive +
+  // accusative). Its absence here was an oversight, not a judgement.
+  {
+    translit: 'yuγan',
+    cyrillic: '?',
+    category: 'particle',
+    after: 'any',
+    join: 'mvs',
+    registry: true,
+  },
+  // The emphatic particle Cyrillic writes as a bare л (гэхдээ л, миний л
+  // сонголт). Ruled connector-joined by a bichig reader on 2026-07-27, on the
+  // strength of the class it belongs to rather than a written source: no
+  // inventory lists la/le either way, and Cyrillic spacing is no guide, since
+  // нь, минь, чинь and даа are all written apart in Cyrillic and connected in
+  // bichig. 465 corpus hits. Weakest-sourced entry in this file — if anything
+  // here is later overturned, expect it to be this.
+  {
+    translit: 'la',
+    cyrillic: 'л',
+    category: 'particle',
+    after: 'any',
+    join: 'mvs',
+    registry: false,
+  },
+  {
+    translit: 'le',
+    cyrillic: 'л',
+    category: 'particle',
+    after: 'any',
+    join: 'mvs',
+    registry: false,
+  },
   {
     translit: 'nügen',
     cyrillic: '?',
@@ -568,6 +601,35 @@ export const suffixRows: readonly SuffixRow[] = [
     after: 'any',
     join: 'mvs',
     registry: true,
+  },
+
+  // ── Case-bound possession ────────────────────────────────────────────────
+  // L2/17-036 Appendix IV ("Mongolian suffixes as connected by NNBSP", the
+  // 2017 proposal that produced U+180F) lists both under CASE-BOUND
+  // POSSESSION CASE. A bichig reader independently ruled qi a real suffix
+  // twice on 2026-07-27, on анчдынх and холтосныхоо; qin is the -ныхан of
+  // лууныхан. Stacks outside a genitive and takes a reflexive outside itself
+  // (холтос-ных-оо), so it sits between case and reflexive in the chain.
+  //
+  // `registry: false` for both: they are q-initial, and UTN #57's particle
+  // shaping only ever reaches particles beginning a/e/i/u/ü/d/y/n — these
+  // could not appear in it whatever their status, so its silence is not
+  // evidence either way.
+  {
+    translit: 'qi',
+    cyrillic: '-ынх / -ных',
+    category: 'possession',
+    after: 'any',
+    join: 'mvs',
+    registry: false,
+  },
+  {
+    translit: 'qin',
+    cyrillic: '-ынхан / -ныхан',
+    category: 'possession',
+    after: 'any',
+    join: 'mvs',
+    registry: false,
   },
 
   // ── Space-joined words — plain U+0020, NEVER a connector ─────────────────
@@ -603,6 +665,51 @@ export const suffixRows: readonly SuffixRow[] = [
     translit: 'ügei',
     cyrillic: 'үгүй / -гүй',
     category: 'negation',
+    after: 'any',
+    join: 'space',
+    registry: false,
+  },
+  // Comparative "like/as". A postposition, not a suffix — the CeLCAR Mongolian
+  // grammar files it under "postpositions of comparison: шиг, мэт", and it is
+  // absent from L2/17-036 Appendix IV. Reader-ruled 2026-07-27.
+  {
+    translit: 'sig',
+    cyrillic: 'шиг',
+    category: 'particle',
+    after: 'any',
+    join: 'space',
+    registry: false,
+  },
+  // Directive "towards", Cyrillic руу/рүү. Reader-ruled space on 2026-07-27,
+  // and Wiktionary notes directive-case forms are written with a space because
+  // the case developed recently. **Dissent on file:** Appendix IV does list it,
+  // under "DIRECTIVE CASE (may or may not use NNBSP)" — so a connector is
+  // tolerated there, and treating one as an error is this project going
+  // further than its source.
+  {
+    translit: 'uruγu',
+    cyrillic: 'руу / рүү',
+    category: 'particle',
+    after: 'any',
+    join: 'space',
+    registry: false,
+  },
+  // The wish/regret modal, "тэгэх юм сан". Distinct from the past-tense
+  // participle -сан/-сон, which is not a particle at all: that one attaches
+  // inside the word as gsan/gsen and never takes a connector or a space. The
+  // reader separated the two explicitly on 2026-07-27 — only this one is here.
+  {
+    translit: 'san',
+    cyrillic: 'сан',
+    category: 'particle',
+    after: 'any',
+    join: 'space',
+    registry: false,
+  },
+  {
+    translit: 'sen',
+    cyrillic: 'сэн',
+    category: 'particle',
     after: 'any',
     join: 'space',
     registry: false,

@@ -85,12 +85,12 @@ const docRows = parseTables(readFileSync(DOC, 'utf8')).filter((r) =>
 
 describe('suffixes.md ↔ the machine registry', () => {
   it('finds the normative tables', () => {
-    // 48 of the 63 connector-joined entries are tabulated with code points,
-    // plus the 4 space-joined words. The other 15 appear in prose or in
+    // 53 of the 68 connector-joined entries are tabulated with code points,
+    // plus the 8 space-joined words. The other 15 appear in prose or in
     // code-point-less tables: the 4 expected-but-unregistered harmonic mates
     // (taγan, tegen, echegen, tuni) and the 11 "not yet in scope" registry
     // extras. Those are covered by the registry-shape counts below instead.
-    expect(docRows.length).toBe(52);
+    expect(docRows.length).toBe(61);
   });
 
   it.each(docRows.map((r) => [r.Translit || r.Bichig, r] as const))(
@@ -148,9 +148,9 @@ describe('suffixes.md ↔ the machine registry', () => {
 });
 
 describe('registry shape', () => {
-  it('has 63 connector-joined suffixes and 4 space-joined words', () => {
-    expect(connectorSuffixes.length).toBe(63);
-    expect(spaceParticles.length).toBe(4);
+  it('has 68 connector-joined suffixes and 8 space-joined words', () => {
+    expect(connectorSuffixes.length).toBe(68);
+    expect(spaceParticles.length).toBe(8);
   });
 
   it('derives every sequence from its romanization', () => {

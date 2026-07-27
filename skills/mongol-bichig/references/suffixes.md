@@ -164,6 +164,28 @@ absent from the registry): ᠲᠠᠭᠠᠨ/ᠲᠡᠭᠡᠨ (-таа/-тээ afte
 | ᠦᠦ | `U+1826 U+1826` | үү | question particle | ✓ |
 | ᠪᠦᠦ | `U+182A U+1826 U+1826` | бүү | prohibitive (preposed) | ✓ |
 | ᠦᠭᠡᠢ | `U+1826 U+182D U+1821 U+1822` | үгүй / Cyrillic -гүй | negation ("without") | — |
+| ᠰᠢᠭ | `U+1830 U+1822 U+182D` | шиг | comparative "like/as" | — |
+| ᠤᠷᠤᠭᠤ | `U+1824 U+1837 U+1824 U+182D U+1824` | руу / рүү | directive "towards" | — |
+| ᠰᠠᠨ | `U+1830 U+1820 U+1828` | сан | wish/regret modal | — |
+| ᠰᠡᠨ | `U+1830 U+1821 U+1828` | сэн | wish/regret modal | — |
+
+The last four were ruled by a bichig reader on 2026-07-27, from a corpus draw
+of the letter runs a linter could not account for. Support outside the ruling:
+the CeLCAR Mongolian grammar files **шиг** under "postpositions of comparison:
+шиг, мэт", and it is absent from L2/17-036 Appendix IV.
+
+**ᠤᠷᠤᠭᠤ carries a dissent.** Appendix IV *does* list it — under "DIRECTIVE
+CASE (may or may not use NNBSP)", i.e. the connector is tolerated there —
+and Wiktionary's руу notes that directive-case forms take a space only
+because the case developed recently. Treating a connector before it as an
+error therefore goes further than the source does.
+
+**ᠰᠠᠨ/ᠰᠡᠨ is only the modal.** The reader separated two morphemes that look
+identical in Cyrillic: the wish/regret particle of *тэгэх юм сан*, which is
+written apart and is what these rows are, and the past-tense participle
+-сан/-сон/-сэн/-сөн, which attaches **inside** the word as `gsan`/`gsen` and
+takes neither a connector nor a space. A connector-split ᠰᠠᠨ is wrong under
+either reading.
 
 ᠦᠭᠡᠢ (ügei) is an ordinary separate word, never connector-joined (ruled
 2026-07-25): bichig does not make Cyrillic's -гүй contraction — санамсаргүй
@@ -186,6 +208,16 @@ word feminine regardless of what the stem actually is.
 Standard detached clitics, MVS-joined; absent from the shaping registry only
 because they need no special letter forms. Found missing when corpus-linting
 gege.mn's blog (ᠳᠠᠷᠠᠭ⟨MVS⟩ᠠ ᠨᠢ etc. warned).
+
+**Open question, raised by the reader on 2026-07-27:** whether ᠨᠢ and ᠮᠢᠨᠢ
+belong here as connector-joined at all — they accepted ᠳᠠ/ᠳᠡ without
+hesitation but not these. Two things bear on it and neither settles it.
+L2/17-036 Appendix IV does **not** list ni, mini or chini; its scope is case
+suffixes, so that is an argument from silence. UTN #57 is more suggestive: its
+letter-n table carries a particle rule reading *"n — if follows an MVS:
+Particle"*, and the document names the particle *–ni* explicitly, transcribed
+with the connector — but it says so of **Todo**, not Hudum. Worth a grammar
+source before anything moves.
 
 | Bichig | Code points | Translit | Cyrillic | Meaning |
 |---|---|---|---|---|
@@ -239,6 +271,41 @@ tables — candidates for a later expansion pass:
 | yügen | ᠶᠦᠭᠡᠨ | -ийгээ (refl. acc.)? | low |
 | nügen | ᠨᠦᠭᠡᠨ | ? | low |
 | hü | ᠬᠦ | кү/хү emphatic (classical) | medium |
+
+## Case-bound possession, and three more from Appendix IV
+
+Added 2026-07-27 after diffing the registry against **L2/17-036 Appendix IV**,
+"Mongolian suffixes as connected by NNBSP" — the 2017 proposal by Eck, West,
+Sanlig, Siqinbilige and Ou Rileke that produced U+180F, and the only published
+enumeration of connector-joined suffixes.
+
+| Bichig | Code points | Translit | Cyrillic | Meaning | Reg |
+|---|---|---|---|---|---|
+| ᠬᠢ | `U+180E U+182C U+1822` | qi | -ынх / -ных | case-bound possession | — |
+| ᠬᠢᠨ | `U+180E U+182C U+1822 U+1828` | qin | -ынхан / -ныхан | the same, of people | — |
+| ᠶᠤᠭᠠᠨ | `U+180E U+1836 U+1824 U+182D U+1820 U+1828` | yuγan | ? | reflexive + accusative | ✓ |
+| ᠯᠠ | `U+180E U+182F U+1820` | la | л | emphatic particle | — |
+| ᠯᠡ | `U+180E U+182F U+1821` | le | л | emphatic particle | — |
+
+**ᠬᠢ/ᠬᠢᠨ** are doubly attested: Appendix IV lists both under "case-bound
+possession case", and a bichig reader ruled ᠬᠢ a real suffix twice on
+2026-07-27 (анчдынх, холтосныхоо) without having seen the document. It stacks
+outside a genitive and takes a reflexive outside itself — холтос-ных-оо — hence
+the `possession` category, sitting between case and reflexive in the chain.
+`Reg —` for both because they are q-initial: UTN #57's particle shaping only
+reaches particles beginning a/e/i/u/ü/d/y/n, so it could never list them
+whatever their status, and its silence is not evidence. **ᠶᠤᠭᠠᠨ** is the
+masculine mate of ᠶᠦᠭᠡᠨ; its absence was an oversight.
+
+**ᠯᠠ/ᠯᠡ is the weakest-sourced row in this file.** No inventory lists it either
+way, in any era. It is here on a reader's ruling of 2026-07-27, made on class
+membership rather than a citation, and the reader recorded their own
+uncertainty. The tempting counter-argument — "Cyrillic writes л apart, so
+bichig should space it" — is a trap: нь, минь, чинь and даа are all written
+apart in Cyrillic and connector-joined in bichig, and are already in this
+file. The same reader also asked, in the same breath, whether ᠨᠢ and ᠮᠢᠨᠢ
+really belong as connector-joined; see the note under Provenance. If any row
+here is later overturned, expect it to be this one.
 
 ## Provenance & the registry caveat
 
