@@ -20,9 +20,30 @@
  * - ASCII aliases: `gh`=γ, `ch`=č, `sh`=š, `j`=ǰ, `v`=w.
  * - q/k and γ/g are the back/front readings of the same two letters
  *   (U+182C, U+182D), exactly as in Classical romanization.
- * - Loan and Ali Gali letters (KA, KHA, HAA, ZRA, LHA, ZHI, CHI) are
- *   deliberately unmapped — emitting them from native vocabulary would be a
- *   wrong-block error, so an attempt to do so throws instead.
+ * - **Loan letters are spelled as digraphs**, so that using one is always a
+ *   deliberate act rather than a typo that happened to land in the right
+ *   block: `kh` is KHA (U+183B), the letter Cyrillic к takes in a loanword.
+ *   Single-letter keys stay reserved for native vocabulary, which is what
+ *   keeps `k` meaning the harmony-selected U+182C and nothing else.
+ *
+ *   The digraph is unambiguous by construction: `h` alone is unmapped, so no
+ *   romanization that already parses can contain the sequence `kh`, and
+ *   `KEYS` is sorted longest-first so the digraph always beats its own first
+ *   letter. Write `k.h` if a k followed by an h is ever wanted — it will
+ *   throw, correctly, because there is no h.
+ *
+ *   Ruled 2026-07-30: кирилл is ᠻирилл, i.e. `khirill`, and a reader confirmed
+ *   the reference converter's spelling directly. The same ruling gave the
+ *   principle — variation selectors and loan letters are "mostly used in
+ *   foreign, or traditionally spelt words" — which is why this is opened one
+ *   letter at a time, on evidence, rather than by mapping the block.
+ *
+ * - The remaining Ali Gali letters (KA, HAA, ZRA, LHA, ZHI, CHI) are still
+ *   deliberately unmapped. Emitting one from native vocabulary would be a
+ *   wrong-block error, so an attempt to do so throws. Add each the same way
+ *   KHA was added — a digraph, and a ruling that says which words take it.
+ *   FA (U+1839), TSA (U+183C) and ZA (U+183D) predate this scheme and keep
+ *   their single-letter keys `f`, `c`, `z`.
  */
 
 import { cp, FVS } from './chars.js';
@@ -75,6 +96,8 @@ const ROMAN_TO_CP: ReadonlyArray<readonly [string, number]> = [
   ['f', 0x1839],
   ['c', 0x183c],
   ['z', 0x183d],
+  // Loan letter, deliberately spelled as a digraph — see the header.
+  ['kh', 0x183b],
   ['-', MVS_CP],
   ...DIGIT_TO_FVS_CP,
 ];
@@ -111,6 +134,7 @@ const CP_TO_ROMAN = new Map<number, string>([
   [0x1839, 'f'],
   [0x183c, 'c'],
   [0x183d, 'z'],
+  [0x183b, 'kh'],
   [MVS_CP, '-'],
   ...DIGIT_TO_FVS_CP.map(([digit, c]) => [c, digit] as const),
 ]);

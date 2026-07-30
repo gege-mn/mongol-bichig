@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.2.2 — 2026-07-31
+
+A patch for the same reason 0.2.1 was: both consumers require `^0.2.0`, which
+on a `0.x` version pins the minor, so a 0.3.0 would strand them. Everything
+here is additive — no existing romanization changes meaning, and no existing
+input that parsed now parses differently.
+
+### Added
+
+- **Loan letters can be written down.** `kh` romanizes to KHA (U+183B), the
+  letter Cyrillic к takes in a loanword. Ruled by a bichig reader 2026-07-30:
+  кирилл is ᠻирилл, confirming the reference converter's spelling directly.
+
+  Loan letters are **digraphs on purpose**, so reaching for one is deliberate
+  rather than a typo that happened to land in the right block; single-letter
+  keys stay reserved for native vocabulary, which is what keeps `k` meaning the
+  harmony-selected U+182C. The digraph is unambiguous by construction — `h`
+  alone is unmapped, so no romanization that already parsed can contain `kh` —
+  and `fromScript` round-trips it.
+
+  This unblocks `@gege-mn/gege-converter`, which had a reader-confirmed
+  spelling for кириллээс and no way to write it: every data row there is
+  romanized and asserted to convert, so a word needing a loan letter could not
+  be added at all.
+
+- **Documented rulings** in `skills/mongol-bichig/references/suffixes.md`, all
+  from a bichig reader on 2026-07-30:
+  - §7 **Directive** is confirmed and no longer "⚠ needs confirmation" — one
+    bichig form ᠤᠷᠤᠭᠤ for all four Cyrillic surfaces (-руу/-рүү/-луу/-лүү),
+    always space-joined, and the л-forms only after a host ending in р. The
+    section had been marked open while a *different* section of the same file
+    recorded the related 2026-07-27 ruling sixty lines below it.
+  - **Word-forming suffixes are not in this registry**, with the one ruled so
+    far recorded for its home: -лаг⁴ → `lig`, one form for four surfaces.
+  - **Fused case-possessive forms are compositions, not entries** — -ынхаа is
+    the genitive plus the reflexive, and the Cyrillic х has no bichig
+    counterpart at all.
+
+### Still unmapped
+
+KA, HAA, ZRA, LHA, ZHI and CHI. Each should be added the way KHA was — as a
+digraph, on a ruling that says which words take it — not by mapping the block.
+
 ## 0.2.1 — 2026-07-27
 
 Data only. A patch rather than a minor **on purpose**: a caret on a `0.x`

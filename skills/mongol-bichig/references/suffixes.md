@@ -106,12 +106,37 @@ May also be written *attached* to the stem — writer's choice; both are valid
 (so the linter must accept attached ᠲᠠᠢ without a preceding connector).
 ᠯᠤᠭ⟨MVS⟩ᠠ carries a word-internal MVS before its final ᠠ.
 
-### 7. Directive — чиглэхийн тийн ялгал (-руу/-рүү) — ⚠ needs confirmation
+### 7. Directive — чиглэхийн тийн ялгал (-руу/-рүү/-луу/-лүү)
 
-School tables list it as a case; in bichig it appears to be the separate
-word ᠤᠷᠤᠭᠤ (uruγu, `U+1824 U+1837 U+1824 U+182D U+1824`) joined by a
-plain space, not an MVS particle (it is absent from the UTN #57 registry).
-**Excluded from the linter dictionary v1 until verified.**
+**Confirmed by a bichig reader, 2026-07-30.** School tables list it as a case;
+in bichig it is the separate word ᠤᠷᠤᠭᠤ (uruγu,
+`U+1824 U+1837 U+1824 U+182D U+1824`) joined by a plain space, not an MVS
+particle — which is why it is absent from the UTN #57 registry. It is listed
+again under [space-joined particles](#space-joined-particles-plain-u0020-never-mvs)
+below; that entry and this one are the same fact.
+
+| | |
+|---|---|
+| Bichig | **one form only** — ᠤᠷᠤᠭᠤ, whatever the stem's harmony |
+| Cyrillic | four surface forms: -руу / -рүү / -луу / -лүү |
+| Joining | always a plain space in bichig; **either** attached or spaced in Cyrillic, writer's choice |
+
+The asymmetry is the point, and it is the kind of rule a converter gets wrong
+by symmetry-seeking: **the four Cyrillic forms collapse to one bichig word.**
+There is no feminine ᠦᠷᠦᠭᠦ. A converter that harmonises the suffix to the stem
+— as it must for every other case in this table — produces a form that does not
+exist. Ruled in the reader's own words: *"always urugu regardless of gender of
+previous word."*
+
+The Cyrillic-side freedom is the other half: монголруу and монгол руу are both
+accepted input, and both convert to two bichig words. Consumers therefore need
+a **clitic split**, not a suffix row — see the note in gege-converter's
+`src/clitics.ts`.
+
+Superseded: this section previously read "⚠ needs confirmation … excluded from
+the linter dictionary v1 until verified", which had already been overtaken by
+the 2026-07-27 ruling recorded 60 lines below it in this same file. Both are
+now settled and cross-linked.
 
 ## Reflexive-possessive — хамаатуулах нөхцөл (-аа⁴)
 
@@ -165,7 +190,7 @@ absent from the registry): ᠲᠠᠭᠠᠨ/ᠲᠡᠭᠡᠨ (-таа/-тээ afte
 | ᠪᠦᠦ | `U+182A U+1826 U+1826` | бүү | prohibitive (preposed) | ✓ |
 | ᠦᠭᠡᠢ | `U+1826 U+182D U+1821 U+1822` | үгүй / Cyrillic -гүй | negation ("without") | — |
 | ᠰᠢᠭ | `U+1830 U+1822 U+182D` | шиг | comparative "like/as" | — |
-| ᠤᠷᠤᠭᠤ | `U+1824 U+1837 U+1824 U+182D U+1824` | руу / рүү | directive "towards" | — |
+| ᠤᠷᠤᠭᠤ | `U+1824 U+1837 U+1824 U+182D U+1824` | руу / рүү / луу / лүү | directive "towards" — one bichig form for all four | — |
 | ᠰᠠᠨ | `U+1830 U+1820 U+1828` | сан | wish/regret modal | — |
 | ᠰᠡᠨ | `U+1830 U+1821 U+1828` | сэн | wish/regret modal | — |
 
@@ -364,3 +389,41 @@ here is later overturned, expect it to be this one.
 - Comitative ᠲᠠᠢ/ᠲᠡᠢ attached directly to a stem is valid — no diagnostic.
 - Machine-readable form: vendor these tables as `src/data/suffixes.json`
   (generated, with provenance header) when implementing.
+
+## Word-forming suffixes are NOT in this registry (noted 2026-07-30)
+
+Same boundary as the verb suffixes above, for the same reason: this registry is
+**inflection** — case, reflexive, plural, clitics — and derivational morphology
+is a different system that the shaping tables do not cover.
+
+The one a consumer has ruled so far, recorded here so the fact has a home even
+though the package does not carry it:
+
+| Cyrillic | Classical | Joining | Note |
+|---|---|---|---|
+| -лаг / -лэг / -лог / -лөг | `lig` | attached, no connector | **One form for all four surfaces** |
+
+Ruled by a bichig reader 2026-07-30: *"in cyrillic, it's загвар + лаг, exactly
+same logic as style + ish => stylish. in similar suffixes, it's always 'лиг'
+ending, e.g., оюунлаг = оюун + лаг = ойунлиг"* — so загварлаг is ᠵᠠᠭᠪᠤᠷᠯᠢᠭ
+`zaγburlig`, one word. Corroborated by the official Нэр үгийн хувилал table.
+
+**This is the second suffix found this week whose four Cyrillic surfaces
+collapse to one bichig form**, after the directive. Both break the symmetry
+every other row in this file has, and a converter that harmonises by reflex
+gets both wrong.
+
+## Fused case-possessive forms are compositions, not entries
+
+-ынхаа/-ийнхээ (Тийн ялгалтай хамаатуулах нөхцөл, Харьяалах column) is the
+genitive followed by the reflexive, and **the Cyrillic х has no counterpart in
+bichig at all**: ангийнхаа is анги + ийн + аа = ᠠᠩᠭᠢ⟨MVS⟩ᠶᠢᠨ⟨MVS⟩ᠢᠶᠠᠨ,
+`angγi-yin-iyan` (reader, 2026-07-30).
+
+Every part is already a row above — `yin`/`un`/`ün`/`u`/`ü` and
+`iyan`/`iyen`/`ban`/`ben` — so nothing is added here. Recorded because a
+consumer checking its Classical column against this registry will otherwise
+look up the concatenation, find nothing, and conclude the registry is missing
+an entry rather than that it holds the parts. The reflexive allomorph follows
+what the genitive left behind: `iyan`/`iyen` after the n of `yin`/`un`/`ün`,
+`ban`/`ben` after the bare vowel of `u`/`ü`.

@@ -85,6 +85,32 @@ describe('toScript', () => {
       expect((error as RomanizationError).input).toBe('qota?');
     }
   });
+
+  // Loan letters are digraphs so that reaching for one is deliberate. Ruled
+  // 2026-07-30: кирилл takes KHA, and this is the spelling that produces it.
+  describe('loan letters', () => {
+    const KHA = 0x183b;
+
+    it('writes KHA for the kh digraph', () => {
+      expect(toScript('khirill')).toBe(`${String.fromCodePoint(KHA)}ᠢᠷᠢᠯᠯ`);
+      expect(toScript('kh').codePointAt(0)).toBe(KHA);
+    });
+
+    it('leaves the native k alone — it is still the harmony-selected U+182C', () => {
+      expect(toScript('kirill').codePointAt(0)).toBe(0x182c);
+      expect(toScript('kele')).toBe(toScript('qele'));
+    });
+
+    it('round-trips', () => {
+      expect(fromScript(toScript('khirill'))).toBe('khirill');
+    });
+
+    it('still refuses the loan letters that have no ruling behind them', () => {
+      // HAA, ZRA, LHA, ZHI, CHI stay unmapped; `h` alone is what makes the
+      // kh digraph unambiguous, so it must keep throwing.
+      expect(() => toScript('h')).toThrow(RomanizationError);
+    });
+  });
 });
 
 describe('finalLetter', () => {
