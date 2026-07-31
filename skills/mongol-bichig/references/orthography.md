@@ -168,6 +168,25 @@ Mechanics for `suffix-harmony`:
 | `digit-consistency` | U+1810–1819 and ASCII digits mixed in one document | UTN 57 T1; r12a | low | info |
 | `initial-cluster` | word-initial CC (loans only — but whitelist ᠲᠩᠷᠢ tngri, vcir: native vowel-omission canon) | Poppe §95, §91 | mod-high | info, marginal |
 
+### ★ Newly lintable: no ГА after a д/с дэвсгэр (added 2026-07-31)
+
+The 2026 national rulebook §2.1.2.3 states categorically that ᠭ (GA, U+182D)
+does not occur after a ᠳ or ᠰ дэвсгэр — the voiceless ᠬ (QA/KA, U+182C) appears
+instead: баясгалан, өтгөн, тосгон, сэтгэл. This is a **code-point-adjacent**
+rule and so escapes the "q/γ-vs-k/g is not checkable" caveat below: that caveat
+is about *gender* (q vs k unify in U+182C), whereas this is about *voicing*,
+and ᠬ and ᠭ are distinct code points.
+
+Candidate rule `ga-after-hard-dental`: flag ᠭ immediately preceded by ᠳ or ᠰ.
+FP risk **moderate** — loanwords are exempt (rulebook §3.3.3.3 gives foreign
+words their own consonant rules), and one native lexical exception is already
+attested (тоосго, ruled ᠲᠣᠭᠤᠰᠭ U+180E ᠠ by a reader on 2026-07-29 against both this
+rule and the 2015 Цэвэл). Severity `info`, not `warning`, until the exception
+class is bounded.
+
+The converse — rewriting ᠬ to ᠭ in this position — is **wrong** and was shipped
+and withdrawn downstream; see [rulebook-2026.md](rulebook-2026.md) §2.1.2.3.
+
 Not lintable (documented so nobody retries): q/γ-vs-k/g as such;
 connected-vs-separated final -a per stem; medial V+i; U+1802/U+1803 spacing
 (no normative source — Poppe §86: punctuation "used at random");

@@ -32,6 +32,15 @@ School grammar classifies stem endings into four groups:
 | м, л, нг | soft consonant finals |
 | хатуу дэвсгэр | **б, г, р, с, д** (hard finals) |
 
+Confirmed verbatim by the 2026 national rulebook, §1 item 2, which names the
+complementary class as well — **зөөлөн дэвсгэр: н, м, л, нг, й, в** — and makes
+this table load-bearing far beyond the case suffixes: it also selects the
+imperfective converb (-ж/-ч), the unwitnessed past (-жээ/-чээ), the passive
+(-д/-т) and the pluractional -цгаа⁴. See
+[rulebook-2026.md](rulebook-2026.md) §2.1.2, and its §2.3 table for four
+**open discrepancies between that rulebook and this registry's `join` values**
+(руу/рүү, -дахь, -дугаар, -дэг).
+
 Gender = vowel harmony: masculine (a/o/u) vs feminine (e/ö/ü) stems;
 "neutral" = single form for both. `Reg` column: ✓ = present in the UTN #57
 shaping registry; — = absent there *only because it needs no special letter
