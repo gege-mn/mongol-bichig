@@ -1,6 +1,6 @@
 ---
 name: gege-linter
-description: Lint and fix traditional Mongolian script (Mongol bichig) text with the @gege-mn/gege-linter library and CLI — flags legacy NNBSP suffix connectors, broken MVS/FVS placement, PUA leftovers, wrong-block look-alike letters, stray ZWJ/ZWNJ, and unknown suffixes, with mechanical fixes. Use when validating or fixing Mongol bichig (U+1800–18AF) text in files, string constants, or CI; when integrating Mongolian text validation into an app; or when a user reports "invisible" Mongolian encoding bugs.
+description: Lint and fix traditional Mongolian script (Mongol bichig) text with the @gege-mn/gege-linter library and CLI — flags legacy NNBSP suffix connectors, broken MVS/FVS placement, PUA leftovers, wrong-block look-alike letters, stray ZWJ/ZWNJ, unknown suffixes, and compatibility/vertical presentation-form punctuation, with mechanical fixes. Use when validating or fixing Mongol bichig (U+1800–18AF) text in files, string constants, or CI; when integrating Mongolian text validation into an app; or when a user reports "invisible" Mongolian encoding bugs.
 license: MIT
 ---
 
@@ -64,7 +64,9 @@ characters. Always splice via `applyFixes`, or convert through
 | `nnbsp-legacy` | warning | NNBSP suffix connector (pre-16.0 model) | MVS (U+180E) |
 | `unknown-suffix` | warning | connector-joined letter run not in the suffix dictionary; a run that *is* a separate word is named as one | the dictionary sequence when only a stray FVS breaks the match; a plain space when a whole word follows an MVS |
 | `doubled-ae` | warning | adjacent ᠠᠠ / ᠡᠡ — long a/e take the γ/g hiatus, never a doubled vowel | **none** — the reflexive wants ᠢᠶᠠᠨ/ᠢᠶᠡᠨ, the vocative a single ᠠ/ᠡ and a space |
+| `compat-punctuation` | warning | punctuation encoded as a presentation form: Vertical Forms (U+FE10–FE1F), CJK Compatibility Forms (U+FE30–FE4F), Small Form Variants (U+FE50–FE6F) — GB 18030 / CNS 11643 round-trip characters, never for interchange | the native ᠂ ᠃ ᠁ for comma/full stop/ellipsis, ？ for the question mark (UTN #57 Table 1), ASCII `!` for the exclamation, the nominal character otherwise |
 | `non-initial-o` | info | O/Ö past the first syllable (heuristic; native exceptions exist) | — |
+| `compat-punctuation` | info | U+3001/U+3002 (and halfwidth U+FF61/U+FF64) in Hudum text — core spec 13.5 gives these to Todo and Sibe | ᠂ / ᠃ |
 
 At a **word boundary** a joiner is legitimate and `zwj-zwnj` says nothing: the
 core spec (16.0 §13.5) sanctions ZWJ/ZWNJ for selecting a positional form in
