@@ -128,7 +128,9 @@ variants[characterName][position]["0"|"1"|"2"|"3"|"4"] = {
   letter has different registrations per locale (U+1828 medial FVS3 is valid
   only as Manchu Ali Gali). A Hudum linter validates against MNG (+ MNGx for
   Buddhist text) only. Locale triple counts: MNG 107, MNGx 22, TOD 46,
-  TODx 36, SIB 59, MCH 71, MCHx 97.
+  TODx 36, SIB 59, MCH 71, MCHx 97. **At v0.13.0 (2026-10-02, the vendored
+  copy):** MNGx 23 and MCHx 98, 253 deduplicated; MNG is still 107 and the
+  Hudum quick-reference table above is unchanged.
 - The three `unrecommended` Hudum variants (JA fina FVS1, YA medi FVS2,
   WA medi FVS1) exist only in this data — UCD DoNotEmit.txt has zero
   Mongolian entries.
@@ -161,9 +163,10 @@ variants[characterName][position]["0"|"1"|"2"|"3"|"4"] = {
 
 ## Provenance for vendored data
 
-When implementing rule 9, vendor `lib/mongfontbuilder/data/variants.json`
-(MIT, commit `539b45507548`, 2026-07-10) plus a derived per-letter MNG
-valid-FVS table and the UCD-legacy-only list. Cite: UTN #57 v4 (2024-08-14),
+`variants.json` is vendored in `vendor/mongfontbuilder/` (MIT, v0.13.0,
+commit `a43024ee732e`; this document was first researched against commit
+`539b45507548`, 2026-07-10). Rule 9 still needs a derived per-letter MNG
+valid-FVS table and the UCD-legacy-only list compiled from it. Cite: UTN #57 v4 (2024-08-14),
 StandardizedVariants-17.0.0.txt (2025-07-30), GB/T 25914—2023.
 Useful test-case source: r12a.github.io/mongolian-variants/ (2016-era model —
 good for *legacy* divergence cases, not current validation).

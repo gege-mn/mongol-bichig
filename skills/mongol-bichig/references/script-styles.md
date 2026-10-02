@@ -106,6 +106,10 @@ Mongolian Supplement (U+11660–1167F) is extra birgas — same script `Mong`.
   `mnc` (Manchu), `mvf` (Peripheral Mongolian).
 - Style-profile mapping: `mn-Mong-*`/`mvf` → Hudum; `xal-Mong` → Todo;
   `sjo` → Sibe; `mnc` → Manchu (superset profile).
+- The tag now reaches rendering: Noto Sans Mongolian 3.100 registers OpenType
+  language systems `MNG`, `TOD`, `SIB`, `MCH`, and Sibe/Manchu get a lookup
+  the default does not (see `fonts-and-rendering.md`). Untagged text is shaped
+  as Hudum.
 
 ## Severity calibration for `wrong-block`
 

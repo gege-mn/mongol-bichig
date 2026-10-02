@@ -2,7 +2,8 @@
 
 Researched 2026-07-25: repo/API data, L2 documents, engine source, plus
 **first-party hb-shape measurements** against the exact Noto Sans Mongolian
-v3.002 binary gege.mn self-hosts. Invisibles as `U+XXXX`.
+binary gege.mn self-hosts — v3.002 then, **re-measured against v3.100 on
+2026-10-02**. Invisibles as `U+XXXX`.
 
 ## The central fact
 
@@ -21,21 +22,44 @@ linter is the only layer that can enforce the encoding itself.
 - v3.000 (2023-11-04): "completely re-engineered … compliance with the draft
   UTN"; **v3.002 (2024-07-24)**: "updates the shaping rules to meet the
   published standard (UTN#57)". Shaping/OTL by Kushim Jiang; outlines still
-  Monotype. Noto v3 is a *sibling* implementation of the UTN, not a
-  mongfontbuilder build output.
-- NNBSP back-compat is engineered in the feature files: the connector class
-  is `[mvs mvs.narrow mvs.wide mvs.nominal nnbsp]` — U+202F takes exactly
-  the same particle path as U+180E. Hence the byte-identical shaping this
-  project verified.
+  Monotype. Through 3.002 Noto v3 was a *sibling* implementation of the UTN,
+  not a mongfontbuilder build output.
+- **v3.100 (2026-10-01)**: "support the revised national standard for Todo,
+  Sibe and Manchu". From here the layout **is** a mongfontbuilder build
+  output (0.13.0) — the 33 hand-maintained feature files are gone — and it is
+  checked against the standards' own suites (4,606 cases, 19 documented
+  differences where the standard and UTN #57 disagree: FVS not depending on
+  locale, NNBSP behaviour retained, a letter before MVS being *fina*).
+  1,598 → 3,360 glyphs. Everything contextual is in `rclt`; `calt` is gone.
+- **v3.100 registers language systems** `MNG`, `TOD`, `SIB`, `MCH`. Default,
+  `MNG` and `TOD` run the same lookups; `SIB` and `MCH` add one that swaps the
+  final form of U+182E MA. So Sibe and Manchu text needs a language tag
+  (`sjo`, `mnc`) to shape fully; Hudum is what untagged text gets.
+- NNBSP back-compat is retained by design: U+202F takes exactly the same
+  particle path as U+180E. Re-verified at 3.100 over every MVS-joined entry
+  of the suffix registry on four stems — the glyph streams are identical.
 - **Misuse-visibility is a design principle**, not an accident: preprocessing
   makes every control visible first; only *valid* contexts substitute the
   invisible forms; postprocessing forces unconsumed controls back to visible
   glyphs. Google's FontBakery QA FAILed the inked control glyphs ("Glyph
   'mvs' has ink") and it shipped anyway.
-- The MVS glyph is **three glyphs**: `mvs.narrow` (adv 55 — chachlag),
-  `mvs.wide` (adv 260 — suffix connector), `mvs.nominal` (adv 389 — the
-  visible *misuse* glyph). Earlier project notes calling the wide glyph
-  "mvs.nominal" were imprecise.
+- MVS resolves to one of three things. At **3.100**: `mvs.narrow` (adv 55 —
+  chachlag), `nbspace` + `mvs.ignored` (adv 260 + 0 — suffix connector), and
+  `mvs` (adv 770 — the visible *misuse* glyph). At 3.002 the same three were
+  `mvs.narrow`, `mvs.wide` (260) and `mvs.nominal` (389). **Glyph names are
+  not stable across releases** — golden files should use `--no-glyph-names`
+  or compare outlines.
+- 3.100 changed drawing and spacing, not Hudum forms: across every bichig run
+  in the gege repositories each word resolves to the same letterforms. What
+  moved: U+1802–1805 are 80 units narrower and sit closer to the word; final
+  U+1829, the two-tooth medial I and medial/initial OE/UE are wider; the dots
+  of N and G before an MVS sit under the letter instead of in the gap; ZWJ no
+  longer leaves a 260-unit gap; U+FF0D lost its glyph.
+- **Never shape with direction `ttb`.** HarfBuzz skips the joining lookups
+  and stacks upright, unjoined letters; and 3.100's `vmtx` gives nearly every
+  glyph a vertical advance of 0. Shape `ltr` and rotate a quarter clockwise,
+  which is what `writing-mode: vertical-lr` does. The 3.100 `full` build
+  ships with no `vhea`/`vmtx` at all — use `hinted` or `unhinted`.
 
 ### Mongolian Baiti (the installed base)
 
@@ -97,21 +121,27 @@ Vertical text: the whole block is `vo=R` in UTR #50 — correct CSS is
 `writing-mode: vertical-lr` with default `text-orientation: mixed`
 (`upright` breaks joining). WebKit's vertical-lr squash bug fixed 2025-05.
 
-## How misuse renders (measured, Noto v3.002, hb-shape)
+## How misuse renders (measured, Noto v3.100, hb-shape)
 
 | Input | Renders as |
 |---|---|
-| stem + U+202F + suffix | identical glyph stream to the MVS version (`mvs.wide` + particle forms) |
+| stem + U+202F + suffix | identical glyph stream to the MVS version (`nbspace` + `mvs.ignored` + particle forms) |
 | stem + U+180E + suffix | same — byte-identical |
 | stem + U+0020 + suffix | space + suffix in **word-initial** form — visibly a separate word |
 | chachlag (U+180E + final a/e) | `mvs.narrow` + isolated-form vowel — the legitimate case |
-| bare U+180E | **visible `mvs.nominal`** |
+| bare U+180E | **visible `mvs`** (adv 770; `mvs.nominal`, adv 389, at 3.002) |
 | lone U+202F | **visible `nnbsp` marker** (adv 770) |
-| registered letter+FVS | form changes; selector invisible (`fvsN.effective`) |
+| registered letter+FVS | form changes; selector invisible (`fvsN.valid`; `fvsN.effective` at 3.002) |
 | unregistered letter+FVS | default form; **visible `fvsN` marker** |
 | doubled FVS | first consumed, second **visible** |
 | U+1820 + U+180F (isolate) | default + visible `fvs4` marker — FVS4 registration is position-sensitive |
 | PUA U+E266 | `.notdef` tofu |
+
+**The font is not a Hudum validity oracle.** It honours an FVS registered in
+*any* locale — U+182F + FVS1, U+1830 + FVS2 and U+183A + FVS1 all shape as
+valid, though none is registered for Hudum — and 3.100 added U+1828 + FVS2
+(isol, init) and + FVS3 (medi, fina) to that set. "No visible marker" means
+"registered somewhere", so validate against the data, never against rendering.
 
 In legacy fonts, all of the above except PUA is typically *invisible* —
 which is why these bugs ship. Noto v3's visible markers + this linter are
@@ -131,16 +161,16 @@ hb-shape $FONT -u 'U+1828,U+1823,U+182E,U+180E,U+1824,U+1828'
 hb-shape $FONT -u 'U+1828,U+1823,U+182E,U+0020,U+1824,U+1828'
 
 # Bare MVS is visible:
-hb-shape $FONT -u 'U+180E'        # → mvs.nominal
+hb-shape $FONT -u 'U+180E'        # → mvs (3.100; mvs.nominal at 3.002)
 
 # Stable golden files: --no-glyph-names --ned ; JSON: -O json
-# Pictures for issues: hb-view $FONT -u '...' -O png -o out.png --direction=ttb
+# Pictures for issues: hb-view $FONT -u '...' -O png -o out.png  (ltr, then rotate — never --direction=ttb)
 ```
 
 Caveats: hb-shape exercises HarfBuzz only — DirectWrite+Baiti and CoreText
 are separate engines. Other tools: **Crowbar** (browser-based per-lookup
 shaping trace — watch the `_.narrow` lookup rewrite NNBSP);
 **mongfontbuilder's test harness** (the de-facto UTN #57 conformance suite);
-`ttx -t GSUB` + grep for `mvs.narrow`/`mvs.nominal`; FontBakery's
+`ttx -t GSUB` + grep for `mvs.narrow`/`mvs.ignored`; FontBakery's
 "whitespace glyphs have ink?" check instantly identifies misuse-visible
 fonts (new-model Noto deliberately FAILs it).

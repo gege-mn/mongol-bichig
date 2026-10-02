@@ -108,7 +108,7 @@ read; `close ARGV if eof` keeps line numbers per-file.)
 hb-shape NotoSansMongolian-Regular.ttf -u 'U+1828,U+1823,U+182E,U+202F,U+1824,U+1828'
 hb-shape NotoSansMongolian-Regular.ttf -u 'U+1828,U+1823,U+182E,U+180E,U+1824,U+1828'
 # A bare MVS must surface the visible misuse glyph:
-hb-shape NotoSansMongolian-Regular.ttf -u 'U+180E'   # → mvs.nominal
+hb-shape NotoSansMongolian-Regular.ttf -u 'U+180E'   # → mvs (v3.100; mvs.nominal at v3.002)
 ```
 
 ## Mechanical checking

@@ -1,0 +1,498 @@
+{
+  "MNG": {
+    "conditions": [
+      "chachlag",
+      "marked",
+      "chachlag_onset",
+      "chachlag_onset_gb",
+      "onset",
+      "devsger",
+      "masculine_onset",
+      "masculine_devsger",
+      "feminine",
+      "dotless",
+      "particle",
+      "vowel_devsger",
+      "post_bowed"
+    ],
+    "categories": {
+      "vowelMasculine": [
+        "a",
+        "o",
+        "u"
+      ],
+      "vowelFeminine": [
+        "e",
+        "ee",
+        "oe",
+        "ue"
+      ],
+      "vowelNeuter": [
+        "i"
+      ],
+      "vowel": [
+        "a",
+        "e",
+        "ee",
+        "i",
+        "o",
+        "u",
+        "oe",
+        "ue"
+      ],
+      "consonant": [
+        "n",
+        "ng",
+        "b",
+        "p",
+        "h",
+        "g",
+        "m",
+        "l",
+        "s",
+        "sh",
+        "t",
+        "d",
+        "ch",
+        "j",
+        "y",
+        "r",
+        "w",
+        "f",
+        "k2",
+        "k",
+        "c",
+        "z",
+        "hh",
+        "rh",
+        "lh",
+        "zr",
+        "cr"
+      ]
+    }
+  },
+  "MNGx": {
+    "conditions": [
+      "chachlag",
+      "marked",
+      "chachlag_onset",
+      "post_wa",
+      "post_bowed"
+    ],
+    "categories": {
+      "vowel": [
+        "a",
+        "iX",
+        "ue",
+        "ee",
+        "o"
+      ],
+      "consonant": [
+        "kX",
+        "k",
+        "k2",
+        "hh",
+        "ng",
+        "ngX",
+        "cX",
+        "c",
+        "z",
+        "nyX",
+        "trX",
+        "trhX",
+        "drX",
+        "nrX",
+        "tX",
+        "thX",
+        "dX",
+        "n",
+        "pX",
+        "phX",
+        "b",
+        "mX",
+        "yX",
+        "r",
+        "l",
+        "w",
+        "waX",
+        "sh",
+        "shX",
+        "s",
+        "hX",
+        "crX",
+        "ch",
+        "zrX",
+        "zX",
+        "qX",
+        "lh"
+      ]
+    }
+  },
+  "TOD": {
+    "conditions": [
+      "onset",
+      "devsger",
+      "masculine_onset",
+      "masculine_devsger",
+      "feminine",
+      "vowel_devsger",
+      "particle",
+      "post_bowed"
+    ],
+    "categories": {
+      "vowelMasculine": [
+        "a",
+        "o",
+        "u"
+      ],
+      "vowelFeminine": [
+        "e",
+        "oe",
+        "ue"
+      ],
+      "vowelNeuter": [
+        "i"
+      ],
+      "vowel": [
+        "a",
+        "e",
+        "i",
+        "o",
+        "u",
+        "oe",
+        "ue",
+        "lvs"
+      ],
+      "consonant": [
+        "n",
+        "ng",
+        "b",
+        "p",
+        "h",
+        "g",
+        "m",
+        "l",
+        "s",
+        "sh",
+        "t",
+        "d",
+        "ch",
+        "j",
+        "z",
+        "c",
+        "y",
+        "r",
+        "w",
+        "f",
+        "kh",
+        "gh",
+        "hh",
+        "jy",
+        "ny",
+        "zr",
+        "lh"
+      ],
+      "lvs": [
+        "a",
+        "e",
+        "o",
+        "oe"
+      ]
+    }
+  },
+  "TODx": {
+    "conditions": [
+      "devsger",
+      "feminine",
+      "masculine_onset",
+      "onset",
+      "masculine_devsger",
+      "post_bowed"
+    ],
+    "categories": {
+      "vowelMasculine": [
+        "a",
+        "o"
+      ],
+      "vowelFeminine": [
+        "e",
+        "ue"
+      ],
+      "vowelNeuter": [
+        "i"
+      ],
+      "vowel": [
+        "a",
+        "e",
+        "i",
+        "o",
+        "ue",
+        "lvs"
+      ],
+      "consonant": [
+        "kX",
+        "khX",
+        "hX",
+        "gX",
+        "g",
+        "ng",
+        "ngX",
+        "j",
+        "chX",
+        "zr",
+        "ny",
+        "trX",
+        "trhX",
+        "drX",
+        "nrX",
+        "tX",
+        "t",
+        "d",
+        "n",
+        "pX",
+        "p",
+        "b",
+        "m",
+        "y",
+        "yX",
+        "r",
+        "l",
+        "w",
+        "waX",
+        "sh",
+        "shX",
+        "s",
+        "hh",
+        "c",
+        "z",
+        "zhX",
+        "zX",
+        "qX",
+        "lh"
+      ],
+      "lvs": [
+        "a",
+        "e",
+        "i",
+        "o",
+        "ue"
+      ]
+    }
+  },
+  "SIB": {
+    "conditions": [
+      "marked",
+      "onset",
+      "devsger",
+      "masculine_onset",
+      "feminine",
+      "feminine_marked",
+      "particle",
+      "vowel_devsger",
+      "post_bowed",
+      "post_bowed_feminine"
+    ],
+    "categories": {
+      "vowelMasculine": [
+        "a",
+        "o",
+        "ue"
+      ],
+      "vowelFeminine": [
+        "e",
+        "u"
+      ],
+      "vowelNeuter": [
+        "i"
+      ],
+      "vowel": [
+        "a",
+        "e",
+        "i",
+        "o",
+        "u",
+        "ue",
+        "ii"
+      ],
+      "consonant": [
+        "sbm",
+        "n",
+        "ng",
+        "k",
+        "g",
+        "h",
+        "b",
+        "p",
+        "s",
+        "sh",
+        "t",
+        "d",
+        "l",
+        "m",
+        "ch",
+        "j",
+        "y",
+        "r",
+        "f",
+        "w",
+        "kh",
+        "gh",
+        "hh",
+        "c",
+        "z",
+        "rh",
+        "cr",
+        "zr"
+      ]
+    }
+  },
+  "MCH": {
+    "conditions": [
+      "marked",
+      "onset",
+      "devsger",
+      "masculine_onset",
+      "masculine_devsger",
+      "feminine",
+      "feminine_marked",
+      "particle",
+      "vowel_devsger",
+      "post_bowed",
+      "post_bowed_feminine"
+    ],
+    "categories": {
+      "vowelMasculine": [
+        "a",
+        "o",
+        "ue"
+      ],
+      "vowelFeminine": [
+        "e",
+        "u"
+      ],
+      "vowelNeuter": [
+        "i"
+      ],
+      "vowel": [
+        "a",
+        "e",
+        "i",
+        "o",
+        "u",
+        "ue",
+        "ii"
+      ],
+      "consonant": [
+        "sbm",
+        "n",
+        "ng",
+        "k",
+        "g",
+        "h",
+        "b",
+        "p",
+        "s",
+        "sh",
+        "t",
+        "d",
+        "l",
+        "m",
+        "ch",
+        "j",
+        "y",
+        "r",
+        "f",
+        "w",
+        "kh",
+        "gh",
+        "hh",
+        "c",
+        "z",
+        "rh",
+        "cr",
+        "zr"
+      ]
+    }
+  },
+  "MCHx": {
+    "conditions": [
+      "marked",
+      "onset",
+      "devsger",
+      "masculine_onset",
+      "masculine_devsger",
+      "feminine",
+      "feminine_marked",
+      "vowel_devsger",
+      "post_bowed",
+      "post_bowed_feminine"
+    ],
+    "categories": {
+      "vowelMasculine": [
+        "a",
+        "o",
+        "ue"
+      ],
+      "vowelFeminine": [
+        "e",
+        "u"
+      ],
+      "vowelNeuter": [
+        "i"
+      ],
+      "vowel": [
+        "a",
+        "aaX",
+        "e",
+        "i",
+        "o",
+        "u",
+        "ue",
+        "ii"
+      ],
+      "consonant": [
+        "gh",
+        "kh",
+        "g",
+        "k",
+        "ghX",
+        "ngX",
+        "ng",
+        "cX",
+        "c",
+        "z",
+        "jhX",
+        "trX",
+        "cr",
+        "zr",
+        "drhX",
+        "nrX",
+        "tX",
+        "t",
+        "d",
+        "dhX",
+        "n",
+        "pX",
+        "p",
+        "b",
+        "bhX",
+        "m",
+        "y",
+        "r",
+        "l",
+        "w",
+        "sh",
+        "shX",
+        "s",
+        "h",
+        "crX",
+        "ch",
+        "j",
+        "zhX",
+        "zX",
+        "sbm",
+        "lhX"
+      ]
+    }
+  }
+}

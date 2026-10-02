@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!data"]
+    "includes": ["**", "!data", "!vendor"]
   },
   "formatter": {
     "enabled": true,
