@@ -73,7 +73,7 @@ Expect NNBSP-joined suffixes in keyboard-produced text for years — that is
 | "Traditional Mongolian (Standard)" KBDMONST | Windows 10/11 | **NNBSP** (unshifted, on the hyphen-position key; Shift there = MVS) | dumb layout; also keys for FVS1–3, nirugu; unchanged for Unicode 16 |
 | Almas Mongolian Keyboard | iOS/macOS | **NNBSP** (capital S) | mongolfont.com (Almas Inc, Tokyo); FVS1 on capital D |
 | studymongolian macOS keyboard v2.0 | macOS | **NNBSP** (Shift+Space) | MVS on accent key |
-| **Tungaamal** | Win/macOS/Linux/web | NNBSP (docs) | Mongolia's dominant keyboard; 3.7M+ downloads claimed. Ships a "refined phonetic model" — **confirmed NOT UTN #57** (Teneg 2025 fn 3); its "approved by Unicode experts" marketing was denied by three UTC members (fn 24) |
+| **Tungaamal** | Win/macOS/Linux/web | NNBSP per its docs; in real text a plain space twice as often (measured, below) | Mongolia's dominant keyboard; 3.7M+ downloads claimed. Ships a "refined phonetic model" — **confirmed NOT UTN #57** (Teneg 2025 fn 3); its "approved by Unicode experts" marketing was denied by three UTC members (fn 24) |
 | Menksoft IME (desktop + mobile 2022) | Win/Android/iOS | standard-Unicode claimed; connector UNVERIFIED | Inner Mongolia's classic IME, now standard-encoding |
 | Delehi 德力海 | Android/iOS/Win | standard Unicode; connector UNVERIFIED | dominant on Inner-Mongolian mobile; bundles a non-standard→standard converter |
 | Gboard / Apple built-in | — | — | no traditional-script Mongolian support found at all |
@@ -81,11 +81,53 @@ Expect NNBSP-joined suffixes in keyboard-produced text for years — that is
 **The U+1888/U+1889 story** (why `wrong-block`'s headline fix exists):
 Separate KE/GE letters were formally proposed (L2/18-294, 2018, with a
 41,808-lemma frequency analysis); Unicode did not adopt; Tungaamal ships
-separate He/Ge keys anyway; the only standard code points whose glyphs match
-are Ali Gali U+1888/U+1889. No public document closes the final link (that
-Tungaamal emits exactly those) — it would take a keystroke test of the
-keyboard. The project's own hb-view-verified look-alike finding and
-fix mapping stand on their own.
+separate He/Ge keys anyway, and emits Ali Gali U+1888/U+1889 for them. That
+last link is no longer an inference — see the next section.
+
+## The Tungaamal convention, measured (2026-10-02)
+
+Read out of the fonts' GSUB tables and checked against 714 public pages typed
+in the convention (1.08M bichig characters, 14 hosts). Method and the full
+rewrite table live in gege-converter (`docs/tungaamal.md`,
+`src/data/tungaamal-rules.ts`); what belongs here is what the convention *is*.
+
+- **Two extra letters carry gender.** U+1889 is feminine g, U+1888 feminine
+  k/h. The fonts do **no gender shaping**: U+182C/U+182D are always drawn
+  masculine. About forty of these two per thousand letters — the fingerprint.
+- **One selector, a toggle.** FVS1 means "the other form of this letter in
+  this place". FVS2 and FVS3 draw an INVALID mark; U+180F has no glyph. In the
+  corpus: FVS1 49,400, FVS2 2, FVS3 3, FVS4 0. This is neither the pre-2017
+  chart model nor UTN #57, and **the same bytes select a different form** in
+  six contexts — e.g. U+1833 + FVS1 before a vowel is the two-part d there and
+  the looped d in the standard; U+1826 + FVS1 alone is the crownless ü there
+  and a crowned form in the standard.
+- **NNBSP does not shape.** It is a blank; what follows is shaped as a new
+  word. A suffix gets its suffix form only from FVS1 on its first letter
+  (`NNBSP + U+1836 + FVS1 + U+1822 U+1828` for *-yin*). Those selectors are
+  load-bearing there and must be dropped once the suffix follows MVS.
+- **Suffixes are mostly separate words.** A case particle follows U+0020 in
+  65.9% of occurrences (2.9% in standard-Unicode text). `nnbsp-legacy` alone
+  therefore reaches a third of them; the rest is `space-before-suffix`
+  territory.
+- **MVS only before a detached final a/e**; any other MVS draws an INVALID
+  mark.
+- **The diphthong is typed `V + YA + I`** (12,087 occurrences against 17 for
+  `V + I + I`), because that is the only way those fonts draw two teeth; a
+  consonantal y before i is marked `YA + FVS1`. In the standard the first is
+  `V + I` and the second plain `YA`.
+- **Typing errors have a direction.** A masculine U+182C/U+182D typed in a
+  feminine word — a form Mongolian does not have — 3,244 times; the reverse
+  51 times, nearly all loanwords and compound names where the feminine bowl
+  is intended.
+- Also present, and not produced by any converter: ZWJ-built acronyms (1,185),
+  U+1806 as the everyday hyphen (1,561), a selector typed twice (eight
+  hosts), pages mixing conventions between site chrome and article body.
+
+Consequence for `wrong-block`: mapping the two letters to U+182C/U+182D is
+right for the *letter* and silently changes the *form* wherever the word's
+vowels would make the standard draw the other gender (a loanword such as
+программ, the second half of a compound name). A converter has to add FVS2
+there; a linter fix that only swaps the letter cannot.
 
 ## Documented real-world corpus hazards
 

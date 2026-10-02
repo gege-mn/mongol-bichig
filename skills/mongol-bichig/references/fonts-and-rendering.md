@@ -55,6 +55,16 @@ linter is the only layer that can enforce the encoding itself.
   U+1829, the two-tooth medial I and medial/initial OE/UE are wider; the dots
   of N and G before an MVS sit under the letter instead of in the gap; ZWJ no
   longer leaves a 260-unit gap; U+FF0D lost its glyph.
+- ⚠ **The four builds in the 3.100 release do not shape alike.** `hinted` and
+  `unhinted` draw plain U+182C/U+182D as 3.002 does. `full` and `googlefonts`
+  take gender from the vowel *before* the letter only and have no dotted
+  default for a medial U+182D: `qaγan` comes out with an undotted γ, `mongγul`
+  with a feminine g + o ligature, `bolqu` with the feminine bowl, `aqi` with a
+  masculine q. Measured 2026-10-02 with HarfBuzz (two versions, three language
+  settings): 2,503 of the 9,133 words of gege-converter's lexicon change
+  written form between `full` and 3.002. The "same letterforms" statement
+  above holds for the hinted build gege.mn serves and not for those two — and
+  the version string is identical across all four.
 - **Never shape with direction `ttb`.** HarfBuzz skips the joining lookups
   and stacks upright, unjoined letters; and 3.100's `vmtx` gives nearly every
   glyph a vertical advance of 0. Shape `ltr` and rotate a quarter clockwise,
