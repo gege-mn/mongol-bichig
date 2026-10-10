@@ -52,6 +52,22 @@ with `String.slice`/`substring` — that corrupts text containing astral
 characters. Always splice via `applyFixes`, or convert through
 `[...text]` first.
 
+**Text typed with the Tungaamal keyboard** (0.6.0+) needs two passes, not
+one: its feminine k/g are the Ali Gali look-alikes U+1888/U+1889, and a
+particle still spelled with one is not recognised, so a single
+`applyFixes(text, lint(text))` joins it with MVS where it takes a space.
+
+```ts
+import { isTungaamal, tungaamalToUnicode } from '@gege-mn/gege-linter';
+
+if (isTungaamal(text)) text = tungaamalToUnicode(text);
+```
+
+`isTungaamal` is the guard — either look-alike present and no other Ali Gali
+letter — because real Ali Gali uses those two as letters in their own right.
+The conversion touches only the letters, connectors and stray suffix FVS;
+punctuation and spelling are left as written.
+
 ## The rules
 
 | Rule | Severity | Flags | Fix |
