@@ -34,11 +34,10 @@ A patch number for the same reason 0.2.2 was: both consumers require
 
 ### Documentation
 
-- **Mongolia's national orthography rule is digested** into two new reference
-  documents, `national-rule.md` and `national-rule-suffixes.md`: every rule
-  paraphrased with its section number, and the places where it disagrees with
-  this knowledge base listed with the repository owner's rulings on them. The plural change
-  above is the one ruling that follows the rule against the old table.
+- **What Mongolia's national orthography rule teaches** is recorded in two
+  new reference documents, `national-rule.md` and `national-rule-suffixes.md`:
+  the lessons in our own words, with the repository owner's rulings where the
+  rule and this knowledge base differ. The rule itself is not reproduced.
 - **Compound proper names** in `orthography.md`: Mongolia hyphenates a
   vowel-initial second part, Inner Mongolian practice joins it with FVS.
 - The mongol-bichig and gege-linter skills point at both.

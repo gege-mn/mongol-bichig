@@ -142,10 +142,8 @@ lint(text, [...rules, fusableStack]); // an editor panel wanting the hint
 
 The suffix dictionary is not the linter's own: it comes from
 `@gege-mn/mongol-bichig`, re-exported here as `suffixes` for convenience.
-Where the linter's model and Mongolia's official orthography rule differ, the
-open items are listed at the end of each part of `references/national-rule.md`
-and `references/national-rule-suffixes.md`; a diagnostic is not proof that a
-spelling is wrong for readers in Mongolia.
+Where the linter's model and Mongolia's official orthography rule differ, what
+was decided is under "Rulings so far" in `references/national-rule.md`.
 
 The human-readable form is `references/suffixes.md` in the mongol-bichig
 skill, which is also its normative source.

@@ -104,14 +104,11 @@ of 2026-07.
 - *Монгол бичгийн зөв бичих дүрэм* (Institute of Language and Literature,
   Mongolian Academy of Sciences, Ulaanbaatar 2025; annex to resolution No. 02
   of the National Council for Language Policy, 2026-02-11). The orthography
-  rule in force in Mongolia. Digested in full on 2026-10-11 into
-  `national-rule.md` and `national-rule-suffixes.md`, paraphrased with section
-  numbers. Not redistributed here: the annex carries a notice that
-  reproduction needs the authors' permission. Its rule text and Cyrillic are
-  authoritative for Mongolia; its PDF text layer is typed by glyph shape
-  (same-shaped letters interchanged, no MVS or NNBSP) and is not evidence for
-  code points. The rotated appendix tables extract scrambled, so some
-  attachment conditions there are reconstructions and are marked.
+  rule in force in Mongolia. Read in full on 2026-10-11; what it teaches is
+  recorded in our own words in `national-rule.md` and
+  `national-rule-suffixes.md`. The book is not reproduced or redistributed
+  here. Its rule text and Cyrillic are authoritative for Mongolia; its PDF
+  text layer is typed by glyph shape and is not evidence for code points.
 - Mongolian school grammar tables, as above
 
 ## Downstream research
