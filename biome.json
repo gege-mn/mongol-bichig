@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!data", "!vendor"]
+    "includes": ["**", "!data", "!vendor", "!skills/bichig-review/assets"]
   },
   "formatter": {
     "enabled": true,

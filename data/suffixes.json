@@ -434,7 +434,7 @@
       "translit": "ud",
       "cyrillic": "-ууд",
       "category": "plural",
-      "after": "consonant",
+      "after": "consonant-not-n",
       "join": "mvs",
       "registry": true,
       "sequence": "ᠤᠳ",
@@ -448,7 +448,7 @@
       "translit": "üd",
       "cyrillic": "-үүд",
       "category": "plural",
-      "after": "consonant",
+      "after": "consonant-not-n",
       "join": "mvs",
       "registry": true,
       "sequence": "ᠦᠳ",
@@ -462,7 +462,7 @@
       "translit": "nuγud",
       "cyrillic": "-ууд",
       "category": "plural",
-      "after": "vowel",
+      "after": "vowel-or-n",
       "join": "mvs",
       "registry": false,
       "sequence": "ᠨᠤᠭᠤᠳ",
@@ -479,7 +479,7 @@
       "translit": "nügüd",
       "cyrillic": "-үүд",
       "category": "plural",
-      "after": "vowel",
+      "after": "vowel-or-n",
       "join": "mvs",
       "registry": true,
       "sequence": "ᠨᠦᠭᠦᠳ",
@@ -621,6 +621,42 @@
         "U+1821",
         "U+1834",
         "U+1821",
+        "U+182D",
+        "U+1821",
+        "U+1828"
+      ]
+    },
+    {
+      "translit": "taiγan",
+      "cyrillic": "-тайгаа",
+      "category": "fused",
+      "after": "any",
+      "join": "mvs",
+      "registry": false,
+      "sequence": "ᠲᠠᠢᠭᠠᠨ",
+      "harmony": "masculine",
+      "codepoints": [
+        "U+1832",
+        "U+1820",
+        "U+1822",
+        "U+182D",
+        "U+1820",
+        "U+1828"
+      ]
+    },
+    {
+      "translit": "teigen",
+      "cyrillic": "-тэйгээ",
+      "category": "fused",
+      "after": "any",
+      "join": "mvs",
+      "registry": false,
+      "sequence": "ᠲᠡᠢᠭᠡᠨ",
+      "harmony": "feminine",
+      "codepoints": [
+        "U+1832",
+        "U+1821",
+        "U+1822",
         "U+182D",
         "U+1821",
         "U+1828"
@@ -803,6 +839,68 @@
       ]
     },
     {
+      "translit": "mani",
+      "cyrillic": "маань",
+      "category": "particle",
+      "after": "any",
+      "join": "mvs",
+      "registry": false,
+      "sequence": "ᠮᠠᠨᠢ",
+      "harmony": "masculine",
+      "codepoints": [
+        "U+182E",
+        "U+1820",
+        "U+1828",
+        "U+1822"
+      ]
+    },
+    {
+      "translit": "tani",
+      "cyrillic": "тань",
+      "category": "particle",
+      "after": "any",
+      "join": "mvs",
+      "registry": false,
+      "sequence": "ᠲᠠᠨᠢ",
+      "harmony": "masculine",
+      "codepoints": [
+        "U+1832",
+        "U+1820",
+        "U+1828",
+        "U+1822"
+      ]
+    },
+    {
+      "translit": "anu",
+      "cyrillic": "ану",
+      "category": "particle",
+      "after": "any",
+      "join": "mvs",
+      "registry": false,
+      "sequence": "ᠠᠨᠤ",
+      "harmony": "masculine",
+      "codepoints": [
+        "U+1820",
+        "U+1828",
+        "U+1824"
+      ]
+    },
+    {
+      "translit": "inü",
+      "cyrillic": "инү",
+      "category": "particle",
+      "after": "any",
+      "join": "mvs",
+      "registry": false,
+      "sequence": "ᠢᠨᠦ",
+      "harmony": "feminine",
+      "codepoints": [
+        "U+1822",
+        "U+1828",
+        "U+1826"
+      ]
+    },
+    {
       "translit": "chu",
       "cyrillic": "ч",
       "category": "particle",
@@ -889,36 +987,6 @@
       "codepoints": [
         "U+1833",
         "U+1821"
-      ]
-    },
-    {
-      "translit": "dag",
-      "cyrillic": "-даг?",
-      "category": "particle",
-      "after": "any",
-      "join": "mvs",
-      "registry": true,
-      "sequence": "ᠳᠠᠭ",
-      "harmony": "masculine",
-      "codepoints": [
-        "U+1833",
-        "U+1820",
-        "U+182D"
-      ]
-    },
-    {
-      "translit": "deg",
-      "cyrillic": "-дэг?",
-      "category": "particle",
-      "after": "any",
-      "join": "mvs",
-      "registry": true,
-      "sequence": "ᠳᠡᠭ",
-      "harmony": "feminine",
-      "codepoints": [
-        "U+1833",
-        "U+1821",
-        "U+182D"
       ]
     },
     {

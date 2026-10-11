@@ -66,6 +66,7 @@ const CONDITIONS: Record<string, AttachCondition> = {
   consonants: 'consonant',
   'consonants except н': 'consonant-not-n',
   н: 'n',
+  'vowels, н': 'vowel-or-n',
   'vowel/soft finals': 'vowel-or-soft',
   'б г р с д': 'hard',
   'any ending': 'any',
@@ -88,9 +89,9 @@ describe('suffixes.md ↔ the machine registry', () => {
     // 53 of the 68 connector-joined entries are tabulated with code points,
     // plus the 8 space-joined words. The other 15 appear in prose or in
     // code-point-less tables: the 4 expected-but-unregistered harmonic mates
-    // (taγan, tegen, echegen, tuni) and the 11 "not yet in scope" registry
+    // (taγan, tegen, echegen, tuni) and the 9 "not yet in scope" registry
     // extras. Those are covered by the registry-shape counts below instead.
-    expect(docRows.length).toBe(61);
+    expect(docRows.length).toBe(67);
   });
 
   it.each(docRows.map((r) => [r.Translit || r.Bichig, r] as const))(
@@ -148,8 +149,8 @@ describe('suffixes.md ↔ the machine registry', () => {
 });
 
 describe('registry shape', () => {
-  it('has 68 connector-joined suffixes and 8 space-joined words', () => {
-    expect(connectorSuffixes.length).toBe(68);
+  it('has 72 connector-joined suffixes and 8 space-joined words', () => {
+    expect(connectorSuffixes.length).toBe(72);
     expect(spaceParticles.length).toBe(8);
   });
 

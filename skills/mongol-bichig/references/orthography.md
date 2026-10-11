@@ -173,6 +173,147 @@ connected-vs-separated final -a per stem; medial V+i; U+1802/U+1803 spacing
 (no normative source — Poppe §86: punctuation "used at random");
 U+1804 COLON's function (described nowhere); digit orientation (layout).
 
+## Personal names: one script spelling, several Cyrillic spellings
+
+Observed while digitizing a printed dictionary of personal names (Cyrillic
+headword beside its script spelling, about 23,500 names read so far), and
+explained by the repository owner on 2026-10-08. Treat it as field evidence
+from one book plus a native reader's account, not as a published rule.
+
+**The mapping from script to Cyrillic is one-to-many for names.** Names were
+written in the script first. When Cyrillic replaced it, the same written name
+was respelt by ear, family by family, and the spellings drifted apart. The
+dictionary lists them as separate headwords, or as variants after a `/`, and
+prints the *same* script word beside each. In a search for entries with
+identical script spellings but different Cyrillic headwords on the same or the
+next page, 113 pairs turned up; the owner checked 30 and all but two were
+this, not misprints. Examples (romanization as in `romanize.ts`):
+
+| Script | Cyrillic spellings that share it |
+|---|---|
+| `mendü` | Мэнд, Мэндүү, Мэндээ |
+| `yesim-a` | Ишмаа, Ишиймаа |
+| `naran` + … | Нар-, Наран- (Нархүү = Наранхүү) |
+| `arbiǰiqu` | -Арвижих, -равжих (the second "incorrect, but overused in names until it feels like a separate word") |
+| `büǰim-a` | Бүжмаа, Бүжиймаа, Бүзмаа |
+| `dorǰikü1ü` | Доржхүү, Доржоохүү |
+| `balčoγ` | Балцог, Балчиг |
+| `ariyadari` | Арьяадарь, Арьяадаарий |
+
+**Why it branches.** In the script a consonant is normally written with its
+vowel, as in the syllabic habits of other Asian writing traditions; the
+written word keeps vowels that speech has reduced or dropped, and it does not
+mark vowel length. Cyrillic is a phonemic alphabet fitted to the spoken Khalkha
+form, so each speller had to decide which reduced vowels to write, whether a
+vowel was long, and (for Tibetan and Sanskrit names) which of two
+similar-sounding consonants to use. Different decisions, one written name.
+
+Consequences for tools:
+
+- **Cyrillic → script for names is many-to-one and cannot be done by rule.**
+  Мэнд, Мэндүү and Мэндээ must all yield `mendü`. A converter that maps each
+  Cyrillic letter will produce three different words. A name table keyed by
+  Cyrillic spelling is the only reliable source.
+- **Identical script spellings under different Cyrillic headwords are normal**
+  and are not evidence of an error. The signal for a misprint is a *different
+  name* sharing a word (Цолмонбаатар printed with Цолмонбаяр's word), not a
+  spelling variant sharing one.
+- **A/e and u/ü still follow the Cyrillic variant's gender.** Where the glyph
+  is the same either way, the owner's ruling is to take the vowel from the
+  Cyrillic headword: Батдэрэм is `batuderm-e` while Батдарам is `batudarm-a`,
+  although the two print alike. In a foreign word д/т and у/ү likewise follow
+  the Cyrillic.
+- **A printed source is not always right.** The same book prints a wrong word
+  beside a few names and drops a loop in others (-сүрэн printed without its
+  vowel once). Where the correct word is certain it is written, and the
+  disagreement with the print is recorded.
+
+
+## Compound proper names: joined with FVS in Inner Mongolia
+
+A name of a place or a person made of two words, where the second begins
+with a vowel, is written two ways. Recorded 2026-10-11 from the repository
+owner's account and from Menksoft-encoded test words; field evidence, not a
+published rule.
+
+- **Mongolia**: the two parts are kept apart with a hyphen. In the owner's
+  Latin notation that hyphen is `=`, so the place name is `bayan=ündür`.
+- **Inner Mongolia**: the parts are concatenated into one word. The joint is
+  kept readable with variation selectors: the final n of the first part
+  takes FVS2 (U+180C), which hides its dot, and the vowel that opens the
+  second part takes an FVS of its own.
+
+Inner Mongolia uses the script far more, so the joined spelling is the one
+real text is likely to contain.
+
+| Romanization (digit = FVS) | Parts | Code points |
+|---|---|---|
+| `bayan2ü2ndür` | bayan + ündür | `U+182A U+1820 U+1836 U+1820 U+1828 U+180C U+1826 U+180C U+1828 U+1833 U+1826 U+1837` |
+| `čolmon2o1do` | čolmon + odo | `U+1834 U+1823 U+182F U+182E U+1823 U+1828 U+180C U+1823 U+180B U+1833 U+1823` |
+
+Both are what the Menksoft glyphs of those words read as, and the owner
+confirmed on 2026-10-11 that the Unicode sequences draw the same shapes as
+the Menksoft originals. The three variants are registered for Hudum in
+`variants.json`: NA medial FVS2 (condition `devsger`, "first medial form"),
+UE medial FVS2 ("third medial form"), O medial FVS1 ("second medial form").
+
+Consequences for tools:
+
+- **These FVS are meaningful, not stray.** A linter must not strip or flag
+  them, and a later-syllable o inside such a word (`čolmon2o1do`) is the
+  first vowel of the second name, not a `non-initial-o` slip.
+- **A joined name can mix vowel genders** for the same reason as the
+  connected compounds of Poppe §88 above.
+### What Mongolia's rule says
+
+*Монгол бичгийн зөв бичих дүрэм* (Institute of Language and Literature,
+Mongolian Academy of Sciences, 2025), approved as the national rule by
+resolution No. 02 of the National Council for Language Policy, 2026-02-11.
+§3.2.2 covers proper names of compound structure:
+
+1. Second name begins with a **consonant**: written joined. Улаанбаатар,
+   Батсайхан, Мөнхцэцэг.
+2. A first-syllable ö/ü of the second name keeps its stroke (шилбэ), as it
+   would at the start of a word: Амархүү, Даваасүрэн.
+3. Second name begins with a **vowel**: separated by a hyphen (зураас).
+   Алтан-Од, Энх-Орших, Баян-Өлгий. Exception: where the script spelling of
+   the second name begins with a consonant by etymology although the Cyrillic
+   begins with a vowel, it is joined (Эрдэнэ-Очир, Лхам-Орлом).
+4. A second name beginning with y is joined to the first: Бадам-Ёндон.
+5. A first name ending in n before a second beginning with q/γ/k/g writes
+   that n as ng: Баянгол, Нарангэрэл.
+6. A first name with the traditional ua spelling drops the final a:
+   Чонохүү.
+7. A suffix inside the name is written with it: Үүрийнтуяа, Энхийн-Од.
+8. A name ending in ng takes an added g before a vowel-initial suffix:
+   Энгүүн.
+
+So for a vowel-initial second part **Mongolia separates with a hyphen and
+Inner Mongolian practice joins with FVS**; both occur in real text and
+neither is an encoding error.
+
+**The document does not specify the hyphen's code point**, or any other: it
+is a language rule, not a technical one, and says only "a dash" (зураас).
+Its punctuation table happens to be typed with U+1806 on the dash row. The
+§3.2.2 examples, in the PDF's text layer, are typeset as two U+180A between
+spaces: Алтан-Од is `U+1820 U+182F U+1832 U+1820 U+1828 U+0020 U+180A U+180A
+U+0020 U+1823 U+1833 U+1824`. That layer is typed by shape and is weak
+evidence for any code point. Neither is a prescription. **This knowledge base writes U+1806, with no space
+on either side** (repository owner, 2026-10-11): Алтан-Од is the two names
+with a single U+1806 between them. The keyboard hyphen U+002D and nirugu
+U+180A draw much the same and are not that character.
+
+The whole rule is digested in [national-rule.md](national-rule.md) and
+[national-rule-suffixes.md](national-rule-suffixes.md). Where it disagrees with this file, the repository owner's rulings are
+collected under "Rulings so far" at the top of `national-rule.md`. In short:
+the separated final a/e stays a matter of vocabulary, learned word by word,
+and the book's statements about it are a guide for the undecided writer and
+not a rule to lint; чоно is `činu-a` and nothing else.
+
+The same document's closing recommendations list the fused case + reflexive
+forms, among them `taiγan` and `teigen`, as valid alternatives to the
+separated ones, to be used consistently within one text.
+
 ## Punctuation & numerals notes
 
 Classical functions: U+1802 ceg ≈ comma; U+1803 dabqur ceg ends sentences;

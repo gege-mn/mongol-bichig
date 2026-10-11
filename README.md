@@ -6,7 +6,7 @@ The single source of truth for traditional Mongolian script (Mongol bichig,
 | Face | What | Who it's for |
 |---|---|---|
 | **Knowledge base** | [`skills/mongol-bichig/references/`](skills/mongol-bichig/references/) — nine source-cited documents on the encoding model, history, variation sequences, script styles, suffixes, legacy encodings, fonts and orthography | humans |
-| **Agent skills** | [`skills/`](skills/) — installable with `npx skills add gege-mn/mongol-bichig` | coding agents |
+| **Agent skills** | [`skills/`](skills/) — `mongol-bichig` (the encoding), `gege-linter` (validation) and `bichig-review` (a reader reviews an app's strings in a local page, the agent applies the result); installable with `npx skills add gege-mn/mongol-bichig` | coding agents |
 | **npm package** | `@gege-mn/mongol-bichig` — the suffix registry, Classical romanization and Unicode character classes | code |
 
 Nothing here is specific to one tool. [gege-linter][linter] validates bichig
@@ -38,7 +38,7 @@ connectorSuffixes.find((s) => s.translit === 'iyar');
 //   join: 'mvs', registry: true }
 ```
 
-Exports: `suffixes` (all 76 entries), `connectorSuffixes` (the 68 joined by
+Exports: `suffixes` (all 80 entries), `connectorSuffixes` (the 72 joined by
 MVS), `spaceParticles` (the 8 that take a plain space and must never be
 connector-joined), `suffixByTranslit`, `suffixesMatching`; `toScript`,
 `fromScript`, `finalLetter`, `isRomanizable`; and the character classes
@@ -73,7 +73,7 @@ Three properties, each enforced by a test rather than by discipline:
 code, always `U+XXXX` in prose. They are silently mistranscribed by editors,
 clipboards and language models, and the resulting bug is by definition
 invisible. `test/no-invisible-literals.test.ts` enforces this across `src/`,
-`test/`, `skills/` and `scripts/`.
+`test/`, `skills/`, `scripts/` and `review/`.
 
 Visible bichig letters (ᠠ ᠨ ᠮ …) are fine as literals.
 
@@ -87,6 +87,23 @@ pnpm lint
 pnpm build       # tsc → dist/, then regenerate data/suffixes.json
 ```
 
+### The review page
+
+`skills/bichig-review/assets/review.html` is the page the `bichig-review` skill
+opens: one self-contained file with the romanizer, the linter and the font
+inside. It is generated and committed, because a skill is installed by copying
+its folder. The sources are in [`review/`](review/) (`model.ts` is the logic,
+tested in `test/review-model.test.ts`; `app.js`, `style.css` and `index.html`
+are the page):
+
+```sh
+pnpm build:review    # review/ → skills/bichig-review/assets/review.html
+node skills/bichig-review/scripts/review.mjs path/to/strings.json   # try it
+```
+
+`esbuild` and `@gege-mn/gege-linter` are development dependencies for this
+build alone; the published package still has none.
+
 ## Provenance
 
 [`sources.md`](sources.md) pins every primary source the knowledge base rests
@@ -96,4 +113,5 @@ version, that file says what to re-read.
 
 ## Licence
 
-MIT.
+MIT. The font inside the review page is Noto Sans Mongolian, under the SIL Open
+Font License 1.1 ([`review/font/OFL.txt`](review/font/OFL.txt)).

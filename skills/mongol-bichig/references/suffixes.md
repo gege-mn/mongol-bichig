@@ -102,8 +102,15 @@ short forms are equally standard.
 | ᠯᠤᠭ⟨MVS⟩ᠠ | `U+180E U+182F U+1824 U+182D U+180E U+1820` | luγ-a | лугаа | masc | any ending (literary) | — |
 | ᠯᠦᠭᠡ | `U+180E U+182F U+1826 U+182D U+1821` | lüge | лүгээ | fem | any ending (literary) | ✓ |
 
-May also be written *attached* to the stem — writer's choice; both are valid
-(so the linter must accept attached ᠲᠠᠢ without a preceding connector).
+May also be written *attached* to the stem — a stylistic choice in ordinary
+text, and both are valid (so the linter must accept attached ᠲᠠᠢ without a
+preceding connector). **Legal and other formal documents attach it**, and so
+do the ordinals ᠳᠤᠭᠠᠷ/ᠳᠦᠭᠡᠷ and ᠳᠠᠬᠢ/ᠳᠡᠬᠢ on a number word (repository owner,
+2026-10-11). The tools follow that: the converter attaches all six by
+default with an option for the connector-joined form, and the linter checks
+for the attached form in its formal mode only. The national rule (§2.3.6)
+puts the line elsewhere, by function; that is recorded in `national-rule.md`
+and not adopted.
 ᠯᠤᠭ⟨MVS⟩ᠠ carries a word-internal MVS before its final ᠠ.
 
 ### 7. Directive — чиглэхийн тийн ялгал (-руу/-рүү/-луу/-лүү)
@@ -155,12 +162,25 @@ Stacks after case suffixes (задлаг хэлбэр): ᠲᠠᠢ ᠪᠠᠨ = -�
 
 | Bichig | Code points | Translit | Cyrillic | Gender | Use after | Reg |
 |---|---|---|---|---|---|---|
-| ᠤᠳ | `U+180E U+1824 U+1833` | ud | -ууд | masc | consonants | ✓ |
-| ᠦᠳ | `U+180E U+1826 U+1833` | üd | -үүд | fem | consonants | ✓ |
-| ᠨᠤᠭᠤᠳ | `U+180E U+1828 U+1824 U+182D U+1824 U+1833` | nuγud | -ууд | masc | vowels | — |
-| ᠨᠦᠭᠦᠳ | `U+180E U+1828 U+1826 U+182D U+1826 U+1833` | nügüd | -үүд | fem | vowels | ✓ |
+| ᠤᠳ | `U+180E U+1824 U+1833` | ud | -ууд | masc | consonants except н | ✓ |
+| ᠦᠳ | `U+180E U+1826 U+1833` | üd | -үүд | fem | consonants except н | ✓ |
+| ᠨᠤᠭᠤᠳ | `U+180E U+1828 U+1824 U+182D U+1824 U+1833` | nuγud | -ууд | masc | vowels, н | — |
+| ᠨᠦᠭᠦᠳ | `U+180E U+1828 U+1826 U+182D U+1826 U+1833` | nügüd | -үүд | fem | vowels, н | ✓ |
 | ᠨᠠᠷ | `U+180E U+1828 U+1820 U+1837` | nar | нар | masc | people/titles | — |
 | ᠨᠡᠷ | `U+180E U+1828 U+1821 U+1837` | ner | нэр | fem | people/titles | — |
+
+A stem ending in n takes ᠨᠤᠭᠤᠳ/ᠨᠦᠭᠦᠳ, not ᠤᠳ/ᠦᠳ: сонинууд is `sonin-nuγud`.
+Ruled by the repository owner on 2026-10-11, following the national rule
+(Appendix 1 §1.1.1 #1). Until then this table had ᠤᠳ/ᠦᠳ after every
+consonant.
+
+**Unreconciled.** An earlier reader ruling points the other way:
+мэргэжилтнүүд was given as `merγeǰilten-üd` on 2026-07-26, an n-final stem
+with the bare form, and gege-converter keeps the bare form on its account
+(its suffix table records the attempt to change it and the revert). The
+Tungaamal-derived word list has ᠨᠤᠭᠤᠳ on all 37 of its n-final stems. Whether
+the 2026-07 answer is an exception, or today's ruling should not be
+categorical, is still to be asked.
 
 ## Fused and clitic combinations (registry-confirmed)
 
@@ -169,6 +189,8 @@ Stacks after case suffixes (задлаг хэлбэр): ᠲᠠᠢ ᠪᠠᠨ = -�
 | ᠳᠠᠭᠠᠨ | `U+180E U+1833 U+1820 U+182D U+1820 U+1828` | daγan | -даа/-доо | dative + reflexive | ✓ |
 | ᠳᠡᠭᠡᠨ | `U+180E U+1833 U+1821 U+182D U+1821 U+1828` | degen | -дээ/-дөө | dative + reflexive | ✓ |
 | ᠠᠴᠠᠭᠠᠨ | `U+180E U+1820 U+1834 U+1820 U+182D U+1820 U+1828` | achaγan | -аасаа | ablative + reflexive | ✓ |
+| ᠲᠠᠢᠭᠠᠨ | `U+180E U+1832 U+1820 U+1822 U+182D U+1820 U+1828` | taiγan | -тайгаа | comitative + reflexive | — |
+| ᠲᠡᠢᠭᠡᠨ | `U+180E U+1832 U+1821 U+1822 U+182D U+1821 U+1828` | teigen | -тэйгээ | comitative + reflexive | — |
 | ᠳᠤᠨᠢ | `U+180E U+1833 U+1824 U+1828 U+1822` | duni | -д нь | dative + 3p poss. | ✓ |
 | ᠳᠦᠨᠢ | `U+180E U+1833 U+1826 U+1828 U+1822` | düni | -д нь | dative + 3p poss. | ✓ |
 | ᠲᠦᠨᠢ | `U+180E U+1832 U+1826 U+1828 U+1822` | tüni | -т нь | dative + 3p poss. | ✓ |
@@ -180,6 +202,19 @@ Stacks after case suffixes (задлаг хэлбэр): ᠲᠠᠢ ᠪᠠᠨ = -�
 Expected-but-unregistered harmonic mates (valid, no special shaping, hence
 absent from the registry): ᠲᠠᠭᠠᠨ/ᠲᠡᠭᠡᠨ (-таа/-тээ after hard finals),
 ᠡᠴᠡᠭᠡᠨ (-ээсээ), ᠲᠤᠨᠢ (-т нь masc).
+
+ᠲᠠᠢᠭᠠᠨ/ᠲᠡᠢᠭᠡᠨ are the comitative stack written as one suffix — -tai-ban and
+-tei-ben conjoined because one is easier to write than two (bichig reader,
+2026-10-11). Like ᠲᠠᠢ itself they shape by default rules, hence `Reg —`.
+
+They are six letters, with a single i. On paper the i after a vowel is drawn
+with two strokes (шилбэ), which is why the national rule's appendix spells
+them with seven and why the sound is traditionally analysed as y + i. In
+Unicode that doubling is the font's work, not the writer's: UTN #57 gives
+medial I a two-stroke variant under the condition `vowel_devsger`, and Noto
+shapes a lone U+1822 after a vowel as `u1822.II.medi`. The same holds for
+сайн, which is `sain` and never `sayin` or `saiin`. Typing the y as well
+adds a third stroke.
 
 ## Space-joined particles (plain U+0020, never MVS)
 
@@ -232,6 +267,14 @@ forms), and no particle inventory in any era (NNBSP-based MLREQ included)
 lists it. `space-before-suffix` must treat a space before it as correct;
 MVS before it is the error.
 
+This is about negating a word, not about every word that ends in -гүй. A few
+have long since become words of their own and are written as one: эзгүй
+("deserted"), ашгүй, бүсгүй ("woman", which is not a negation of anything).
+Nobody writes them with a separate үгүй even in Cyrillic, so they are a plain
+adjective and noun, not a stem plus ᠦᠭᠡᠢ (repository owner, 2026-10-11; the
+national rule §2.3.7 names the same three as a set kept together by custom).
+A converter needs them as dictionary words; no rule should split them.
+
 ᠦᠭᠡᠢ is also **invariantly feminine** — it has no masculine counterpart and
 does not harmonise to the preceding stem, so ᠠᠪᠤ ᠦᠭᠡᠢ (аавгүй) pairs a
 masculine stem with a feminine particle and that is correct (confirmed
@@ -261,6 +304,17 @@ source before anything moves.
 | ᠨᠢ | `U+180E U+1828 U+1822` | ni | нь | 3p possessive |
 | ᠮᠢᠨᠢ | `U+180E U+182E U+1822 U+1828 U+1822` | mini | минь | 1sg possessive |
 | ᠴᠢᠨᠢ | `U+180E U+1834 U+1822 U+1828 U+1822` | chini | чинь | 2sg possessive |
+| ᠮᠠᠨᠢ | `U+180E U+182E U+1820 U+1828 U+1822` | mani | маань | 1pl possessive |
+| ᠲᠠᠨᠢ | `U+180E U+1832 U+1820 U+1828 U+1822` | tani | тань | 2pl possessive |
+| ᠠᠨᠤ | `U+180E U+1820 U+1828 U+1824` | anu | ану | 3p possessive, older form (masc) |
+| ᠢᠨᠦ | `U+180E U+1822 U+1828 U+1826` | inü | инү | 3p possessive, older form (fem) |
+
+The last four were added on 2026-10-11 on the repository owner's ruling that
+the whole family follows минь and чинь: маань and тань are their plural
+counterparts, ану and инү the older forms of нь. The national rule lists all
+of them as possessive endings written after the word (Appendix 2), without
+saying how they are joined; the Unicode shaping data lists none of the seven,
+because none needs a special letter shape.
 
 The same corpus scan surfaced two encoding bugs in gege.mn, both ruled by
 its author 2026-07-25: (1) the blog wrote санамсаргүй with an MVS before
@@ -304,10 +358,18 @@ tables — candidates for a later expansion pass:
 | yüm | ᠶᠦᠮ | юм | high |
 | yümsen | ᠶᠦᠮᠰᠡᠨ | юмсан | medium |
 | da / de | ᠳᠠ / ᠳᠡ | archaic dative -да/-дэ | medium |
-| dag / deg | ᠳᠠᠭ / ᠳᠡᠭ | -даг/-дэг? | low — verify why detached |
 | yügen | ᠶᠦᠭᠡᠨ | -ийгээ (refl. acc.)? | low |
 | nügen | ᠨᠦᠭᠡᠨ | ? | low |
 | hü | ᠬᠦ | кү/хү emphatic (classical) | medium |
+
+**Not the habitual -даг/-дэг.** The registry also has a `d a g` / `d e g`
+shaping entry after MVS. This table once guessed it was the habitual verbal
+ending and listed it as connector-joined. That was wrong and the row is gone
+(repository owner, 2026-10-11): -даг is always written attached to the verb
+stem, as verbal endings are, and has no standalone form — явдаг is `yabudaγ`,
+and a connector before it is an error, not a style. What the registry entry is
+for remains unidentified; a shaping entry only says how a font draws the
+sequence if someone writes it, not that writing it is correct.
 
 ## Case-bound possession, and three more from Appendix IV
 

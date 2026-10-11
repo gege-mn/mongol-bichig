@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.2.3 — unreleased
+
+A patch number for the same reason 0.2.2 was: both consumers require
+`^0.2.0`. **Not purely additive this time**: see Changed.
+
+### Added
+
+- **`=` romanizes the script's hyphen, U+1806**, in `toScript` and
+  `fromScript`: `altan=odu` is Алтан-Од.
+- **Four possessive clitics**, `mani` (маань), `tani` (тань), `anu` (ану) and
+  `inü` (инү), connector-joined like `mini` and `chini`. Ruled 2026-10-11.
+- **Two fused suffixes**, `taiγan` (-тайгаа) and `teigen` (-тэйгээ): the
+  comitative + reflexive stack -tai-ban / -tei-ben written as one suffix.
+  Ruled by a bichig reader 2026-10-11. Joined with MVS like the comitative
+  itself; absent from the shaping registry because they shape by default
+  rules. A linter reading this table stops reporting them as unknown.
+
+### Changed
+
+- **Plural after a stem in n** is `nuγud`/`nügüd`, not `ud`/`üd` (сонинууд =
+  `sonin-nuγud`). `ud`/`üd` are now `after: 'consonant-not-n'`, and
+  `nuγud`/`nügüd` take a new condition, `'vowel-or-n'`, added to
+  `AttachCondition`. A consumer that switches exhaustively on that type needs
+  the new case. Ruled 2026-10-11, following the national rule.
+
+- **`dag`/`deg` are removed** from the connector-joined suffixes. They were a
+  low-confidence guess that a registry shaping entry was the habitual
+  -даг/-дэг; that ending is always attached to the verb stem and never takes a
+  connector. A linter reading this table now reports a connector before it.
+  Two entries go and six are added below, so the registry moves from 68
+  connector-joined entries to 72 (80 with the space-joined words): a consumer that accepted MVS + `dag` will stop accepting it.
+
+### Documentation
+
+- **Mongolia's national orthography rule is digested** into two new reference
+  documents, `national-rule.md` and `national-rule-suffixes.md`: every rule
+  paraphrased with its section number, and the places where it disagrees with
+  this knowledge base listed with the repository owner's rulings on them. The plural change
+  above is the one ruling that follows the rule against the old table.
+- **Compound proper names** in `orthography.md`: Mongolia hyphenates a
+  vowel-initial second part, Inner Mongolian practice joins it with FVS.
+- The mongol-bichig and gege-linter skills point at both.
+
 ## 0.2.2 — 2026-07-31
 
 A patch for the same reason 0.2.1 was: both consumers require `^0.2.0`, which

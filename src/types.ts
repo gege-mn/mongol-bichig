@@ -31,6 +31,7 @@ export type AttachCondition =
   | 'consonant'
   | 'consonant-not-n'
   | 'n'
+  | 'vowel-or-n'
   | 'vowel-or-soft'
   | 'hard'
   | 'people'

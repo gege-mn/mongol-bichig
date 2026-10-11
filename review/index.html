@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>bichig review</title>
+    <style>
+      /*CSS*/
+    </style>
+  </head>
+  <body>
+    <div id="app" hidden>
+      <header class="bar">
+        <button type="button" id="btn-list" class="ghost">Strings</button>
+        <div class="bar-title">
+          <h1 id="title">bichig review</h1>
+          <span id="source"></span>
+        </div>
+        <div class="progress">
+          <div id="meter" class="meter" role="progressbar" aria-label="Reviewed" aria-valuemin="0">
+            <i id="meter-ok"></i><i id="meter-wrong"></i><i id="meter-unsure"></i>
+          </div>
+          <span id="progress-text"></span>
+        </div>
+        <span id="save-state" role="status"></span>
+        <button type="button" id="btn-ref" class="ghost" title="A file with the same keys, in a language you read">
+          Add meanings
+        </button>
+        <button type="button" id="btn-help" class="ghost" aria-label="Keyboard shortcuts">?</button>
+        <button type="button" id="btn-finish" class="primary">Finish review</button>
+        <input type="file" id="ref-file" hidden />
+      </header>
+
+      <aside class="side">
+        <input type="search" id="search" placeholder="Search    /" aria-label="Search the strings" />
+        <div id="filters" class="filters"></div>
+        <ol id="list"></ol>
+      </aside>
+
+      <main id="stage"></main>
+    </div>
+
+    <div id="empty" hidden>
+      <div class="drop">
+        <h1>bichig review</h1>
+        <p>Review an interface's Mongolian-script strings, one at a time.</p>
+        <p><button type="button" id="pick" class="primary">Choose a file</button></p>
+        <p class="dim">
+          or drop one here, or paste its text. JSON of any shape, or a source file of
+          <code>key: 'value', // meaning</code> lines. Values in Latin letters are read as Classical
+          romanization.
+        </p>
+        <p class="dim">
+          To open a file from the web, add <code>?url=…</code> to this page's address, and
+          <code>&amp;ref=…</code> for a file of meanings with the same keys.
+        </p>
+        <p id="empty-error" class="bad" role="alert"></p>
+        <input type="file" id="file" hidden />
+      </div>
+    </div>
+
+    <div id="done" hidden>
+      <div class="drop">
+        <h1>Review handed back</h1>
+        <p>It is saved, and the agent that opened this page has it. You can close this tab.</p>
+        <p><code id="done-path"></code></p>
+      </div>
+    </div>
+
+    <dialog id="finish">
+      <h2>Finish the review</h2>
+      <ul id="finish-counts" class="counts"></ul>
+      <p id="finish-warning" class="warn"></p>
+      <p id="finish-status" class="dim" role="status"></p>
+      <div class="dialog-actions">
+        <button type="button" class="ghost" data-close>Keep reviewing</button>
+        <span id="finish-local">
+          <button type="button" id="finish-copy" class="ghost">Copy as JSON</button>
+          <button type="button" id="finish-download" class="primary">Download the review</button>
+        </span>
+        <span id="finish-server">
+          <button type="button" id="finish-send" class="primary">Hand it back</button>
+        </span>
+      </div>
+    </dialog>
+
+    <dialog id="help">
+      <h2>Keyboard</h2>
+      <dl class="keys">
+        <dt><kbd>A</kbd> or <kbd>Enter</kbd></dt>
+        <dd>Correct, and on to the next string</dd>
+        <dt><kbd>X</kbd></dt>
+        <dd>Wrong: write the correct spelling</dd>
+        <dt><kbd>U</kbd></dt>
+        <dd>Unsure: write a note</dd>
+        <dt><kbd>N</kbd></dt>
+        <dd>Write a note</dd>
+        <dt><kbd>J</kbd> <kbd>K</kbd> or <kbd>↓</kbd> <kbd>↑</kbd></dt>
+        <dd>Next and previous string</dd>
+        <dt><kbd>C</kbd></dt>
+        <dd>Show the code points</dd>
+        <dt><kbd>/</kbd></dt>
+        <dd>Search</dd>
+        <dt><kbd>Enter</kbd> in a field</dt>
+        <dd>Done with this string, next one</dd>
+        <dt><kbd>Esc</kbd></dt>
+        <dd>Leave a field</dd>
+      </dl>
+      <p class="dim">
+        A correction is written in Classical romanization: <code>-</code> is the suffix connector,
+        <code>gh ch sh j</code> stand for γ č š ǰ, <code>kh</code> is the loan letter for Cyrillic к, and a
+        word may end in <code>,</code> or <code>.</code>
+      </p>
+      <div class="dialog-actions">
+        <button type="button" class="primary" data-close>Close</button>
+      </div>
+    </dialog>
+
+    <script id="review-data" type="application/json">
+      null
+    </script>
+    <script>
+      /*JS*/
+    </script>
+  </body>
+</html>

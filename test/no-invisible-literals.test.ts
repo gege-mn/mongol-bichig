@@ -33,8 +33,10 @@ describe('no invisible literals', () => {
   const files = [
     ...walk(join(ROOT, 'src'), /\.ts$/),
     ...walk(join(ROOT, 'test'), /\.ts$/),
-    ...walk(join(ROOT, 'skills'), /\.md$/),
+    // `.html` is the built review page: its bundle must come out escaped too.
+    ...walk(join(ROOT, 'skills'), /\.(md|mjs|html)$/),
     ...walk(join(ROOT, 'scripts'), /\.mjs$/),
+    ...walk(join(ROOT, 'review'), /\.(ts|js|css|html)$/),
   ];
 
   it('scans a non-trivial number of files', () => {

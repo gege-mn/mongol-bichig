@@ -9,6 +9,8 @@
  *
  * Conventions
  * - `-` marks a chachlag / suffix connector and becomes MVS (U+180E).
+ * - `=` is the script's hyphen, U+1806, as between the parts of a compound
+ *   name: `altan=odu` is Алтан-Од.
  * - `.` forces a letter boundary and is otherwise ignored, so `n.g` is
  *   NA+GA rather than the ANG ligature that bare `ng` produces.
  * - A digit `1`–`4` selects a free variation selector for the letter before
@@ -51,6 +53,7 @@ import type { Harmony } from './types.js';
 
 /** Suffix connector / chachlag. */
 const MVS_CP = 0x180e;
+const HYPHEN_CP = 0x1806;
 
 /** `'1'`–`'4'` → FVS1–FVS4, derived from the canonical selector map. */
 const DIGIT_TO_FVS_CP: ReadonlyArray<readonly [string, number]> = [...FVS].map(
@@ -99,6 +102,7 @@ const ROMAN_TO_CP: ReadonlyArray<readonly [string, number]> = [
   // Loan letter, deliberately spelled as a digraph — see the header.
   ['kh', 0x183b],
   ['-', MVS_CP],
+  ['=', HYPHEN_CP],
   ...DIGIT_TO_FVS_CP,
 ];
 
@@ -136,6 +140,7 @@ const CP_TO_ROMAN = new Map<number, string>([
   [0x183d, 'z'],
   [0x183b, 'kh'],
   [MVS_CP, '-'],
+  [HYPHEN_CP, '='],
   ...DIGIT_TO_FVS_CP.map(([digit, c]) => [c, digit] as const),
 ]);
 

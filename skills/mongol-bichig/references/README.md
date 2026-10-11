@@ -19,6 +19,8 @@ literals.
 | [legacy-encodings.md](legacy-encodings.md) | Menksoft/Saiyin/Boljoo PUA, CMs ASCII fonts, the IME landscape, PUA detection heuristics, converters | linter `no-pua`; corpus triage |
 | [fonts-and-rendering.md](fonts-and-rendering.md) | Noto v3 vs Baiti, shaping engines, platform matrix, hb-shape recipes, how misuse renders | test verification; issue messages |
 | [orthography.md](orthography.md) | Vowel harmony, chachlag, closed vowel-sequence inventory, ranked linguistic rule candidates with FP risk | linter `non-initial-o`; converter harmony resolution |
+| [national-rule.md](national-rule.md) | Digest of Mongolia's national orthography rule (2026): principles, alphabet, harmony, attached versus written following, abbreviation, proper names, foreign words, punctuation, pronoun and auxiliary-word lists. Ends with its open conflicts with this knowledge base | converter spelling decisions; linter rule candidates; anyone writing text for readers in Mongolia |
+| [national-rule-suffixes.md](national-rule-suffixes.md) | The same rule's suffix appendices: derivational suffixes, and inflectional endings cross-checked row by row against the registry | the registry's open questions; converter stage 3 |
 
 Reading order for newcomers: encoding-model → suffixes → variation-sequences,
 then the rest as needed. encoding-history is the "why does any of this exist"

@@ -53,6 +53,12 @@ worth reaching and reporting precisely.
   the reference documents are *about*. What stays out: company names, service
   domains, and anything that reads as credit.
 
+## The review page
+
+`skills/bichig-review/assets/review.html` is generated: edit `review/`, run
+`pnpm build:review`, commit both. Editor tools can decode a typed `\uXXXX` into
+the literal character; `pnpm test` catches it.
+
 ## What is authoritative
 
 `sources.md` pins the provenance of every claim. The reference documents are

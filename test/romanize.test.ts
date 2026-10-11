@@ -165,3 +165,12 @@ describe('fromScript', () => {
     expect(fromScript('abc')).toBe('abc');
   });
 });
+
+describe('the hyphen', () => {
+  it('is `=` in both directions', () => {
+    const script = toScript('altan=odu');
+    expect([...script].map((c) => c.codePointAt(0))).toContain(0x1806);
+    expect(script).toBe(`${toScript('altan')}\u1806${toScript('odu')}`);
+    expect(fromScript(script)).toBe('altan=odu');
+  });
+});

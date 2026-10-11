@@ -68,20 +68,36 @@ letter — because real Ali Gali uses those two as letters in their own right.
 The conversion touches only the letters, connectors and stray suffix FVS;
 punctuation and spelling are left as written.
 
+#### Text in the Menksoft encoding
+
+```ts
+import { isMenksoft, menksoftToUnicode } from '@gege-mn/gege-linter';
+
+if (isMenksoft(text)) text = menksoftToUnicode(text);
+```
+
+Menksoft text is Private Use Area glyphs (U+E234–E34F), one code point per
+letter shape; `menksoftToUnicode` reads them back as letters and then applies
+the linter's own fixes to the result. Hudum only. `isMenksoft` is true when a
+Menksoft letter is present and no Private Use Area code point lies outside
+that band. `no-pua` offers the same reading as a fix, run by run.
+
 ## The rules
 
 | Rule | Severity | Flags | Fix |
 |---|---|---|---|
 | `mvs-context` | error | MVS not between two Mongolian letters | — |
 | `fvs-placement` | error | FVS1–4 not immediately after a Mongolian letter (doubling included) | — |
-| `no-pua` | error | Private Use Area code points (Menksoft-era glyph text), one diagnostic per run | — |
+| `no-pua` | error | Private Use Area code points (Menksoft-era glyph text), one diagnostic per run | the Unicode reading, for a run inside Menksoft's Hudum band |
+| `detached-suffix` | error | a connector before the habitual -даг/-дэг, which is always attached to the verb | the attached form |
+| `detached-suffix` | warning, **formal mode only** | a connector before the comitative -тай/-тэй or the ordinals -дугаар/-дүгээр, -дахь/-дэх | the attached form |
 | `wrong-block` | warning | Todo/Sibe/Manchu/Ali Gali letters in Hudum text | ᠬ/ᠭ for the U+1888/U+1889 look-alikes |
 | `zwj-zwnj` | warning | ZWJ/ZWNJ **between** two Mongolian letters | — |
 | `nnbsp-legacy` | warning | NNBSP suffix connector (pre-16.0 model) | MVS (U+180E) |
 | `unknown-suffix` | warning | connector-joined letter run not in the suffix dictionary; a run that *is* a separate word is named as one | the dictionary sequence when only a stray FVS breaks the match; a plain space when a whole word follows an MVS |
 | `doubled-ae` | warning | adjacent ᠠᠠ / ᠡᠡ — long a/e take the γ/g hiatus, never a doubled vowel | **none** — the reflexive wants ᠢᠶᠠᠨ/ᠢᠶᠡᠨ, the vocative a single ᠠ/ᠡ and a space |
 | `compat-punctuation` | warning | punctuation encoded as a presentation form: Vertical Forms (U+FE10–FE1F), CJK Compatibility Forms (U+FE30–FE4F), Small Form Variants (U+FE50–FE6F) — GB 18030 / CNS 11643 round-trip characters, never for interchange | the native ᠂ ᠃ ᠁ for comma/full stop/ellipsis, ？ for the question mark (UTN #57 Table 1), ASCII `!` for the exclamation, the nominal character otherwise |
-| `non-initial-o` | info | O/Ö past the first syllable (heuristic; native exceptions exist) | — |
+| `non-initial-o` | info | O/Ö past the first syllable (heuristic; native exceptions exist) | U/Ü, only in the few words a reader has ruled on |
 | `compat-punctuation` | info | U+3001/U+3002 (and halfwidth U+FF61/U+FF64) in Hudum text — core spec 13.5 gives these to Todo and Sibe | ᠂ / ᠃ |
 
 At a **word boundary** a joiner is legitimate and `zwj-zwnj` says nothing: the
@@ -89,6 +105,26 @@ core spec (16.0 §13.5) sanctions ZWJ/ZWNJ for selecting a positional form in
 isolation — `<1820 200D>` initial, `<200D 1820>` final — which is how bichig
 writes abbreviations (ЗХУ is each letter + ZWJ + U+1802). Emoji sequences are
 untouched for the same structural reason.
+
+### Modes
+
+Joining the comitative and the ordinals with a connector or attaching them is
+a stylistic choice in ordinary text, so the default mode accepts both. Legal
+and other formal documents attach them; `formal` mode reports the joined form
+and fixes it. After a digit nothing is reported in either mode.
+
+```ts
+import { formalRules, lint, rulesFor } from '@gege-mn/gege-linter';
+
+lint(text, formalRules); // or rulesFor('formal')
+```
+
+```sh
+gege-linter --mode formal contract.txt
+```
+
+Build the rule list from `formalRules` rather than by hand: it swaps two
+rules together so their fixes never overlap.
 
 ### One rule is opt-in
 
@@ -106,6 +142,11 @@ lint(text, [...rules, fusableStack]); // an editor panel wanting the hint
 
 The suffix dictionary is not the linter's own: it comes from
 `@gege-mn/mongol-bichig`, re-exported here as `suffixes` for convenience.
+Where the linter's model and Mongolia's official orthography rule differ, the
+open items are listed at the end of each part of `references/national-rule.md`
+and `references/national-rule-suffixes.md`; a diagnostic is not proof that a
+spelling is wrong for readers in Mongolia.
+
 The human-readable form is `references/suffixes.md` in the mongol-bichig
 skill, which is also its normative source.
 

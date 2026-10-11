@@ -92,6 +92,26 @@ of 2026-07.
 ## Linguistics
 
 - Poppe, *Grammar of Written Mongolian* — vowel harmony, classical morphology
+- Name-dictionary digitization (in progress, 2026-10): field evidence for
+  "Personal names: one script spelling, several Cyrillic spellings" in
+  `orthography.md`. One printed dictionary plus the repository owner's account
+  of 2026-10-08; 113 same-spelling pairs found, 30 checked by the owner.
+- Compound proper names joined with FVS (2026-10-11): the repository owner's
+  account of Inner Mongolian practice, plus two Menksoft-encoded words read
+  through the `mongol_code` glyph tables (`bayan2ü2ndür`, `čolmon2o1do`), whose
+  Unicode rendering the owner checked against the Menksoft drawing. See
+  "Compound proper names" in `orthography.md`.
+- *Монгол бичгийн зөв бичих дүрэм* (Institute of Language and Literature,
+  Mongolian Academy of Sciences, Ulaanbaatar 2025; annex to resolution No. 02
+  of the National Council for Language Policy, 2026-02-11). The orthography
+  rule in force in Mongolia. Digested in full on 2026-10-11 into
+  `national-rule.md` and `national-rule-suffixes.md`, paraphrased with section
+  numbers. Not redistributed here: the annex carries a notice that
+  reproduction needs the authors' permission. Its rule text and Cyrillic are
+  authoritative for Mongolia; its PDF text layer is typed by glyph shape
+  (same-shaped letters interchanged, no MVS or NNBSP) and is not evidence for
+  code points. The rotated appendix tables extract scrambled, so some
+  attachment conditions there are reconstructions and are marked.
 - Mongolian school grammar tables, as above
 
 ## Downstream research

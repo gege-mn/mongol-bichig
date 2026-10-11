@@ -111,13 +111,29 @@ hb-shape NotoSansMongolian-Regular.ttf -u 'U+1828,U+1823,U+182E,U+180E,U+1824,U+
 hb-shape NotoSansMongolian-Regular.ttf -u 'U+180E'   # → mvs (v3.100; mvs.nominal at v3.002)
 ```
 
+## Two written norms: Mongolia and Inner Mongolia
+
+Text from the two regions differs in spelling conventions, not in encoding,
+and neither is an error. Know which reader the text is for.
+
+- **Mongolia** has an official rule, in force since 2026-02-11; its digest is
+  `references/national-rule.md`. Read it before composing or correcting text
+  for readers in Mongolia.
+- **Compound proper names** whose second part begins with a vowel: Mongolia
+  separates the parts with the Mongolian hyphen U+1806, unspaced (Баян-Өлгий); Inner Mongolian practice
+  joins them into one word, with FVS2 (U+180C) hiding the dot of the first
+  part's final n and an FVS on the vowel that follows. Do not strip those FVS
+  and do not "repair" either form into the other unasked.
+- The rule's PDF is not a source of code points: its script examples are
+  typed by shape. Spellings come from the registry and `toScript`.
+
 ## Mechanical checking
 
 Don't hand-roll any of this. Two things in this same repository already do it:
 
 - The companion **gege-linter** skill — the `@gege-mn/gege-linter` library and
   CLI, which mechanize every hard rule above.
-- `@gege-mn/mongol-bichig` — the canonical data behind them: the 68-entry
+- `@gege-mn/mongol-bichig` — the canonical data behind them: the 72-entry
   Hudum suffix registry (plus the 8 space-joined words that must never take a
   connector), Classical romanization (`toScript`/`fromScript`), and the
   character classes used throughout this document.
@@ -133,11 +149,13 @@ Read on demand. These are canonical — this repository is where they live:
 | File | Read when you need |
 |---|---|
 | `references/encoding-model.md` | the current model: blocks, MVS roles, UCD properties, normalization, ZWJ/nirugu |
-| `references/suffixes.md` | the 68-entry Hudum suffix dictionary with code points |
+| `references/suffixes.md` | the 72-entry Hudum suffix dictionary with code points |
 | `references/variation-sequences.md` | FVS semantics, the valid-FVS quick table, registry divergence |
 | `references/script-styles.md` | Todo/Sibe/Manchu/Ali Gali ranges, look-alikes, locale metadata |
 | `references/legacy-encodings.md` | Menksoft/Saiyin PUA bands, detection heuristics, IME landscape, converters |
 | `references/fonts-and-rendering.md` | font/engine/platform matrix, hb-shape recipes, how misuse renders |
 | `references/orthography.md` | vowel harmony, chachlag, candidate linguistic rules |
+| `references/national-rule.md` | what Mongolia's official orthography rule (2026) prescribes: attaching versus writing apart, proper names, foreign words, punctuation |
+| `references/national-rule-suffixes.md` | that rule's suffix and ending tables, and where they disagree with the registry |
 | `references/encoding-history.md` | why the model changed (1987→2026) |
 | `references/README.md` | index mapping each doc to the tools that consume it |

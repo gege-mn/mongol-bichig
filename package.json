@@ -1,6 +1,6 @@
 {
   "name": "@gege-mn/mongol-bichig",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Canonical data and primitives for traditional Mongolian script (Mongol bichig) — the Hudum suffix registry, Classical romanization, and Unicode character classes. Shared by @gege-mn/gege-linter and @gege-mn/gege-converter.",
   "type": "module",
   "license": "MIT",
@@ -32,6 +32,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json && node scripts/emit-json.mjs",
+    "build:review": "node scripts/build-review.mjs",
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -55,7 +56,9 @@
   ],
   "devDependencies": {
     "@biomejs/biome": "^2.5.1",
+    "@gege-mn/gege-linter": "^0.5.0",
     "@types/node": "^26.1.1",
+    "esbuild": "^0.28.2",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
   }
