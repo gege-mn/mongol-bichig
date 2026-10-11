@@ -174,13 +174,9 @@ Ruled by the repository owner on 2026-10-11, following the national rule
 (Appendix 1 §1.1.1 #1). Until then this table had ᠤᠳ/ᠦᠳ after every
 consonant.
 
-**Unreconciled.** An earlier reader ruling points the other way:
-мэргэжилтнүүд was given as `merγeǰilten-üd` on 2026-07-26, an n-final stem
-with the bare form, and gege-converter keeps the bare form on its account
-(its suffix table records the attempt to change it and the revert). The
-Tungaamal-derived word list has ᠨᠤᠭᠤᠳ on all 37 of its n-final stems. Whether
-the 2026-07 answer is an exception, or today's ruling should not be
-categorical, is still to be asked.
+The same reader had given мэргэжилтнүүд with the bare form on 2026-07-26 and
+re-ruled it on 2026-10-11: it is `merγeǰilten-nügüd`. The rule has no known
+exception; gege-converter follows it as of 0.6.0.
 
 ## Fused and clitic combinations (registry-confirmed)
 

@@ -39,8 +39,7 @@ were written before them and are kept as the record of what the source says.
 - **-гүй.** No conflict: эзгүй, ашгүй, бүсгүй are ordinary words, not a word
   plus үгүй.
 - **Plural after n.** The rule is right: nuγud/nügüd after n. Registry
-  changed. Not yet reconciled with an earlier ruling for мэргэжилтнүүд; see
-  the plural section of `suffixes.md`.
+  changed. мэргэжилтнүүд is `merγeǰilten-nügüd`.
 - **Comitative -тай and the ordinals -дугаар, -дахь.** Joined or attached is
   a stylistic choice in ordinary text; legal and formal documents attach
   them. The rule's split of -тай by function (§2.3.6) is not adopted. The
