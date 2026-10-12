@@ -154,6 +154,7 @@ Read on demand. These are canonical — this repository is where they live:
 | `references/script-styles.md` | Todo/Sibe/Manchu/Ali Gali ranges, look-alikes, locale metadata |
 | `references/legacy-encodings.md` | Menksoft/Saiyin PUA bands, detection heuristics, IME landscape, converters |
 | `references/fonts-and-rendering.md` | font/engine/platform matrix, hb-shape recipes, how misuse renders |
+| `references/font-conformance.md` | which fonts pass, the rubric behind "pass", and what their licences allow |
 | `references/orthography.md` | vowel harmony, chachlag, candidate linguistic rules |
 | `references/national-rule.md` | what Mongolia's official orthography rule (2026) prescribes: attaching versus writing apart, proper names, foreign words, punctuation |
 | `references/national-rule-suffixes.md` | that rule's suffix and ending tables, and where they disagree with the registry |

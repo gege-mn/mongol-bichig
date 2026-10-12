@@ -147,6 +147,12 @@ In legacy fonts, all of the above except PUA is typically *invisible* —
 which is why these bugs ship. Noto v3's visible markers + this linter are
 the two halves of the same enforcement story.
 
+## Checking another font
+
+`pnpm font:check Font.ttf` measures a font against Noto 3.100 case by case and
+says whether it passes. The rubric, the method, and every font measured so far
+with its licence are in [font-conformance.md](font-conformance.md).
+
 ## Verification recipes
 
 ```sh
