@@ -92,6 +92,7 @@ file. Open one when its topic actually comes up. The first block is under
 | `orthography.md` | spelling rules, vowel harmony, o/ö, Tier-3 rule ideas |
 | `legacy-encodings.md` | PUA, Menksoft, input methods — where broken text comes from |
 | `fonts-and-rendering.md` | shaping, or "why does it look wrong"; has hb-shape measurements |
+| `font-conformance.md` | whether a font passes: the rubric, `pnpm font:check`, the fonts measured and their licences |
 | `encoding-history.md` | why a decision was made the way it was (1987 → Unicode 17) |
 | `script-styles.md` | Todo, Sibe, Manchu, Ali Gali, and the `wrong-block` rule |
 | `sources.md` | the provenance of a claim, or the list of open items |

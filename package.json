@@ -33,6 +33,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json && node scripts/emit-json.mjs",
     "build:review": "node scripts/build-review.mjs",
+    "font:check": "node scripts/font-check.mjs",
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run",
     "test:watch": "vitest",

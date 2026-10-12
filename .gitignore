@@ -2,3 +2,6 @@ node_modules/
 dist/
 *.tsbuildinfo
 .tmp
+
+# Third-party fonts under test: never committed.
+fonts-local/
