@@ -21,6 +21,7 @@ gege-linter --fix file.txt                      # apply mechanical fixes in plac
 gege-linter --json file.txt                     # machine-readable (best for agents)
 cat file.txt | gege-linter -                    # stdin
 cat file.txt | gege-linter --fix - > fixed.txt  # fixed text on stdout, report on stderr
+gege-linter --lang mn file.txt                  # findings in en, mn, zh-Hans or fr (0.8.0+)
 gege-linter --list-rules
 ```
 
@@ -31,8 +32,15 @@ Exit codes: **0** clean or warnings only · **1** error-severity findings ·
 per-project whether warnings (legacy NNBSP is a warning) should also fail.
 
 `--json` emits `{ files: [{ path, diagnostics }], summary }` where each
-diagnostic has `rule`, `severity`, `message`, code-point `start`/`end`,
-1-based `line`/`col`, and `fix` when mechanical.
+diagnostic has `rule`, `code`, `severity`, `message`, `messageId`, `data`,
+code-point `start`/`end`, 1-based `line`/`col`, and `fix` when mechanical.
+`message` follows `--lang`; pin `--lang en` if a script reads it.
+
+**Codes** (0.8.0+): every finding has a language-neutral `code` — `GL`, two
+digits for the rule, two for the variant (`GL0101` NNBSP as a suffix
+connector, `GL0102` NNBSP before a particle). Match on `code` or `messageId`,
+never on message text: a published code is never renumbered or reused, and
+the human output prints it before the rule name.
 
 ## Library
 
@@ -46,6 +54,11 @@ const fixed = applyFixes(text, diagnostics);
 
 lint(text, [nnbspLegacy]); // run a subset — every rule is exported by name
 ```
+
+`message` is English. `localize(d, 'mn')` gives it in Mongolian, `'zh-Hans'`
+or `'fr'` (`locales`; `isLocale` narrows a string such as a UI setting), and
+falls back to the English for anything the catalogs lack. `messages` and
+`codes` export the catalogs and the code table.
 
 **Offsets are Unicode code points, not UTF-16 units.** Never apply them
 with `String.slice`/`substring` — that corrupts text containing astral
@@ -84,21 +97,21 @@ that band. `no-pua` offers the same reading as a fix, run by run.
 
 ## The rules
 
-| Rule | Severity | Flags | Fix |
-|---|---|---|---|
-| `mvs-context` | error | MVS not between two Mongolian letters | — |
-| `fvs-placement` | error | FVS1–4 not immediately after a Mongolian letter (doubling included) | — |
-| `no-pua` | error | Private Use Area code points (Menksoft-era glyph text), one diagnostic per run | the Unicode reading, for a run inside Menksoft's Hudum band |
-| `detached-suffix` | error | a connector before the habitual -даг/-дэг, which is always attached to the verb | the attached form |
-| `detached-suffix` | warning, **formal mode only** | a connector before the comitative -тай/-тэй or the ordinals -дугаар/-дүгээр, -дахь/-дэх | the attached form |
-| `wrong-block` | warning | Todo/Sibe/Manchu/Ali Gali letters in Hudum text | ᠬ/ᠭ for the U+1888/U+1889 look-alikes |
-| `zwj-zwnj` | warning | ZWJ/ZWNJ **between** two Mongolian letters | — |
-| `nnbsp-legacy` | warning | NNBSP suffix connector (pre-16.0 model) | MVS (U+180E) |
-| `unknown-suffix` | warning | connector-joined letter run not in the suffix dictionary; a run that *is* a separate word is named as one | the dictionary sequence when only a stray FVS breaks the match; a plain space when a whole word follows an MVS |
-| `doubled-ae` | warning | adjacent ᠠᠠ / ᠡᠡ — long a/e take the γ/g hiatus, never a doubled vowel | **none** — the reflexive wants ᠢᠶᠠᠨ/ᠢᠶᠡᠨ, the vocative a single ᠠ/ᠡ and a space |
-| `compat-punctuation` | warning | punctuation encoded as a presentation form: Vertical Forms (U+FE10–FE1F), CJK Compatibility Forms (U+FE30–FE4F), Small Form Variants (U+FE50–FE6F) — GB 18030 / CNS 11643 round-trip characters, never for interchange | the native ᠂ ᠃ ᠁ for comma/full stop/ellipsis, ？ for the question mark (UTN #57 Table 1), ASCII `!` for the exclamation, the nominal character otherwise |
-| `non-initial-o` | info | O/Ö past the first syllable (heuristic; native exceptions exist) | U/Ü, only in the few words a reader has ruled on |
-| `compat-punctuation` | info | U+3001/U+3002 (and halfwidth U+FF61/U+FF64) in Hudum text — core spec 13.5 gives these to Todo and Sibe | ᠂ / ᠃ |
+| Rule | Code | Severity | Flags | Fix |
+|---|---|---|---|---|
+| `mvs-context` | GL0201 | error | MVS not between two Mongolian letters | — |
+| `fvs-placement` | GL0301–03 | error | FVS1–4 not immediately after a Mongolian letter (doubling included) | — |
+| `no-pua` | GL0401 | error | Private Use Area code points (Menksoft-era glyph text), one diagnostic per run | the Unicode reading, for a run inside Menksoft's Hudum band |
+| `detached-suffix` | GL1201 | error | a connector before the habitual -даг/-дэг, which is always attached to the verb | the attached form |
+| `detached-suffix` | GL1202 | warning, **formal mode only** | a connector before the comitative -тай/-тэй or the ordinals -дугаар/-дүгээр, -дахь/-дэх | the attached form |
+| `wrong-block` | GL0501–05 | warning | Todo/Sibe/Manchu/Ali Gali letters in Hudum text | ᠬ/ᠭ for the U+1888/U+1889 look-alikes |
+| `zwj-zwnj` | GL0601–02 | warning | ZWJ/ZWNJ **between** two Mongolian letters | — |
+| `nnbsp-legacy` | GL0101–02 | warning | NNBSP suffix connector (pre-16.0 model) | MVS (U+180E) |
+| `unknown-suffix` | GL0801–03 | warning | connector-joined letter run not in the suffix dictionary; a run that *is* a separate word is named as one | the dictionary sequence when only a stray FVS breaks the match; a plain space when a whole word follows an MVS |
+| `doubled-ae` | GL1001 | warning | adjacent ᠠᠠ / ᠡᠡ — long a/e take the γ/g hiatus, never a doubled vowel | **none** — the reflexive wants ᠢᠶᠠᠨ/ᠢᠶᠡᠨ, the vocative a single ᠠ/ᠡ and a space |
+| `compat-punctuation` | GL1101–03 | warning | punctuation encoded as a presentation form: Vertical Forms (U+FE10–FE1F), CJK Compatibility Forms (U+FE30–FE4F), Small Form Variants (U+FE50–FE6F) — GB 18030 / CNS 11643 round-trip characters, never for interchange | the native ᠂ ᠃ ᠁ for comma/full stop/ellipsis, ？ for the question mark (UTN #57 Table 1), ASCII `!` for the exclamation, the nominal character otherwise |
+| `non-initial-o` | GL0701 | info | O/Ö past the first syllable (heuristic; native exceptions exist) | U/Ü, only in the few words a reader has ruled on |
+| `compat-punctuation` | GL1104 | info | U+3001/U+3002 (and halfwidth U+FF61/U+FF64) in Hudum text — core spec 13.5 gives these to Todo and Sibe | ᠂ / ᠃ |
 
 At a **word boundary** a joiner is legitimate and `zwj-zwnj` says nothing: the
 core spec (16.0 §13.5) sanctions ZWJ/ZWNJ for selecting a positional form in
@@ -128,7 +141,7 @@ rules together so their fixes never overlap.
 
 ### One rule is opt-in
 
-`fusableStack` (info) is **exported but not in `rules`**, because it reports
+`fusableStack` (info, GL0901) is **exported but not in `rules`**, because it reports
 text that is already correct: an analytic case + reflexive stack that has a
 registered fused equivalent (ᠳᠤ + ᠪᠠᠨ → ᠳᠠᠭᠠᠨ). Задлаг and нийлэг are both
 valid and choosing between them is style, so it carries no `fix` and `--fix`
