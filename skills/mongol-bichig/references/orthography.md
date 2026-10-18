@@ -105,6 +105,23 @@ a first-vowel condition.
   Classical spelling wrote *medial* i-diphthongs as V+y+i (ayil, sayin), but
   **UTN #57 prefers the modern analyses ail/aimag/taulai — do not lint
   medial V+i.**
+
+  **The exception: a solid accusative after a vowel** (bichig reader,
+  2026-10-18). чамайг is one word, *čima-yi* with no connector, and on paper
+  the a is followed by one stroke and then the final i. No plain spelling
+  draws that in a UTN #57 font. In `čimaii` the medial i follows a vowel, so
+  the devsger step gives it two strokes, one too many. `čimai` gives one too
+  few, and `čimayi` draws YA with its hook. The stroke is the YA of -yi in
+  the single-stroke shape UTN #57 gives -yin/-iyar automatically, but only
+  after an MVS, which a solid word does not have. So it is chosen by hand:
+  `U+1834 U+1822 U+182E U+1820 U+1836 U+180B U+1822`, YA + FVS1, measured
+  in Noto 3.100 as `A.medi | I.medi | I.fina`. I + FVS3 (UTN #57's
+  single-stroke medial I) draws the same, but YA + FVS1 keeps the
+  morphology and is also registered in the UCD, so more fonts honour it.
+  намайг is the same construction (not separately ruled), and the reflexive
+  чамайгаа/намайгаа carries the same stem. No other solid V+y+i word is
+  known to need this: in sain, bain-a and eimü the two strokes the font draws
+  by default are the right ones.
 - ua/uua occurs only word-finally *with the separated a*: quu-a, činu-a —
   i.e. `… U+1824 U+180E U+1820`.
 
