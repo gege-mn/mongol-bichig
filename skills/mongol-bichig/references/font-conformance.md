@@ -1,7 +1,7 @@
 # Font conformance — which fonts set current text correctly
 
-Measured 2026-10-12 with `scripts/font-check.mjs` against Noto Sans Mongolian
-3.100, under HarfBuzz 14.4. Invisibles as `U+XXXX`. Licence wording is quoted
+Measured 2026-10-19 with `scripts/font-check.mjs` against Noto Sans Mongolian
+3.103, under HarfBuzz 14.4. Invisibles as `U+XXXX`. Licence wording is quoted
 from each font file's own `name` table; whether a licence allows something is
 our reading, not legal advice.
 
@@ -22,8 +22,7 @@ way the benchmark does.** Concretely, both of:
    | Chachlag | 108 | U+180E before a final U+1820 or U+1821 |
    | MVS before a particle | 167 | the national standard's own particle cases |
 
-"Agrees" means the font draws the same written units in the same positions;
-see the method below. There is no partial credit: one disagreeing case fails
+"Agrees" means the font draws the same written units; see the method below. There is no partial credit: one disagreeing case fails
 the check, and one failed check fails the font. A near miss is worth reading
 on the comparison page, and is still a fail.
 
@@ -51,10 +50,10 @@ pnpm font:check --features dlig Font.ttf      # set with OpenType features on
 pnpm font:check --benchmark Other.ttf Font.ttf
 ```
 
-Needs `hb-shape`. The benchmark defaults to the unhinted Noto 3.100 TTF that
-gege.mn keeps for tooling; `--benchmark` or `BICHIG_BENCHMARK` names another.
-The first line printed for a font is `PASS` or `FAIL` by the rubric above; the
-JSON carries the same verdict, and the HTML page sets each kind of finding in
+Needs `hb-shape`. The benchmark defaults to the Noto TTF that gege.mn keeps
+for tooling (3.103 since 2026-10-15); `--benchmark` or `BICHIG_BENCHMARK` names another.
+Under each font's name, the first line is `PASS` or `FAIL` by the rubric
+above; the exit status is 0 either way. The JSON carries the same verdict, and the HTML page sets each kind of finding in
 both fonts side by side, benchmark in green. **The page is for a reader's eye:
 the counts say where to look, the page says what is wrong.**
 
@@ -65,7 +64,7 @@ mongfontbuilder carries them — `core-hud` and `eac-hud`, vendored in
 `vendor/mongfontbuilder/suites/` — and every entry of the suffix registry on
 eight real stems, joined by U+180E, by U+202F and by a space.
 
-**The comparison.** Noto 3.100 names each glyph after the written units it
+**The comparison.** Noto names each glyph after the written units it
 draws (`u1824.AO.init`), so its answer to a case reads as text. A font under
 test names glyphs however it likes, so nothing is read from its names. Both
 answers are cut where both fonts break a cluster; each piece pairs the
@@ -93,21 +92,21 @@ Counts are cases agreeing with the benchmark. The four deciding checks first.
 
 | Font | Faces | Verdict | Plain | Suffix, MVS | Chachlag | MVS particle | Suffix, NNBSP | FVS4 |
 |---|---|---|---|---|---|---|---|---|
-| Noto Sans Mongolian 3.100 | 1 | benchmark | 1177 | 320 | 108 | 167 | 320 | mapped |
-| Gege Pixel, Shahaa, Mini 0.600 | 3 | **pass** | 1177 | 320 | 108 | 167 | 320 | mapped |
+| Noto Sans Mongolian 3.103 | 1 | benchmark | 1177 | 320 | 108 | 167 | 320 | mapped |
+| Gege Pixel, Shahaa, Mini 0.700 | 3 | **pass** | 1177 | 320 | 108 | 167 | 320 | mapped |
 | Menk … StdEx Tig 2.002 | 28 | **pass** | 1177 | 320 | 108 | 167 | **0** | no |
 | GLT … Tig 1.001 | 83 of 94 | **pass** | 1177 | 320 | 108 | 167 | **0** | no |
 | GLT … Tig 1.001, the other 11 | 11 | fail | 792–1176 | 316–320 | 27–108 | 162–167 | 0 | no |
 | Mongolian … "Delehi3.0.0" | 34 | fail | 1177 | 320 | **106** | 167 | 0 | no |
 | Mongol Qagan Tig Mirror 1.00 | 1 | fail | 1168 | **132** | 89 | 25 | 320 | mapped |
-| MongolianScript 5.91 | 1 | fail | 939 | **0** | 49 | 0 | 144 | no |
-| Classical Mongolian Dashitseden 5.91 | 1 | fail | 939 | **0** | 49 | 0 | 144 | no |
+| MongolianScript 5.91 | 1 | fail | 939 | **0** | 53 | 0 | 144 | no |
+| Classical Mongolian Dashitseden 5.91 | 1 | fail | 939 | **0** | 53 | 0 | 144 | no |
 
 ### Notes on each
 
-- **Gege Pixel** (mongfontbuilder layout) disagrees with Noto on 15 cases in
-  all, every one U+1828 with FVS2 or FVS3, none in a deciding check. It draws
-  no error marks.
+- **Gege Pixel** (mongfontbuilder layout) disagrees with Noto on 3 cases in
+  all, every one U+1828 with FVS2, none in a deciding check. It draws no error
+  marks.
 - **Menk StdEx, GLT and the "Delehi3.0.0" set** are fonts built to the revised
   national standard, and on plain words and MVS suffixes they are the
   benchmark's equal. They differ from Noto where the standard does:
@@ -119,7 +118,7 @@ Counts are cases agreeing with the benchmark. The four deciding checks first.
     disagreements are constructed cases.
   - Coverage of the block: Menk and GLT map 91 code points, the third set 57
     (Hudum only, as Gege Pixel's 58); Noto maps 158.
-- **The eleven GLT faces that fail**: seven lose four plain and eight chachlag
+- **The eleven GLT faces that fail**: seven lose four plain and three chachlag
   cases (Bag Ebhemel, Jabsariin, Jahidal, Oigvrjin, Tvsvlt Oigvrjin, Tvsvlgui
   Oigvrjin, Yeh Ebhemel), three lose one plain case (Juiqilel Budun, Qomorlig
   Budun, Soninaihar Narihan), and Tabvn Xogomt is broken throughout.
@@ -146,7 +145,7 @@ A pass is not permission. What each font file declares:
 
 | Font | Declared terms | Embedding bit | Ship it? Modify it? |
 |---|---|---|---|
-| Noto Sans Mongolian | SIL Open Font License 1.1 | — | **Yes and yes**; a modified build must drop the name (hence "Duct-Taped") |
+| Noto Sans Mongolian | SIL Open Font License 1.1 | — | **Yes and yes** — it declares no Reserved Font Name |
 | Gege Pixel | proprietary, L'Atelier Gege | — | the owner's to decide |
 | Menk StdEx | "You may use this font to display and print content as permitted by the license terms for the product in which this font is included." © 2002–2020 | print and preview | **No** |
 | GLT | "All rights reserved." No licence text. © 2018 | print and preview | **No** |

@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.3 — unreleased
+## 0.2.3 — 2026-10-11
 
 A patch number for the same reason 0.2.2 was: both consumers require
 `^0.2.0`. **Not purely additive this time**: see Changed.

@@ -26,4 +26,4 @@ reads the first two columns.
 
 To update: replace the files from a newer release, change the pin above and in
 `sources.md`, then re-derive the counts quoted in `variation-sequences.md` and
-re-run `pnpm font:check` on the fonts listed in `fonts-and-rendering.md`.
+re-run `pnpm font:check` on the fonts listed in `font-conformance.md`.

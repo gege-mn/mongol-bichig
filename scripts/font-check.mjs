@@ -6,7 +6,7 @@
 // as `font-feature-settings` would; without it a font is set as a browser sets
 // it when nothing is asked for.
 //
-// The benchmark is Noto Sans Mongolian 3.100, whose glyph names spell the
+// The benchmark is Noto Sans Mongolian (3.100 for the counts recorded), whose glyph names spell the
 // written units a letter was set in (`u1824.AO.init`), so its answer to a case
 // can be read as text. A font under test names its glyphs however it likes, so
 // nothing is read from its names: the two answers are cut where both fonts
@@ -20,7 +20,7 @@
 //
 // Needs `hb-shape` (HarfBuzz) on the PATH. Fonts are never copied or committed:
 // the report refers to them where they lie. See
-// `skills/mongol-bichig/references/fonts-and-rendering.md` for how to read the
+// `skills/mongol-bichig/references/font-conformance.md` for how to read the
 // result and for the fonts measured so far.
 
 import { spawnSync } from 'node:child_process';
@@ -253,6 +253,9 @@ function markersOf(font, features) {
   return new Set(drawn.flatMap((glyphs) => glyphs.filter((g) => g.ink).map((g) => g.g)));
 }
 
+// A font without glyph names (a format 3 `post` table) reports glyph 0 as `gid0`.
+const isNotdef = (g) => g.g === '.notdef' || g.g === 'gid0' || g.g === 0;
+
 function missingFrom(font) {
   const run = spawnSync(
     'hb-shape',
@@ -260,7 +263,7 @@ function missingFrom(font) {
     { input: `${REQUIRED.map((cp) => String.fromCodePoint(cp)).join('\n')}\n`, encoding: 'utf8' },
   );
   const rows = run.stdout.trimEnd().split('\n');
-  return REQUIRED.filter((_, i) => JSON.parse(rows[i]).some((g) => g.g === '.notdef' || g.g === 0));
+  return REQUIRED.filter((_, i) => JSON.parse(rows[i]).some(isNotdef));
 }
 
 // ── reading the benchmark ────────────────────────────────────────────────────
@@ -320,8 +323,8 @@ function check(font, cases, bench, benchMarkers, features) {
   for (const [i, testCase] of cases.entries()) {
     const row = { ...testCase, check: checkOf(testCase, bench[i], benchMarkers), pieces: [] };
     rows.push(row);
-    if (bench[i].some((g) => g.g === '.notdef')) row.skip = 'benchmark';
-    else if (shaped[i].some((g) => g.g === '.notdef')) row.skip = 'unmapped';
+    if (bench[i].some(isNotdef)) row.skip = 'benchmark';
+    else if (shaped[i].some(isNotdef)) row.skip = 'unmapped';
     if (row.skip) continue;
 
     const plain = testCase.cps.every((cp) => isLetter(cp) || cp === 0x20);
@@ -352,9 +355,10 @@ function check(font, cases, bench, benchMarkers, features) {
   // letter is often one drawing at the head of a word and inside it.
   const most = (counts) => [...counts].sort((a, b) => b[1] - a[1])[0][0];
   const draws = (glyphs) => most(seen.plain.get(glyphs) ?? seen.all.get(glyphs));
+  // Membership is asked of every case, not only plain words: a pairing seen
+  // only behind a control is still one the glyph was seen drawing.
   const mayDraw = (glyphs, shapes) =>
-    (seen.plain.get(glyphs) ?? seen.all.get(glyphs)).has(shapes) &&
-    unitsOf(shapes) === unitsOf(draws(glyphs));
+    seen.all.get(glyphs).has(shapes) && unitsOf(shapes) === unitsOf(draws(glyphs));
 
   for (const row of rows) {
     row.findings = [];
