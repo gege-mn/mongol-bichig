@@ -98,7 +98,9 @@ Counts are cases agreeing with the benchmark. The four deciding checks first.
 | GLT … Tig 1.001 | 83 of 94 | **pass** | 1177 | 320 | 108 | 167 | **0** | no |
 | GLT … Tig 1.001, the other 11 | 11 | fail | 792–1176 | 316–320 | 27–108 | 162–167 | 0 | no |
 | Mongolian … "Delehi3.0.0" | 34 | fail | 1177 | 320 | **106** | 167 | 0 | no |
+| Mongolian Baiti 5.54 | 1 | fail | **1167** | 320 | 108 | **166** | 320 | mapped |
 | Mongol Qagan Tig Mirror 1.00 | 1 | fail | 1168 | **132** | 89 | 25 | 320 | mapped |
+| Mongolian Baiti 5.01, 5.10 | 2 | fail | 968 | **132** | 54 | 20 | 264 | no |
 | MongolianScript 5.91 | 1 | fail | 939 | **0** | 53 | 0 | 144 | no |
 | Classical Mongolian Dashitseden 5.91 | 1 | fail | 939 | **0** | 53 | 0 | 144 | no |
 
@@ -125,6 +127,26 @@ Counts are cases agreeing with the benchmark. The four deciding checks first.
 - **The "Delehi3.0.0" set** fails on two cases, the same two in all 34 faces:
   U+182D before a chachlag `e`, where it and the benchmark draw different
   finals.
+- **Mongolian Baiti 5.54** (© 2026, built 2026-06-11; the Windows 11 update
+  of August 2026) is the new model: every MVS suffix, chachlag and NNBSP case
+  agrees, U+180F is mapped, and misuse is marked. It fails on 11 cases, all
+  of two kinds, both visible when drawn, and both confined to two-letter
+  words:
+  - A word that is only `bö`, `bü`, `kö` or `kü` takes the o/u ligature,
+    without the final tail, so `bü` reads as `bu` — 8 plain cases and the
+    particle `bü` (бүү) after U+180E. Longer words with the same letters
+    (`büri`, `bügüde`, `kümün`, `böge`) draw as the benchmark does.
+  - The word `ši` on its own loses the dots of `š` — 2 plain cases.
+    `šir`, `šine` and other longer words are unaffected.
+
+  So a page can list Baiti behind Noto with two caveats: **only 5.54 and
+  later** set current text (5.53 and earlier are the older model, and
+  Windows 10 and un-updated Windows 11 machines still have them), and
+  **5.54 still misses the few cases above**, the particle бүү being the one
+  ordinary text meets.
+- **Mongolian Baiti 5.01 and 5.10** (© 2006, © 2012) are the older model and
+  identical on every deciding check. 5.53, which Windows shipped from 2018
+  until the update reaches a machine, was not measured.
 - **Mongol Qagan Tig Mirror** is the older model: NNBSP suffixes agree on every
   case, MVS suffixes on 132 of 320.
 - **MongolianScript and Classical Mongolian Dashitseden** (both © 2008, one
@@ -151,6 +173,7 @@ A pass is not permission. What each font file declares:
 | GLT | "All rights reserved." No licence text. © 2018 | print and preview | **No** |
 | "Delehi3.0.0" set | no licence text and no copyright string | print and preview | **No** — silence grants nothing |
 | Mongol Qagan Tig Mirror | "You may not use this font for commercial purposes." | editable | **No** |
+| Mongolian Baiti 5.54 | "Microsoft supplied font. You may use this font to create, display, and print content as permitted by the license terms … of the Microsoft product … in which this font was included. … Any other use is prohibited." | editable | **No** — Windows' own font FAQ forbids copying it to a server, converting it to WOFF, or modifying it. A web page may name it in a font stack, which uses the visitor's copy |
 | MongolianScript, Classical Mongolian Dashitseden | "…may be downloaded, distributed and used free of charge for both personal and commercial use. Any other use is prohibited." | installable | Ship unmodified: yes. **Modify: no** — and subsetting or converting to WOFF2 is modifying |
 
 No fuller terms could be found for any of the proprietary families (looked

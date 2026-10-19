@@ -95,9 +95,10 @@ read; `close ARGV if eof` keeps line numbers per-file.)
 
 - NNBSP- and MVS-joined suffixes shape **byte-identically** in current
   fonts — no eye can tell the encodings apart; only the bytes differ.
-- The two biggest consumer platforms still ship pre-model fonts (2026):
-  Windows Mongolian Baiti 5.53, Android Noto v1.04 (2016). macOS ≥ 15.1
-  ships Noto v3 (new model). Chrome additionally breaks connectors via
+- Android still ships a pre-model font, Noto v1.04 (2016), and so does
+  Windows until its August 2026 update arrives (Baiti 5.53). Baiti is usable
+  only from 5.54, and 5.54 still drops the tail of two-letter `bü`/`kü`
+  (бүү) and the dots of a lone `ši`. macOS ≥ 15.1 ships Noto v3 (new model). Chrome additionally breaks connectors via
   font fallback (fix in review).
 - Noto Sans Mongolian v3 renders *misuse* visibly by design: bare MVS,
   lone NNBSP, unregistered/doubled FVS all get visible marker glyphs.

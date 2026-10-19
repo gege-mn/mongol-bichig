@@ -63,22 +63,37 @@ linter is the only layer that can enforce the encoding itself.
 
 ### Mongolian Baiti (the installed base)
 
-- Windows 10/11 ship **v5.53** (© 2018; designed by Beijing Founder
-  Electronics). Model: pre-16.0 — OT rules keyed on `<U+202F, letter>`.
-  No Unicode-16 suffix-connector rules; no FVS4 (predates Unicode 14).
+**Using it on a page:** only by name in a font stack, behind a self-hosted
+Noto — Windows' licence forbids serving the file. Two caveats:
+
+1. **It must be 5.54 or later.** Earlier versions are the older model and
+   get MVS text wrong; a page cannot tell which version a visitor has.
+2. **5.54 still misses a few cases**: the two-letter words `bö`, `bü`,
+   `kö`, `kü` lose the final tail (the particle бүү is the common one), and
+   the word `ši` alone loses its dots. Everything else in the conformance
+   suites matches Noto.
+
+- **v5.54** (© 2026, built 2026-06-11) is the new model and a near miss on
+  the conformance rubric: MVS suffixes and chachlag agree with Noto on every
+  case, FVS4 is mapped — `font-conformance.md` has the counts. It
+  reaches Windows 11 through the cumulative updates of August 2026
+  (KB5120996 for 26H1, 2026-08-27), as a gradual rollout.
+- Before it, Windows 10/11 shipped **v5.53** (© 2018; designed by Beijing
+  Founder Electronics). Model: pre-16.0 — OT rules keyed on
+  `<U+202F, letter>`. No Unicode-16 suffix-connector rules; no FVS4.
+  Windows 10 and un-updated Windows 11 machines keep it.
 - The famous "MVS broken on Windows/Chrome" bug (typography-issues #1174,
   open since 2024-09) is **not primarily Baiti's fault**: the same font
   loaded as a webfont renders MVS chachlag fine — Chrome's font *fallback*
-  captures U+180E/U+202F mid-cluster. Baiti's real gap is the missing
+  captures U+180E/U+202F mid-cluster. 5.53's real gap is the missing
   new-model particle rules.
 - The oft-cited "Windows 10 2018 update broke Baiti" legend has no findable
   primary source; what is real is v5.01→v5.53 FVS drift across the 2016+
   re-standardization, so old documents render differently.
-- **Microsoft is shipping its first Baiti shaping update in ~6 years right
-  now** (Windows 11 Insider Beta 2026-07-06; Release Preview 2026-07-20,
-  whose note reads "improves character shaping and rendering for Mongolian
-  Baiti font" — the Beta note is worded differently but says the same).
-  Whether it retrofits the Unicode-16 model is unstated — re-test at GA.
+- The update's release notes say only "improves character shaping and
+  rendering for Mongolian Baiti font" (Insider Beta 2026-07-06, Release
+  Preview from 2026-07-20). That it adopts the Unicode-16 model is our
+  measurement of the file, not anything Microsoft has stated.
 
 ## Shaping engines
 
@@ -101,11 +116,11 @@ linter is the only layer that can enforce the encoding itself.
   DirectWrite: `mong` is in Microsoft's USE registry; legacy Uniscribe spec
   (2002) is dead (404, no archive).
 
-## Platform matrix (2026-07 — expires with the Baiti update and Chromium CL)
+## Platform matrix (2026-10 — expires with the Chromium CL)
 
 | Platform | Default font | Model | Notes |
 |---|---|---|---|
-| Windows 11 | Mongolian Baiti 5.53 | legacy NNBSP | MVS text degrades; Chrome additionally eats connectors; update rolling out |
+| Windows 11 | Mongolian Baiti 5.54 once the August 2026 update reaches it, 5.53 before | new (5.54), legacy NNBSP (5.53) | 5.54 near-passes the rubric; on 5.53 MVS text degrades; Chrome additionally eats connectors |
 | macOS ≥ 15.1 | **Noto v3.002 in /System** (verified locally) | new | correct in Safari; broken in Chrome until the CL lands; Apple's support pages still claim v1.04 download-only — wrong |
 | macOS ≤ 15.0 | none preinstalled | — | tofu unless user installs |
 | Android | **Noto v1.04 (2016!)** | old | binary-verified in AOSP main; no v3 uptake statement anywhere |

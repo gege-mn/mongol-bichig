@@ -29,7 +29,7 @@ documents were fetched and read; claims below are from those unless marked.
 | 2023 | **GB/T 25914—2023** published (2023-11-27; in force 2024-06-01): MVS as the suffix leading character |
 | 2024 | UTN #57 v1–v4 (Kushim Jiang, Jul–Aug); L2/24-180 (Liang Hai): "We need to catch up in this year's 16.0"; **UTC #180 consensus 180-C31**: core spec will reference UTN #57 for GB/T compatibility; **Unicode 16.0 (2024-09-10) moves the connector role to MVS** — zero mentions in the release notes; Noto Sans Mongolian v3.002 ships (2024-07-24) |
 | 2025 | Script co-official in Mongolia (Jan 1, dual-script official documents); MLREQ republished (Jul 10) **still NNBSP-based**; Unicode 17.0: no Mongolian changes |
-| 2026 | r12a orthography notes teach MVS (Jun); L2/26-091 proposes deprecating the Mongolian standardized variants in the UCD; Microsoft ships its first Baiti shaping update in ~6 years (Jul, Insider/Release Preview); **Noto Sans Mongolian v3.100 (Oct 1)** — generated from mongfontbuilder data, adds the revised national standard's Todo/Sibe/Manchu provisions and per-writing-system language systems |
+| 2026 | r12a orthography notes teach MVS (Jun); L2/26-091 proposes deprecating the Mongolian standardized variants in the UCD; Microsoft ships its first Baiti update in ~6 years — v5.54, which adopts the MVS model (Jul Insider, Aug cumulative updates); **Noto Sans Mongolian v3.100 (Oct 1)** — generated from mongfontbuilder data, adds the revised national standard's Todo/Sibe/Manchu provisions and per-writing-system language systems |
 
 ## The suffix connector saga, condensed
 
