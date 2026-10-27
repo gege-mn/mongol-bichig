@@ -24,7 +24,7 @@ been forked once, and `romanize.ts` drifted within a day of being copied.
 **Publishing belongs to the repository owner, never an agent.** The registry
 requires an OTP an agent cannot supply, so an attempt fails at best and
 half-releases at worst. An agent *may* bump the version, write the CHANGELOG,
-run `pnpm build && pnpm typecheck && pnpm test`, confirm `npm pack --dry-run`
+run `bun run build && bun run typecheck && bun run test`, confirm `bun pm pack --dry-run`
 ships the right files, and then report that the release is ready — and stop
 there.
 
@@ -35,7 +35,11 @@ worth reaching and reporting precisely.
 
 ## Conventions
 
-- **pnpm**, Biome (2-space indent, single quotes, width 100), Vitest, plain
+- Package manager: pnpm on CI, servers and other machines (`pnpm-lock.yaml` is
+  committed); on the main Mac, which has no node/pnpm, use Bun — `bun install`,
+  `bun run <script>` (never bare `bun build`/`bun test`), `bunx`. After any
+  dependency change under Bun run `bun run lock`. Never npm/npx.
+- Biome (2-space indent, single quotes, width 100), Vitest, plain
   `tsc` to `dist/` plus `scripts/emit-json.mjs` for the JSON export. **Zero
   runtime dependencies**, and it must stay that way — both consumers advertise
   this package as their only dependency.
@@ -56,8 +60,8 @@ worth reaching and reporting precisely.
 ## The review page
 
 `skills/bichig-review/assets/review.html` is generated: edit `review/`, run
-`pnpm build:review`, commit both. Editor tools can decode a typed `\uXXXX` into
-the literal character; `pnpm test` catches it.
+`bun run build:review`, commit both. Editor tools can decode a typed `\uXXXX` into
+the literal character; `bun run test` catches it.
 
 ## What is authoritative
 
@@ -92,7 +96,7 @@ file. Open one when its topic actually comes up. The first block is under
 | `orthography.md` | spelling rules, vowel harmony, o/ö, Tier-3 rule ideas |
 | `legacy-encodings.md` | PUA, Menksoft, input methods — where broken text comes from |
 | `fonts-and-rendering.md` | shaping, or "why does it look wrong"; has hb-shape measurements |
-| `font-conformance.md` | whether a font passes: the rubric, `pnpm font:check`, the fonts measured and their licences |
+| `font-conformance.md` | whether a font passes: the rubric, `bun run font:check`, the fonts measured and their licences |
 | `encoding-history.md` | why a decision was made the way it was (1987 → Unicode 17) |
 | `script-styles.md` | Todo, Sibe, Manchu, Ali Gali, and the `wrong-block` rule |
 | `sources.md` | the provenance of a claim, or the list of open items |

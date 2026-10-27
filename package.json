@@ -40,7 +40,8 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
-    "prepublishOnly": "pnpm build && pnpm typecheck && pnpm test"
+    "prepublishOnly": "pnpm build && pnpm typecheck && pnpm test",
+    "lock": "bunx pnpm@10 install --lockfile-only"
   },
   "publishConfig": {
     "access": "public"
