@@ -99,7 +99,7 @@ const PUNCT_TO_ROMAN: Record<string, string> = {
 };
 /** Invisible or out-of-place characters, named so they show up in a romanization. */
 const MARKERS: Record<string, string> = {
-  '\u202F': '_',
+  '\u202F': '\u2039nnbsp\u203A',
   '\u200C': '\u2039zwnj\u203A',
   '\u200D': '\u2039zwj\u203A',
 };

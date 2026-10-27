@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.0 — unreleased
+
+A minor number because `_` changes meaning: both consumers require `^0.2.0`
+and must bump to `^0.3.0` to get it.
+
+### Changed
+
+- **`_` is nirugu (U+180A)** in `toScript` and `fromScript`: `qi_ qa_ kho_`
+  is ХХК. Before, `toScript` threw on `_` and `fromScript` passed U+180A
+  through raw. `finalLetter` looks through nirugu as it does through MVS, so
+  `qi_` ends in I.
+- **The review page shows a legacy NNBSP as `‹nnbsp›`**, beside `‹zwnj›` and
+  `‹zwj›`, instead of `_`. A review's `roman` that once read `mongγul_un` now
+  reads `mongγul‹nnbsp›un`, and `_` in a typed correction is nirugu. Like the
+  other two markers, `‹nnbsp›` is display only and does not convert back.
+
 ## 0.2.3 — 2026-10-11
 
 A patch number for the same reason 0.2.2 was: both consumers require

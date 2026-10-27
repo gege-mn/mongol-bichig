@@ -11,6 +11,9 @@
  * - `-` marks a chachlag / suffix connector and becomes MVS (U+180E).
  * - `=` is the script's hyphen, U+1806, as between the parts of a compound
  *   name: `altan=odu` is Алтан-Од.
+ * - `_` is nirugu, U+180A, the visible joiner that ends a letter
+ *   abbreviation: `qi_ qa_ kho_` is ХХК. NNBSP has no romanization; a
+ *   tool that shows one names it, as the review page's `‹nnbsp›` does.
  * - `.` forces a letter boundary and is otherwise ignored, so `n.g` is
  *   NA+GA rather than the ANG ligature that bare `ng` produces.
  * - A digit `1`–`4` selects a free variation selector for the letter before
@@ -54,6 +57,7 @@ import type { Harmony } from './types.js';
 /** Suffix connector / chachlag. */
 const MVS_CP = 0x180e;
 const HYPHEN_CP = 0x1806;
+const NIRUGU_CP = 0x180a;
 
 /** `'1'`–`'4'` → FVS1–FVS4, derived from the canonical selector map. */
 const DIGIT_TO_FVS_CP: ReadonlyArray<readonly [string, number]> = [...FVS].map(
@@ -103,6 +107,7 @@ const ROMAN_TO_CP: ReadonlyArray<readonly [string, number]> = [
   ['kh', 0x183b],
   ['-', MVS_CP],
   ['=', HYPHEN_CP],
+  ['_', NIRUGU_CP],
   ...DIGIT_TO_FVS_CP,
 ];
 
@@ -141,6 +146,7 @@ const CP_TO_ROMAN = new Map<number, string>([
   [0x183b, 'kh'],
   [MVS_CP, '-'],
   [HYPHEN_CP, '='],
+  [NIRUGU_CP, '_'],
   ...DIGIT_TO_FVS_CP.map(([digit, c]) => [c, digit] as const),
 ]);
 
@@ -189,9 +195,9 @@ export function toScript(roman: string): string {
  * Code point of the last Hudum *letter* in a romanized form, or `undefined`
  * when there is none (empty input, or input that does not romanize).
  *
- * Connectors, boundary markers and variation selectors are skipped, so
- * `qar-a` ends in A (U+1820), `n.g` ends in GA, and `nay1ma` ends in A rather
- * than in the selector. Callers use this to ask what shape a stem ends in —
+ * Connectors, nirugu, boundary markers and variation selectors are skipped, so
+ * `qar-a` ends in A (U+1820), `n.g` ends in GA, `qi_` ends in I, and `nay1ma`
+ * ends in A rather than in the selector. Callers use this to ask what shape a stem ends in —
  * which allomorph a suffix takes depends on it, and a selector does not change
  * the answer.
  */
@@ -205,7 +211,7 @@ export function finalLetter(roman: string): number | undefined {
   const letters = [...script];
   for (let i = letters.length - 1; i >= 0; i -= 1) {
     const c = letters[i]?.codePointAt(0);
-    if (c !== undefined && c !== MVS_CP && !FVS_CPS.has(c)) return c;
+    if (c !== undefined && c !== MVS_CP && c !== NIRUGU_CP && !FVS_CPS.has(c)) return c;
   }
   return undefined;
 }

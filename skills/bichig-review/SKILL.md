@@ -67,8 +67,8 @@ In this order:
 
 A value containing Mongolian script is taken as it is. A value in Latin letters
 is read as **Classical romanization** and converted: words follow `toScript` of
-`@gege-mn/mongol-bichig` (`-` is the MVS connector, `gh ch sh j` are ASCII for
-γ č š ǰ, `kh` is the loan letter for Cyrillic к); a word may end in `,` `.` `:`
+`@gege-mn/mongol-bichig` (`-` is the MVS connector, `_` is nirugu U+180A,
+`gh ch sh j` are ASCII for γ č š ǰ, `kh` is the loan letter for Cyrillic к); a word may end in `,` `.` `:`
 (U+1802, U+1803, U+1804) or `?` `!`; a word of digits becomes Mongolian digits;
 `{name}`, `%s` and `<tag>` pass through. A value that does not convert is shown
 to the reader as unreadable, not dropped.
@@ -121,6 +121,9 @@ convert.
   `correctionAsTyped` replaces it when what they typed is not valid
   romanization: ask them what they meant, do not repair it yourself.
 - `error` means the file's own value could not be turned into script.
+- A `roman` derived from script names what romanization cannot spell:
+  `‹nnbsp›`, `‹zwnj›`, `‹zwj›`. Such a value does not convert back; take the
+  script from `text`.
 
 ## Apply it
 

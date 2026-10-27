@@ -41,7 +41,15 @@ describe('phraseToScript / scriptToRoman', () => {
   });
 
   it('shows a legacy NNBSP instead of hiding it', () => {
-    expect(scriptToRoman(`${MONGGUL}\u202F\u1824\u1828`)).toBe('mongγul_un');
+    expect(scriptToRoman(`${MONGGUL}\u202F\u1824\u1828`)).toBe('mongγul\u2039nnbsp\u203Aun');
+  });
+
+  it('writes nirugu as `_`, and reads it back', () => {
+    const hhk = '\u182C\u1822\u180A \u182C\u1820\u180A \u183B\u1823\u180A';
+    // ᠬᠢ alone has only the neutral i, so it takes the front reading k.
+    expect(scriptToRoman(hhk)).toBe('ki_ qa_ kho_');
+    expect(phraseToScript('qi_ qa_ kho_')).toBe(hhk);
+    expect(resolveFix('qi_ qa_ kho_')).toEqual({ text: hhk, roman: 'qi_ qa_ kho_' });
   });
 });
 

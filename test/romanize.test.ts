@@ -19,6 +19,7 @@ import {
 
 const MVS = '\u180E';
 const NNBSP = '\u202F';
+const NIRUGU = '\u180A';
 const FVS1 = '\u180B';
 const FVS2 = '\u180C';
 const FVS3 = '\u180D';
@@ -134,6 +135,10 @@ describe('finalLetter', () => {
     expect(finalLetter('qa1n')).toBe(NA);
   });
 
+  it('looks through nirugu', () => {
+    expect(finalLetter('qi_')).toBe(0x1822);
+  });
+
   it('is undefined when there is no letter at all', () => {
     expect(finalLetter('')).toBeUndefined();
     expect(finalLetter('-')).toBeUndefined();
@@ -172,5 +177,27 @@ describe('the hyphen', () => {
     expect([...script].map((c) => c.codePointAt(0))).toContain(0x1806);
     expect(script).toBe(`${toScript('altan')}\u1806${toScript('odu')}`);
     expect(fromScript(script)).toBe('altan=odu');
+  });
+});
+
+describe('nirugu', () => {
+  it('is `_` in both directions', () => {
+    expect(toScript('qi_')).toBe(`\u182C\u1822${NIRUGU}`);
+    expect(fromScript(`\u182C\u1822${NIRUGU}`)).toBe('qi_');
+    expect(fromScript(toScript('qa_'))).toBe('qa_');
+  });
+
+  it('round-trips ХХК', () => {
+    // As the owner writes it (2026-10-22): К is KHA, the loan letter for
+    // Cyrillic к, not the unmapped Ali Gali KA (U+183A).
+    const hhk = `\u182C\u1822${NIRUGU} \u182C\u1820${NIRUGU} \u183B\u1823${NIRUGU}`;
+    const words = ['qi_', 'qa_', 'kho_'];
+    expect(words.map((w) => toScript(w)).join(' ')).toBe(hhk);
+    expect(fromScript(hhk)).toBe(words.join(' '));
+  });
+
+  it('is never NNBSP, which has no romanization', () => {
+    expect(toScript('qi_')).not.toContain(NNBSP);
+    expect(fromScript(`\u182E\u1823${NNBSP}\u1824`)).toBe(`mo${NNBSP}u`);
   });
 });
