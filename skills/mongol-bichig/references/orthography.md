@@ -124,6 +124,27 @@ a first-vowel condition.
   by default are the right ones.
 - ua/uua occurs only word-finally *with the separated a*: quu-a, činu-a —
   i.e. `… U+1824 U+180E U+1820`.
+- **i before a separated a/e is i + y: `iy-a`, never `ii-a`** (ruled
+  2026-11-03). Cyrillic -ъяа, -ьяа, -ия, -иа, -ээ after ш/ж (Сумъяа, Адъяа,
+  Мария, яриа, захиа, жишээ) are ᠰᠤᠮᠢᠶ⟨MVS⟩ᠠ, ᠶᠠᠷᠢᠶ⟨MVS⟩ᠠ, ᠵᠢᠰᠢᠶ⟨MVS⟩ᠡ:
+  `U+1822 U+1836 U+180E U+1820/1821`, and `iya` joined inside a word
+  (Сумъяабазар `sumiyabaǰar`). Before the MVS, YA takes its plain I shape,
+  so `ii-a` draws exactly the same in Noto 3.103 — which is why legacy
+  typists, choosing by shape, write it about half the time. Sources:
+  - Unicode core spec ch. 13.5: letters are encoded by phonetic value, not
+    glyph shape. The sound is i + the y glide + a, not a long ii.
+  - UTN #57 v4, letter table: **daliy·a**, `d a l i y mvs a`, written
+    `D A L I I Á`.
+  - The UTN #57 shaping suites (`vendor/mongfontbuilder/suites/`) have only
+    `i y mvs a/e`: core-hud d-3, y-4 (аман захиа); eac-hud MXZ21-1 and
+    variants (жишээ), MTZ11-2 (aturiy-a), MUZ22-7. None has `i i mvs`.
+  - Kimo writes `iy-a` for every case tried (Сумъяа, Адъяа, Мария, Азия,
+    яриа, уриа).
+
+  A doubled i stays right where the i is long (γaǰiiqu, Хавий `qabii`) and
+  before a suffix other than the lone a/e (ii + MVS + ᠶᠢᠨ). The vocative a/e
+  is space-separated (`suffixes.md`), so `ii` + MVS + a/e at a word's end
+  has no other reading. gege-linter flags it with a fix.
 
 Whitelist of native adjacent-vowel pairs: {a,e,o,u,ö,ü}+i, a+u, e+ü, u+u,
 ü+ü, i+i, o+o. Anything else (a+e, o+u, u+o, a+o, i+a …) → info-level

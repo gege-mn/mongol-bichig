@@ -150,6 +150,7 @@ Vertical text: the whole block is `vo=R` in UTR #50 — correct CSS is
 | unregistered letter+FVS | default form; **visible `fvsN` marker** |
 | doubled FVS | first consumed, second **visible** |
 | solid vowel + U+1822 U+1822 | `II.medi` + `I.fina`: the first i follows a vowel, so it draws two strokes, one too many for чамайг. Use YA + FVS1 (`orthography.md`, vowel sequences) |
+| U+1822 U+1822 U+180E U+1820 | identical to U+1822 **U+1836** U+180E U+1820: before an MVS, YA takes the plain I shape. Only the second is right (`iy-a`, `orthography.md`, vowel sequences) |
 | U+1820 + U+180F (isolate) | default + visible `fvs4` marker — FVS4 registration is position-sensitive |
 | PUA U+E266 | `.notdef` tofu |
 

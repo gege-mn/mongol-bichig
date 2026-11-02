@@ -78,7 +78,10 @@ read; `close ARGV if eof` keeps line numbers per-file.)
    defective. In `variants.json`, key `"0"` means context-only, *not* FVS0.
 4. **`MVS + a/e` at word end is legitimate** (chachlag, or the archaic
    dative) — never flag it. `MVS + a/e + FVS` selects the non-chachlag
-   default: also legitimate.
+   default: also legitimate. Before it, an i-glide is **i + y**, never
+   **i + i**: ᠰᠤᠮᠢᠶ⟨MVS⟩ᠠ (Сумъяа), `U+1822 U+1836 U+180E U+1820`. The two
+   draw identically, so only the bytes show it (`orthography.md`, vowel
+   sequences).
 5. **No PUA, no ZWJ/ZWNJ** in running Mongolian text.
 
 ## Normalization

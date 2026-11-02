@@ -109,6 +109,7 @@ that band. `no-pua` offers the same reading as a fix, run by run.
 | `nnbsp-legacy` | GL0101–02 | warning | NNBSP suffix connector (pre-16.0 model) | MVS (U+180E) |
 | `unknown-suffix` | GL0801–03 | warning | connector-joined letter run not in the suffix dictionary; a run that *is* a separate word is named as one | the dictionary sequence when only a stray FVS breaks the match; a plain space when a whole word follows an MVS |
 | `doubled-ae` | GL1001 | warning | adjacent ᠠᠠ / ᠡᠡ — long a/e take the γ/g hiatus, never a doubled vowel | **none** — the reflexive wants ᠢᠶᠠᠨ/ᠢᠶᠡᠨ, the vocative a single ᠠ/ᠡ and a space |
+| `ii-before-final-ae` | GL1401 | warning | ᠢᠢ before a separated final ᠠ/ᠡ (MVS or NNBSP) — the i-glide is ᠢᠶ (Сумъяа `sumiy-a`); the two draw the same | ᠢᠶ |
 | `compat-punctuation` | GL1101–03 | warning | punctuation encoded as a presentation form: Vertical Forms (U+FE10–FE1F), CJK Compatibility Forms (U+FE30–FE4F), Small Form Variants (U+FE50–FE6F) — GB 18030 / CNS 11643 round-trip characters, never for interchange | the native ᠂ ᠃ ᠁ for comma/full stop/ellipsis, ？ for the question mark (UTN #57 Table 1), ASCII `!` for the exclamation, the nominal character otherwise |
 | `non-initial-o` | GL0701 | info | O/Ö past the first syllable (heuristic; native exceptions exist) | U/Ü, only in the few words a reader has ruled on |
 | `compat-punctuation` | GL1104 | info | U+3001/U+3002 (and halfwidth U+FF61/U+FF64) in Hudum text — core spec 13.5 gives these to Todo and Sibe | ᠂ / ᠃ |
