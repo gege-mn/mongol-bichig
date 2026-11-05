@@ -209,7 +209,8 @@ word-final nirugu also legitimizes vowel-less abbreviation "words".
   identical; no repertoire or property changes).
 - **18.0 (2026-09-16)** — StandardizedVariants.txt synchronized with the
   Chinese standards: 117 Mongolian lines, up from 60; 251 in-use (letter,
-  position, FVS) triples, up from 93; 6 pairs labelled `not in use`; FVS4
+  position, FVS) triples, up from 91, plus the same two position-less Ali
+  Gali rows in both; 6 pairs labelled `not in use`; FVS4
   registered for the first time. No repertoire or property changes. The core
   spec says the MVS "only applies to Hudum and Hudum Ali Gali, and is not
   relevant to Todo, Manchu, or Sibe". It still prints the stale warning that
