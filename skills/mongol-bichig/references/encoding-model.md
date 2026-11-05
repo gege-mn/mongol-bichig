@@ -1,8 +1,10 @@
-# The Unicode encoding model for Mongolian (current: 16.0+, unchanged through 17.0)
+# The Unicode encoding model for Mongolian (current: 16.0+, unchanged through 18.0)
 
 Researched 2026-07-25 from primary sources: Unicode 16.0/17.0 core spec §13.5
 (diffed — identical prose), the U1800/U11660 code charts (17.0), UCD 17.0 data
-files, UAX #14/#29, UTN #57 v4, W3C MLREQ. Project rule applies throughout:
+files, UAX #14/#29, UTN #57 v4, W3C MLREQ. Re-checked 2026-11-05 against
+Unicode 18.0: §13.5 diffed against 17.0, UnicodeData diffed for the Mongolian
+blocks, and StandardizedVariants read in full. Project rule applies throughout:
 invisible characters are written `U+XXXX`, never as literals.
 
 ## The one-paragraph model
@@ -148,10 +150,12 @@ Format controls (gc Mn, Default_Ignorable, Variation_Selector=Yes) selecting
 "a glyph form that cannot be predicted algorithmically". The selector
 "immediately follows the base character it modifies"; any FVS *not* directly
 after its registered base "will be ignored" by conformant renderers —
-the normative backing for `fvs-placement`. The core spec **admits its own
-UCD data is stale**: StandardizedVariants.txt "has not yet been updated to
-synchronize with … Unicode Technical Note #57 … This defect will be
-addressed in a future version."
+the normative backing for `fvs-placement`. Up to 17.0 the core spec
+**admitted its own UCD data was stale**: StandardizedVariants.txt "has not
+yet been updated to synchronize with … Unicode Technical Note #57 … This
+defect will be addressed in a future version." **18.0 fixed the data**
+(188-C33): it now matches the Chinese standards. The warning is still printed
+in 18.0, though, because the prose edit (188-A69) has not been made yet.
 
 Legacy ordering trap: pre-standard docs ordered `base + ZWJ + FVS`; the
 standard requires `base + FVS + ZWJ`. Old text with `letter ZWJ FVS` has a
@@ -175,7 +179,8 @@ word-final nirugu also legitimizes vowel-less abbreviation "words".
 
 - **v4 (2024-08-14) is the last PDF on unicode.org** — maintenance formally
   moved to auto-generated data in **mongfontbuilder** (announced 2026-04-12;
-  companion UTC proposal L2/26-091, 2026-04-02; site
+  companion UTC proposals L2/26-091, refused, then L2/26-163 and L2/26-203,
+  approved for 18.0; site
   mongfontbuilder.pages.dev is the editor's draft). Vendoring the JSON is the
   correct consumption path; the PDF line is frozen.
 - Non-normative (UTN status), but the core spec references it as *the*
@@ -201,7 +206,14 @@ word-final nirugu also legitimizes vowel-less abbreviation "words".
 - **16.0 (2024-09)** — suffix-connector role NNBSP→MVS (core-spec prose only;
   zero UCD changes; zero mentions in the release notes). U+202F scx gains Phag.
 - **17.0 (2025-09)** — no Mongolian changes (spec prose diff-verified
-  identical; no repertoire or property changes). 18.0 draft: none either.
+  identical; no repertoire or property changes).
+- **18.0 (2026-09-16)** — StandardizedVariants.txt synchronized with the
+  Chinese standards: 117 Mongolian lines, up from 60; 251 in-use (letter,
+  position, FVS) triples, up from 93; 6 pairs labelled `not in use`; FVS4
+  registered for the first time. No repertoire or property changes. The core
+  spec says the MVS "only applies to Hudum and Hudum Ali Gali, and is not
+  relevant to Todo, Manchu, or Sibe". It still prints the stale warning that
+  the FVS list is out of date.
 
 ## Cross-references
 

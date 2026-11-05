@@ -25,6 +25,7 @@ export {
 } from './chars.js';
 export type { SuffixRow } from './data/suffixes.js';
 export { suffixRows } from './data/suffixes.js';
+export { fvsStatus, hudumFvs } from './fvs.js';
 export {
   finalLetter,
   fromScript,
@@ -41,8 +42,11 @@ export {
 } from './suffixes.js';
 export type {
   AttachCondition,
+  FvsRegistration,
+  FvsStatus,
   Harmony,
   Join,
+  JoiningPosition,
   SuffixCategory,
   SuffixEntry,
 } from './types.js';

@@ -11,9 +11,9 @@ literals.
 
 | Doc | What it covers | Feeds |
 |---|---|---|
-| [encoding-model.md](encoding-model.md) | The current (Unicode 16+/17) model: block inventory, MVS's two roles, format-control properties, normalization, ZWJ/ZWNJ/nirugu, UTN #57 summary, version history | everything; linter `mvs-context`, `nnbsp-legacy`, `zwj-zwnj` |
+| [encoding-model.md](encoding-model.md) | The current (Unicode 16–18) model: block inventory, MVS's two roles, format-control properties, normalization, ZWJ/ZWNJ/nirugu, UTN #57 summary, version history | everything; linter `mvs-context`, `nnbsp-legacy`, `zwj-zwnj` |
 | [encoding-history.md](encoding-history.md) | 1987→2026: why the 1999 model failed, the suffix-connector saga, how MVS won via GB/T 25914—2023 | narrative; provenance |
-| [variation-sequences.md](variation-sequences.md) | FVS semantics, UCD-vs-UTN registry divergence, the Hudum valid-FVS table, vendoring traps | linter `fvs-placement`, planned `fvs-unregistered` |
+| [variation-sequences.md](variation-sequences.md) | FVS semantics, how UCD 18.0 and mongfontbuilder relate, the Hudum valid-FVS table, vendoring traps | linter `fvs-placement`, planned `fvs-unregistered`; the package's `fvsStatus` |
 | [script-styles.md](script-styles.md) | Hudum/Todo/Sibe/Manchu/Ali Gali: ranges vs letter profiles, look-alikes, locale metadata, severity calibration | linter `wrong-block` |
 | [suffixes.md](suffixes.md) | **Normative.** The curated Hudum suffix dictionary (залгах нөхцөл) with code points, conditions, provenance and errata | `@gege-mn/mongol-bichig`'s registry (cross-checked by test); linter `unknown-suffix`, planned `space-before-suffix`; converter stage 3 |
 | [legacy-encodings.md](legacy-encodings.md) | Menksoft/Saiyin/Boljoo PUA, CMs ASCII fonts, the IME landscape, PUA detection heuristics, converters | linter `no-pua`; corpus triage |

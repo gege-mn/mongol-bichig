@@ -72,10 +72,11 @@ read; `close ARGV if eof` keeps line numbers per-file.)
    left). Anywhere else it is structurally broken — new-model fonts render
    a visible error glyph.
 3. **FVS immediately follows its base letter**, never doubled, never after
-   ZWJ. Validate (letter, FVS) pairs against mongfontbuilder
-   `variants.json`, **not** UCD `StandardizedVariants.txt` — neither
-   contains the other and the core spec itself calls the UCD list
-   defective. In `variants.json`, key `"0"` means context-only, *not* FVS0.
+   ZWJ. Validate (letter, FVS) pairs against mongfontbuilder's Hudum (MNG)
+   locale: `fvsStatus` in `@gege-mn/mongol-bichig` (0.3.1+). Unicode 18.0's
+   `StandardizedVariants.txt` agrees with it but lists no writing system, so
+   on its own it would accept Todo, Sibe or Manchu forms in Hudum text. In
+   `variants.json`, key `"0"` means context-only, *not* FVS0.
 4. **`MVS + a/e` at word end is legitimate** (chachlag, or the archaic
    dative) — never flag it. `MVS + a/e + FVS` selects the non-chachlag
    default: also legitimate. Before it, an i-glide is **i + y**, never

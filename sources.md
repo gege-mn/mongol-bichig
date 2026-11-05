@@ -5,14 +5,15 @@ verified against. This is the **re-verification checklist**: when a new Unicode
 version, UTN revision, GB/T revision or font release lands, this file says what
 to re-read and which documents to update.
 
-Last full verification: **2026-07-25**. Compiled here 2026-07-26.
+Last full verification: **2026-07-25**. Compiled here 2026-07-26. Unicode
+18.0 checked on 2026-11-05: the rows that mention it.
 
 ## Normative — the encoding model
 
 | Source | Version pinned | Verified | What rests on it |
 |---|---|---|---|
-| Unicode core specification, ch. 13.5 "Mongolian" | **16.0** (2024-09-10), re-checked unchanged through 17.0 | 2026-07-25 | The whole MVS-as-suffix-connector model. The single most load-bearing citation in this repo. |
-| Unicode Character Database | 16.0 / 17.0 | 2026-07-25 | Format-control properties (gc, Default_Ignorable), normalization behaviour |
+| Unicode core specification, ch. 13.5 "Mongolian" | **16.0** (2024-09-10), re-checked through **18.0** (2026-09-16) | 2026-11-05 | The whole MVS-as-suffix-connector model. The single most load-bearing citation in this repo. 18.0 adds one sentence: the MVS "only applies to Hudum and Hudum Ali Gali". It still carries the stale warning that the FVS list is out of date (action item 188-A69). |
+| Unicode Character Database | **18.0** | 2026-11-05 | Format-control properties (gc, Default_Ignorable), normalization behaviour. No Mongolian character changed from 17.0 to 18.0 (UnicodeData diffed for U+1800–18FF and U+11660–1167F). |
 | **UTN #57**, "Encoding and Shaping of the Mongolian Script" (Kushim Jiang) | **v4**, `utn57-mong-4.pdf`, 2024-08-14 | 2026-07-25 | Shaping registry, particle inventory, variant registrations |
 | **GB/T 25914—2023** (China) | published 2023-11-27, in force 2024-06-01 | 2026-07-25 | The model UTN #57 implements; how MVS reached Unicode |
 
@@ -26,20 +27,21 @@ layer that can exist.
 
 | Source | Pinned at | Verified | Notes |
 |---|---|---|---|
-| [`Kushim-Jiang/mongolian`](https://github.com/Kushim-Jiang/mongolian) (MIT; formerly `mongfontbuilder`) | **v0.13.0**, commit `a43024ee732e` — vendored in `vendor/mongfontbuilder/` | 2026-10-02 | 49 Hudum particle entries (47 when first read on 2026-07-25). |
+| [`Kushim-Jiang/mongolian`](https://github.com/Kushim-Jiang/mongolian) (MIT; formerly `mongfontbuilder`) | **v0.15.3**, commit `f068e35284d0` — vendored in `vendor/mongfontbuilder/` | 2026-11-05 | 49 Hudum particle entries (47 when first read on 2026-07-25). From v0.13.0 only `locales.json` changed: each locale gained a `name`. The suites moved upstream to `testSuites/core-hudum.tsv` and `eac-hudum.tsv`, unchanged. |
 | — `particles.json` | | | A *shaping* registry, not a dictionary: it lists only particles where some letter takes a particle-specific form. It can **confirm** an entry but never **refute** one. `references/suffixes.md` is the dictionary. |
 | — `variants.json` | | | FVS registrations. Key `"0"` means context-only, **not** FVS0. |
 | — `writtenUnits.json` | | | |
-| UCD `StandardizedVariants.txt` | — | 2026-07-25 | ⚠ **Do not use for FVS validation.** Neither it nor mongfontbuilder is a superset of the other: it has been frozen since 2005/2017 with dead sequences, 68 current MNG registrations are missing from it, and the core spec itself calls it defective. See `references/variation-sequences.md`. |
+| UCD `StandardizedVariants.txt` | **18.0.0** (2026-07-29) — vendored in `vendor/unicode/` | 2026-11-05 | Brought into line with the Chinese standards in 18.0 (188-C33, L2/26-203): mongfontbuilder now contains all of it, apart from two position-less Ali Gali rows. ⚠ **It has no writing-system field**, so it cannot validate Hudum alone: use mongfontbuilder's MNG locale and use this file to explain a rejection. See `references/variation-sequences.md`. |
 
 UTN #57's maintenance moved to auto-generated mongfontbuilder data in 2025
 (site: mongfontbuilder.pages.dev); the unicode.org PDF is frozen at v4. **Vendor
 the JSON — never parse the PDF.**
 
 The JSON is vendored, unmodified, in `vendor/mongfontbuilder/` at the pin in
-the table above (done 2026-10-02). It is not yet compiled into the package:
-**open item** — derive the per-letter MNG valid-FVS table from it in `src/`,
-which is what gege-linter's `fvs-unregistered` rule is waiting for.
+the table above (first done 2026-10-02). Since 0.3.1 `scripts/gen-fvs.mjs`
+compiles `variants.json` and the vendored UCD files into `src/data/fvs.ts`,
+which the package exports as `hudumFvs` and `fvsStatus`. That is the data
+gege-linter's `fvs-unregistered` rule was waiting for.
 
 ## The suffix registry's own sources
 
@@ -68,7 +70,9 @@ Full narrative in `references/encoding-history.md`. The load-bearing documents:
 | L2/20-057 | 2020 | Proposes FVS4 at U+180F — the would-be connector's code point is consumed instead (Unicode 14.0) |
 | L2/24-180 (Liang Hai) | 2024 | "We need to catch up in this year's 16.0" |
 | **UTC #180 consensus 180-C31** | 2024 | Core spec will reference UTN #57 for GB/T compatibility → Unicode 16.0 |
-| L2/26-091 | 2026-04-02 | Proposes deprecating the UCD Mongolian standardized variants |
+| L2/26-091 | 2026-04-02 | Proposes deprecating the UCD Mongolian standardized variants. Refused: stability policy forbids removing them |
+| L2/26-163, **L2/26-203** | 2026-05/07 | Bring the UCD's Mongolian variants into line with the Chinese standards. Approved as **188-C33** for Unicode 18.0 |
+| L2/26-207 | 2026-07-26 | Asks how one font should serve Hudum, Todo, Sibe, Manchu and the Ali Gali sets at once. Not answered as of 2026-11-05 |
 
 ## Layout and typography — cite for layout only, never encoding
 

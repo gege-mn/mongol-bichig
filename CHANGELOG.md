@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.3.1 — 2026-11-05
+
+A patch number because this release only adds: every consumer on `^0.3.0`
+gets it without a range change.
+
+### Added
+
+- **The Hudum FVS registry**: `hudumFvs`, the 107 forms Hudum lets an FVS
+  select, and `fvsStatus(base, fvs, position?)`. It answers `registered`,
+  `other-writing-system` (valid in Todo, Sibe, Manchu or Ali Gali text, not
+  Hudum), `not-in-use` (withdrawn by Unicode 18.0) or `unregistered`.
+  Without a position the check is per letter. This is the data gege-linter's
+  planned `fvs-unregistered` rule was waiting for. New types:
+  `FvsRegistration`, `FvsStatus`, `JoiningPosition`.
+- `scripts/gen-fvs.mjs` (`bun run gen:fvs`) generates `src/data/fvs.ts` from
+  the vendored mongfontbuilder `variants.json` and UCD 18.0.
+  `test/fvs.test.ts` fails if the file is stale, if UCD 18.0 and
+  mongfontbuilder stop agreeing, or if the table in
+  `variation-sequences.md` disagrees with the data.
+
+### Changed
+
+- **Vendored data**: mongfontbuilder v0.13.0 → v0.15.3. Only `locales.json`
+  differs: each locale gained a `name`. UCD 18.0's `StandardizedVariants.txt`
+  and the Mongolian lines of its `UnicodeData.txt` are now vendored in
+  `vendor/unicode/`. None of it is published.
+
+### Documentation
+
+- **Unicode 18.0** (2026-09-16) synchronized the UCD's Mongolian
+  standardized variants with the Chinese standards (UTC 188-C33,
+  L2/26-203). The documents no longer say the UCD list is defective and
+  contradicts mongfontbuilder. The list still has no writing-system field,
+  so Hudum validation still reads mongfontbuilder's MNG locale. Updated:
+  `variation-sequences.md`, `encoding-model.md`, `encoding-history.md`,
+  `script-styles.md`, `sources.md`, the mongol-bichig skill and
+  `CLAUDE.md`. The suffix model is unchanged through 18.0.
+
 ## 0.3.0 — 2026-10-28
 
 A minor number because `_` changes meaning: every consumer is on `^0.2.x` or

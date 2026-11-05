@@ -1,6 +1,7 @@
 # Script styles in the Mongolian block — the knowledge behind `wrong-block`
 
-Researched 2026-07-25 from UCD 17.0 (UnicodeData/NamesList/DerivedAge),
+Researched 2026-07-25 from UCD 17.0 (UnicodeData/NamesList/DerivedAge;
+no Mongolian character changed in 18.0, re-checked 2026-11-05),
 core spec §13.5 Table 13-7, ISO 15924 registry, CLDR likelySubtags,
 confusables.txt/intentional.txt, Liang Hai's IUC #42 deck (2018), BabelStone.
 

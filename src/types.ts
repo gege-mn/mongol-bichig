@@ -76,3 +76,37 @@ export interface SuffixEntry {
    */
   readonly registry: boolean;
 }
+
+/** Where a letter sits in its word: isolate, initial, medial or final. */
+export type JoiningPosition = 'isol' | 'init' | 'medi' | 'fina';
+
+/**
+ * What an FVS after a letter means in **Hudum** text. See `fvsStatus`.
+ *
+ * - `registered`: Hudum lets this FVS select a form here.
+ * - `not-in-use`: Unicode 18.0 keeps the sequence only for old
+ *   implementations and says not to use it.
+ * - `other-writing-system`: valid in Todo, Sibe, Manchu or Ali Gali text,
+ *   not in Hudum.
+ * - `unregistered`: no writing system registers it in mongfontbuilder. UCD 18.0
+ *   still lists two Ali Gali rows without positions, U+1880 and U+1881 + FVS1.
+ */
+export type FvsStatus = 'registered' | 'not-in-use' | 'other-writing-system' | 'unregistered';
+
+/** One form Hudum lets an FVS select, from mongfontbuilder's MNG locale. */
+export interface FvsRegistration {
+  /** Code point of the letter. */
+  readonly base: number;
+  readonly position: JoiningPosition;
+  /** 1–4: FVS1 U+180B, FVS2 U+180C, FVS3 U+180D, FVS4 U+180F. */
+  readonly fvs: number;
+  /**
+   * The FVS selects the form shaping would pick anyway. Not redundant: it
+   * pins the form against context, e.g. MVS + a + FVS cancels chachlag.
+   */
+  readonly selectsDefault: boolean;
+  /** Pre-contemporary orthography only (dotted isolated I/U, kaph G …). */
+  readonly archaic?: true;
+  /** Registered, but the standard advises against it. */
+  readonly unrecommended?: true;
+}
