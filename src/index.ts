@@ -25,7 +25,7 @@ export {
 } from './chars.js';
 export type { SuffixRow } from './data/suffixes.js';
 export { suffixRows } from './data/suffixes.js';
-export { fvsStatus, hudumFvs } from './fvs.js';
+export { fvsStatus, hudumFvs, undottedSha } from './fvs.js';
 export {
   finalLetter,
   fromScript,

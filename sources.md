@@ -115,6 +115,13 @@ of 2026-07.
   here. Its rule text and Cyrillic are authoritative for Mongolia; its PDF
   text layer is typed by glyph shape and is not evidence for code points.
 - Mongolian school grammar tables, as above
+- SHA before I written with FVS2 (2026-11-07): the repository owner's
+  ruling, with жишээ and жишиг as the cases. The dictionary spellings
+  (bare U+1831 U+1822) were read from a ~139k-headword explanatory
+  dictionary of Mongolian; the dotless default is mongfontbuilder's
+  `dotless` condition in `variants.json` and `locales.json`, and the shapes
+  were measured with hb-shape on Noto Sans Mongolian 3.103. See "SHA before
+  I" in `references/variation-sequences.md`.
 
 ## Downstream research
 

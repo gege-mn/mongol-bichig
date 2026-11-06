@@ -43,6 +43,13 @@
  *   foreign, or traditionally spelt words" — which is why this is opened one
  *   letter at a time, on evidence, rather than by mapping the block.
  *
+ * - **`ši` writes SHA + FVS2 + I.** Before I the font draws SHA without its
+ *   dots unless FVS2 asks for them (UTN #57's `dotless` condition), so a bare
+ *   SHA I reads as SA I: жишээ would show as ǰisiy-e. `š` means the dotted
+ *   letter, so the selector is implied; `š1i` asks for the dotless form and
+ *   `š.i` writes the bare pair. Ruled 2026-11-07 by the owner. Measurements:
+ *   `references/variation-sequences.md`, "SHA before I".
+ *
  * - The remaining Ali Gali letters (KA, HAA, ZRA, LHA, ZHI, CHI) are still
  *   deliberately unmapped. Emitting one from native vocabulary would be a
  *   wrong-block error, so an attempt to do so throws. Add each the same way
@@ -56,6 +63,9 @@ import type { Harmony } from './types.js';
 
 /** Suffix connector / chachlag. */
 const MVS_CP = 0x180e;
+const SHA_CP = 0x1831;
+const I_CP = 0x1822;
+const FVS2_CP = 0x180c;
 const HYPHEN_CP = 0x1806;
 const NIRUGU_CP = 0x180a;
 
@@ -187,6 +197,7 @@ export function toScript(roman: string): string {
     const cp = LOOKUP.get(key);
     if (cp !== undefined) out += String.fromCodePoint(cp);
     i += key.length;
+    if (cp === SHA_CP && src[i] === 'i') out += String.fromCodePoint(FVS2_CP);
   }
   return out;
 }
@@ -231,16 +242,22 @@ export function isRomanizable(roman: string): boolean {
  *
  * Lossy in one respect: U+182C and U+182D each carry two romanizations
  * (q/k, γ/g) chosen by vowel harmony, so `harmony` selects between them.
- * Unknown code points are passed through unchanged.
+ * Unknown code points are passed through unchanged. SHA + FVS2 + I comes back
+ * as `ši` and a bare SHA I as `š.i`, so both survive a round trip.
  */
 export function fromScript(script: string, harmony: Harmony = 'masculine'): string {
   const front = harmony === 'feminine' || harmony === 'neutral';
+  const cps = [...script].map((ch) => cp(ch));
   let out = '';
-  for (const ch of script) {
-    const c = cp(ch);
+  for (let i = 0; i < cps.length; i += 1) {
+    const c = cps[i] ?? -1;
     if (c === 0x182c) out += front ? 'k' : 'q';
     else if (c === 0x182d) out += front ? 'g' : 'γ';
-    else out += CP_TO_ROMAN.get(c) ?? ch;
+    else if (c === SHA_CP && cps[i + 1] === FVS2_CP && cps[i + 2] === I_CP) {
+      out += 'š';
+      i += 1;
+    } else if (c === SHA_CP && cps[i + 1] === I_CP) out += 'š.';
+    else out += CP_TO_ROMAN.get(c) ?? String.fromCodePoint(c);
   }
   return out;
 }

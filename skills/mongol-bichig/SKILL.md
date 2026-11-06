@@ -83,7 +83,11 @@ read; `close ARGV if eof` keeps line numbers per-file.)
    **i + i**: ᠰᠤᠮᠢᠶ⟨MVS⟩ᠠ (Сумъяа), `U+1822 U+1836 U+180E U+1820`. The two
    draw identically, so only the bytes show it (`orthography.md`, vowel
    sequences).
-5. **No PUA, no ZWJ/ZWNJ** in running Mongolian text.
+5. **SHA before I takes FVS2**: `U+1831 U+180C U+1822`. Bare, the font
+   draws it dotless, like SA, so жишээ reads as if spelled with s.
+   `toScript('ǰišiy-e')` writes the FVS2 and `undottedSha` finds bare
+   pairs (0.4.0+; `variation-sequences.md`, "SHA before I").
+6. **No PUA, no ZWJ/ZWNJ** in running Mongolian text.
 
 ## Normalization
 

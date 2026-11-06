@@ -87,6 +87,38 @@ describe('toScript', () => {
     }
   });
 
+  // Ruled 2026-11-07: before I the font drops SHA's dots unless FVS2 asks for
+  // them, so `š` before `i` carries the selector. жишээ is ǰišiy-e.
+  describe('SHA before I', () => {
+    const SHA = '\u1831';
+    const I = '\u1822';
+
+    it('writes FVS2 between them', () => {
+      expect(toScript('ǰišiy-e')).toBe(`\u1835${I}${SHA}${FVS2}${I}\u1836${MVS}\u1821`);
+      expect(toScript('ǰišig')).toBe(`\u1835${I}${SHA}${FVS2}${I}\u182D`);
+      expect(toScript('shi')).toBe(`${SHA}${FVS2}${I}`);
+    });
+
+    it('leaves SHA alone before every other letter', () => {
+      expect(toScript('baša')).toBe(`\u182A\u1820${SHA}\u1820`);
+      expect(toScript('šine')).not.toContain(`${SHA}${I}`);
+      expect(toScript('sine')).toBe(`\u1830${I}\u1828\u1821`);
+    });
+
+    it('keeps an explicit selector and the bare pair', () => {
+      expect(toScript('š1i')).toBe(`${SHA}${FVS1}${I}`);
+      expect(toScript('š2i')).toBe(`${SHA}${FVS2}${I}`);
+      expect(toScript('š.i')).toBe(`${SHA}${I}`);
+    });
+
+    it('round-trips all three', () => {
+      expect(fromScript(toScript('ǰišiy-e'), 'feminine')).toBe('ǰišiy-e');
+      expect(fromScript(`${SHA}${I}`)).toBe('š.i');
+      expect(fromScript(`${SHA}${FVS1}${I}`)).toBe('š1i');
+      expect(toScript(fromScript(`${SHA}${I}`))).toBe(`${SHA}${I}`);
+    });
+  });
+
   // Loan letters are digraphs so that reaching for one is deliberate. Ruled
   // 2026-07-30: кирилл takes KHA, and this is the spelling that produces it.
   describe('loan letters', () => {

@@ -44,3 +44,24 @@ export function fvsStatus(base: number, fvs: number, position?: JoiningPosition)
   if (hit(OTHER)) return 'other-writing-system';
   return 'unregistered';
 }
+
+const SHA = 0x1831;
+const I = 0x1822;
+
+/**
+ * Code-point offsets of every SHA the font will draw without its dots: a SHA
+ * followed directly by I, with no FVS between. UTN #57 gives SHA a `dotless`
+ * form before I and makes it the default there, so ǰišiy-e (жишээ, spelled
+ * so in the dictionary) shows as if it were spelled with SA: ǰisiy-e.
+ *
+ * The repair is FVS2 straight after the SHA, which selects the dotted form.
+ * An FVS1 there asks for the dotless form on purpose and is not reported.
+ */
+export function undottedSha(text: string): number[] {
+  const cps = [...text].map((ch) => ch.codePointAt(0));
+  const out: number[] = [];
+  for (let i = 0; i < cps.length - 1; i += 1) {
+    if (cps[i] === SHA && cps[i + 1] === I) out.push(i);
+  }
+  return out;
+}

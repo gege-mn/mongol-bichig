@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.4.0 — 2026-11-07
+
+A minor number because `toScript` now writes different bytes for `ši`.
+
+### Changed
+
+- **`toScript` writes `ši` as SHA + FVS2 + I.** Before I the font draws SHA
+  without its dots by default (UTN #57's `dotless` condition), so жишээ
+  (`ǰišiy-e`) and жишиг (`ǰišig`) showed as if spelled with SA. `š1i` still
+  asks for the dotless form, and `š.i` writes the bare pair. `fromScript`
+  reads SHA + FVS2 + I back as `ši` and a bare SHA I as `š.i`, so both
+  round-trip. gege-converter gets dotted output from this alone.
+
+### Added
+
+- `undottedSha(text)`: the code-point offsets of every SHA directly before
+  I with no selector, for gege-linter's `undotted-sha` fix (insert FVS2).
+
+### Documentation
+
+- "SHA before I" in `variation-sequences.md`: the condition, hb-shape
+  measurements on Noto 3.103, and the owner's ruling of 2026-11-07. Also
+  `fonts-and-rendering.md`, `sources.md` and the mongol-bichig skill. The
+  gege-linter skill lists `undotted-sha` (GL1601) for its next release.
+
 ## 0.3.1 — 2026-11-06
 
 A patch number because this release only adds. Both consumers are still on

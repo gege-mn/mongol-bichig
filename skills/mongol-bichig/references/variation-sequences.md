@@ -151,6 +151,45 @@ variants[characterName][position]["0"|"1"|"2"|"3"|"4"] = {
 - If parsing raw StandardizedVariants.txt: the U+1880/U+1881 lines have an
   **empty positions field** — a positions-required parser silently drops them.
 
+## SHA before I — the default drops the dots
+
+UTN #57 gives SHA (U+1831) a **dotless** form, written unit `S`, in initial
+and medial position, and mongfontbuilder's MNG locale makes it the *default*
+under the `dotless` condition: SHA directly before I (U+1822). FVS1 selects it
+explicitly; **FVS2 selects the dotted form `Sh`** (a load-bearing default,
+point 2 above). So a bare U+1831 U+1822 draws exactly like U+1830 U+1822,
+and a reader sees SA.
+
+That breaks ordinary Mongolian words. The dictionary spells жишээ
+U+1835 U+1822 U+1831 U+1822 U+1836 [MVS] U+1821 (`ǰišiy-e`) and жишиг
+U+1835 U+1822 U+1831 U+1822 U+182D (`ǰišig`), with no selector, and both
+render as if spelled with SA. Native words whose ш is spelled with SA
+(шинэ `sine`, шил `sil`) are not involved: the condition is on the letter
+SHA.
+
+Measured with hb-shape on Noto Sans Mongolian 3.103 (2026-11-07):
+
+| SHA followed by | Initial | Medial |
+|---|---|---|
+| I (U+1822) | `S` (dotless) | `S` (dotless), also when the I is final |
+| FVS2 + I | `Sh` | `Sh` |
+| FVS1 + I | `S` | `S` |
+| ZWJ + I | — | `Sh` |
+| any other letter (A E O U OE UE EE NA BA MA LA TA YA RA tested) | `Sh` | `Sh` |
+| MVS or NNBSP, then I | — | SHA takes its final form, `Sh` |
+
+**Ruled 2026-11-07 by the owner: SHA before I is written with FVS2.** In
+Mongolia ᠱ is written precisely so that the reader sees ш, so the dotless
+default is never the intended reading. The rule goes by letters, with no
+word list: in Mongolia ᠰ and ᠱ are different letters, so every ᠱ before ᠢ
+gets the dots, guessed words included (confirmed by the owner the same
+day). The package carries the ruling in both directions:
+
+- `toScript` writes `ši` as SHA + FVS2 + I (`š1i` asks for the dotless form,
+  `š.i` writes the bare pair), so the converter's output is dotted.
+- `undottedSha(text)` returns the offset of every bare SHA I in existing
+  text, for gege-linter's fix: insert FVS2 after the SHA.
+
 ## Linter rules derived
 
 1. **Placement (`fvs-placement`, shipped)** — normative backing, core spec:
@@ -178,7 +217,12 @@ variants[characterName][position]["0"|"1"|"2"|"3"|"4"] = {
    selected form provably equals default shaping *and* no context rule
    consults FVS presence (chachlag cancellation, o/u/ö/ü marked-reset,
    neighbor effects). When in doubt, silent.
-5. Rendering note: unlike bare MVS (visible in Noto v3), a stray FVS in a
+5. **Undotted SHA (`undotted-sha`)** — SHA directly before I, no selector:
+   the font draws SA. Warning with a fix that inserts FVS2, safe to apply
+   unasked because FVS2 selects the form the letter SHA exists for. FVS1 in
+   that spot is deliberate and is left alone. Data: `undottedSha`; see
+   "SHA before I" above.
+6. Rendering note: unlike bare MVS (visible in Noto v3), a stray FVS in a
    *legacy* font is typically invisible — silent corruption for search and
    collation. Noto v3.002 renders unregistered/doubled FVS as visible
    `fvsN` marker glyphs (deliberate misuse-visibility; see

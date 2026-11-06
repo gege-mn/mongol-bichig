@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { deriveFvs, readStandardizedVariants } from '../scripts/gen-fvs.mjs';
 import { hudumFvsRows, notInUseFvsPairs, otherWritingSystemFvsRows } from '../src/data/fvs.js';
-import { fvsStatus, hudumFvs } from '../src/fvs.js';
+import { fvsStatus, hudumFvs, undottedSha } from '../src/fvs.js';
 
 const DOC = fileURLToPath(
   new URL('../skills/mongol-bichig/references/variation-sequences.md', import.meta.url),
@@ -109,6 +109,36 @@ describe('fvsStatus', () => {
   it('rejects any FVS on letters that take none', () => {
     for (const base of [0x1827, 0x1829, 0x182b, 0x182e, 0x182f, 0x1834, 0x1837]) {
       expect(fvsStatus(base, 1)).not.toBe('registered');
+    }
+  });
+});
+
+describe('undottedSha', () => {
+  const SHA = '\u1831';
+  const I = '\u1822';
+
+  it('finds SHA directly before I', () => {
+    expect(undottedSha(`ᠵ${I}${SHA}${I}ᠶ\u180Eᠡ`)).toEqual([2]);
+    expect(undottedSha(`${SHA}${I}ᠨ ᠪᠠ${SHA}${I}`)).toEqual([0, 6]);
+  });
+
+  it('passes a selector, another letter, or a SHA at the end', () => {
+    expect(undottedSha(`${SHA}\u180C${I}`)).toEqual([]);
+    expect(undottedSha(`${SHA}\u180B${I}`)).toEqual([]);
+    expect(undottedSha(`${SHA}ᠠ`)).toEqual([]);
+    expect(undottedSha(`ᠪᠠ${SHA}`)).toEqual([]);
+  });
+
+  it('rests on the vendored data: dotless before I, FVS2 selects the dots', () => {
+    const variants = JSON.parse(
+      readFileSync(new URL('../vendor/mongfontbuilder/variants.json', import.meta.url), 'utf8'),
+    );
+    for (const position of ['init', 'medi']) {
+      const forms = variants['MONGOLIAN LETTER SHA'][position];
+      expect(forms['1'].locales.MNG.conditions).toEqual(['dotless']);
+      expect(forms['1'].written).toEqual(['S']);
+      expect(forms['2'].default).toBe(true);
+      expect(forms['2'].written).toEqual(['Sh']);
     }
   });
 });
