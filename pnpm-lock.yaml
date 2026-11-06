@@ -12,8 +12,8 @@ importers:
         specifier: ^2.5.1
         version: 2.5.5
       '@gege-mn/gege-linter':
-        specifier: ^0.5.0
-        version: 0.5.0
+        specifier: ^0.13.0
+        version: 0.13.0
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1
@@ -251,13 +251,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@gege-mn/gege-linter@0.5.0':
-    resolution: {integrity: sha512-f6w8RlB7OU3qxMtjOGRqxJD0xyLHDaWUsFhQS7341WFtTZxNhxJRtsp2IYWXw3zfcTYvPKWrw7O73k5l/laqYQ==}
+  '@gege-mn/gege-linter@0.13.0':
+    resolution: {integrity: sha512-HGNrnA3ouYkGG5MHaXx28w4TBsWc7aZIW4PrxaUopwrz7K3MAWjKuDHmuDqviMOMLeBtLb7u/pXjLziZv2zPXQ==}
     engines: {node: '>=18'}
     hasBin: true
 
-  '@gege-mn/mongol-bichig@0.2.2':
-    resolution: {integrity: sha512-AceL7Q6SCkBM4WLx3HE775LpDixgNP58zDCcfEPw6NlO8tm6gCHo04Yq75xw42bWzTTGBJZdIDw3eDs7q9QiRg==}
+  '@gege-mn/mongol-bichig@0.4.0':
+    resolution: {integrity: sha512-lfw57HZ7ZHcsw0EPQipCrKBkwgpwt0QnHOhyKdFWO4mEZl4OYwMVkwG7R0GAlkBr6c+xm0YpPDHZK49UENgGAg==}
     engines: {node: '>=18'}
 
   '@jridgewell/sourcemap-codec@1.5.5':
@@ -825,11 +825,11 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
-  '@gege-mn/gege-linter@0.5.0':
+  '@gege-mn/gege-linter@0.13.0':
     dependencies:
-      '@gege-mn/mongol-bichig': 0.2.2
+      '@gege-mn/mongol-bichig': 0.4.0
 
-  '@gege-mn/mongol-bichig@0.2.2': {}
+  '@gege-mn/mongol-bichig@0.4.0': {}
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
