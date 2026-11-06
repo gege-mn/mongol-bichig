@@ -158,7 +158,7 @@ variants[characterName][position]["0"|"1"|"2"|"3"|"4"] = {
    "not immediately preceded by one of their defined base characters will be
    ignored". FVS after space/NNBSP/MVS/digit/punctuation/another FVS/ZWJ/
    string start = dead invisible character → error. Subsumes doubling.
-2. **Registration (`fvs-unregistered`, planned; data shipped in 0.3.1)** —
+2. **Registration (`fvs-unregistered`, shipped in gege-linter 0.12.0 on 0.3.1's data)** —
    `fvsStatus(base, fvs, position?)` returns one of four answers:
    - `registered`: fine.
    - `other-writing-system`: warning. The form is valid in Todo, Sibe, Manchu
