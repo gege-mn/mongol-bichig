@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.3.1 — 2026-11-05
+## 0.3.1 — 2026-11-06
 
-A patch number because this release only adds: every consumer on `^0.3.0`
-gets it without a range change.
+A patch number because this release only adds. Both consumers are still on
+`^0.2.3`; moving them to `^0.3.1` brings 0.3.0's `_` change with it.
 
 ### Added
 
